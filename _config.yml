@@ -1,0 +1,163 @@
+# 网站设置
+locale                   : "zh-CN"
+title                    : "个人网站"
+title_separator          : "-"
+subtitle                 : "学习与分享"
+name                     : "Your Name"
+description              : "基于Minimal Mistakes Jekyll主题的个人网站"
+url                      : # 填写您的GitHub Pages URL
+baseurl                  : # 留空或填写子路径，如 "/blog"
+repository               : # GitHub用户名/仓库名
+teaser                   : # 默认的帖子题图
+logo                     : # 网站logo路径
+masthead_title           : # 覆盖网站标题显示的标题
+breadcrumbs              : true # 显示面包屑导航
+
+# 网站主题设置
+minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
+# SEO相关
+atom_feed:
+  hide                   : true # 不启用RSS
+
+# 站点搜索设置
+search                   : true
+search_full_content      : true
+search_provider          : lunr # lunr (默认), algolia, google
+
+# 社交分享链接
+twitter:
+  username               : 
+facebook:
+  username               : 
+  app_id                 : 
+  publisher              : 
+og_image                 : # Open Graph图片
+
+# 社交账号链接
+social:
+  links:
+    - "https://twitter.com/yourname"
+    - "https://github.com/yourname"
+    - "https://linkedin.com/in/yourname"
+
+# 分析设置
+analytics:
+  provider               : false # 设置为false禁用分析
+
+# 站点作者信息
+author:
+  name             : "Your Name"
+  avatar           : # 头像路径
+  bio              : "个人简介"
+  location         : "地点"
+  email            : 
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:your.email@gmail.com"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yourusername"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/yourusername"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/yourusername"
+
+# 页脚链接
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/yourusername"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/yourusername"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/yourusername"
+
+# 导入Minimal Mistakes主题
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+plugins:
+  - jekyll-remote-theme
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-seo-tag
+
+# 压缩HTML、CSS和JS
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+
+# 文章默认设置
+defaults:
+  # 所有文章
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: true
+  # 所有页面
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+# 站点导航
+include:
+  - _pages
+
+# 编译排除项
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Rakefile
+  - README
+  - tmp
+  - /docs
+  - /test
+
+# 分页设置
+paginate: 10
+paginate_path: /page:num/
+
+# 分类和标签页面设置
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/ 

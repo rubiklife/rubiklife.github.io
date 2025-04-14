@@ -1,0 +1,46 @@
+---
+layout: archive
+---
+
+<div class="home-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-subtitle">{{ site.subtitle }}</p>
+    <div class="hero-cta">
+      <a href="{{ '/about/' | relative_url }}" class="btn btn--primary">关于我</a>
+      <a href="{{ '/year-archive/' | relative_url }}" class="btn btn--primary">文章归档</a>
+    </div>
+  </div>
+</div>
+
+<div class="latest-posts">
+  <h2 class="archive__subtitle">最新文章</h2>
+
+  {% for post in site.posts limit:3 %}
+    {% include archive-single.html type="grid" %}
+  {% endfor %}
+  
+  <a href="{{ '/year-archive/' | relative_url }}" class="btn btn--primary">查看全部文章</a>
+</div>
+
+<div class="page__content">
+  {{ content }}
+</div>
+
+<hr>
+
+<div class="feature-categories">
+  <h2>文章分类</h2>
+  <div class="grid__wrapper">
+    {% for category in site.categories limit:6 %}
+      <div class="grid__item">
+        <div class="archive__item">
+          <div class="archive__item-body">
+            <h3 class="archive__item-title">{{ category[0] }}</h3>
+            <a href="{{ '/categories/#' | append: category[0] | slugify | relative_url }}" class="btn btn--primary">查看文章</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div> 
