@@ -1,10 +1,10 @@
 # 网站设置
 locale                   : "zh-CN"
-title                    : "个人网站"
+title                    : "AI学习与分享"
 title_separator          : "-"
-subtitle                 : "学习与分享"
-name                     : "Your Name"
-description              : "基于Minimal Mistakes Jekyll主题的个人网站"
+subtitle                 : ""
+name                     : "聪明的笨猪"
+description              : "AI学习，AI分享，AI创意，AI编程"
 url                      : # 填写您的GitHub Pages URL
 baseurl                  : # 留空或填写子路径，如 "/blog"
 repository               : # GitHub用户名/仓库名
@@ -37,9 +37,8 @@ og_image                 : # Open Graph图片
 # 社交账号链接
 social:
   links:
-    - "https://twitter.com/yourname"
-    - "https://github.com/yourname"
-    - "https://linkedin.com/in/yourname"
+    - "https://x.com/cn_zealot"
+    - "https://github.com/idkkk"
 
 # 分析设置
 analytics:
@@ -47,37 +46,31 @@ analytics:
 
 # 站点作者信息
 author:
-  name             : "Your Name"
+  name             : "聪明的笨猪"
   avatar           : # 头像路径
   bio              : "个人简介"
-  location         : "地点"
+  location         : "HangZhou"
   email            : 
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:your.email@gmail.com"
+      url: "mailto:xiajinxin@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/yourusername"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/yourusername"
+      url: "https://github.com/idkkk"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/yourusername"
+      url: "https://x.com/cn_zealot"
 
 # 页脚链接
 footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/yourusername"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/yourusername"
+      url: "https://github.com/idkkk"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/yourusername"
+      url: "https://x.com/cn_zealot"
 
 # 导入Minimal Mistakes主题
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"

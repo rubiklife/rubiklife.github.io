@@ -43,6 +43,6 @@ toc: true
 
 您可以通过以下方式联系我：
 
-- Email: your.email@example.com
-- GitHub: [yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourusername) 
+- Email: xiajinxin@gmail.com
+- GitHub: [idkkk](https://github.com/idkkk)
+- Twitter:[cn_zealot]https://x.com/cn_zealot
