@@ -25,13 +25,6 @@ feature_row:
     url: "/categories/"
     btn_class: "btn--primary"
     btn_label: "查看分类"
-  - image_path: /assets/images/feature-3.jpg
-    alt: "项目展示"
-    title: "项目展示"
-    excerpt: "查看我的项目案例和相关详细信息。"
-    url: "/projects/"
-    btn_class: "btn--primary"
-    btn_label: "查看项目"
 ---
 
 {% include feature_row %}

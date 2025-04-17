@@ -1,6 +1,6 @@
 ---
 title: "Jekyll 网站的 SEO 优化指南"
-date: 2023-03-10T14:30:00+08:00
+date: 2025-04-15T08:30:00+08:00
 categories:
   - 技术
 tags:

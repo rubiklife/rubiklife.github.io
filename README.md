@@ -33,7 +33,6 @@
 - 文章归档: `/year-archive/`
 - 分类页面: `/categories/`
 - 标签页面: `/tags/`
-- 项目展示: `/projects/`
 
 ## 本地开发
 
