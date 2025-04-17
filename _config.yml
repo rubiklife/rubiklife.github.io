@@ -1,6 +1,6 @@
 # 网站设置
 locale                   : "zh-CN"
-title                    : "AI学习与分享"
+title                    : "聪明的笨猪"
 title_separator          : "-"
 subtitle                 : ""
 name                     : "聪明的笨猪"
@@ -48,7 +48,7 @@ analytics:
 author:
   name             : "聪明的笨猪"
   avatar           : # 头像路径
-  bio              : "个人简介"
+  bio              : ""
   location         : "HangZhou"
   email            : 
   links:

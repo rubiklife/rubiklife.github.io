@@ -45,10 +45,4 @@ feature_row:
   {% endfor %}
 </div>
 
-<a href="/year-archive/" class="btn btn--primary">查看全部文章</a>
-
-## 关于我
-
-简短的自我介绍，您可以在这里添加一些个人信息，包括您的专业、兴趣和技能等。
-
-[了解更多](/about/){: .btn .btn--primary} 
+<a href="/year-archive/" class="btn btn--primary">查看全部文章</a> 

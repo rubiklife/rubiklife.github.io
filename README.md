@@ -30,7 +30,6 @@
 ## 页面说明
 
 - 首页: `/`
-- 关于页面: `/about/`
 - 文章归档: `/year-archive/`
 - 分类页面: `/categories/`
 - 标签页面: `/tags/`
@@ -39,8 +38,8 @@
 ## 本地开发
 
 1. 安装 Ruby 和 Bundler
-2. 克隆仓库: `git clone https://github.com/yourusername/yourusername.github.io.git`
-3. 进入目录: `cd yourusername.github.io`
+2. 克隆仓库: `git clone https://github.com/rubiklife/rubiklife.github.io.git`
+3. 进入目录: `cd rubiklife.github.io`
 4. 安装依赖: `bundle install`
 5. 启动本地服务器: `bundle exec jekyll serve`
 6. 在浏览器中访问: `http://localhost:4000`
