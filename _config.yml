@@ -1,9 +1,9 @@
 # 网站设置
 locale                   : "zh-CN"
-title                    : "聪明的笨猪"
+title                    : "聪明的笨猪的个人博客"
 title_separator          : "-"
 subtitle                 : ""
-name                     : "聪明的笨猪"
+name                     : "AI创未来"
 description              : "AI学习，AI分享，AI创意，AI编程"
 url                      : # 填写您的GitHub Pages URL
 baseurl                  : # 留空或填写子路径，如 "/blog"
