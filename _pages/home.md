@@ -3,7 +3,7 @@ layout: splash
 permalink: /home/
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/header-bg.jpg
+  overlay_image: /assets/images/header-bg.png
   actions:
     - label: "开始阅读"
       url: "/year-archive/"
