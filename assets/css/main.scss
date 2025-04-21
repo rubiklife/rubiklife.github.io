@@ -99,4 +99,81 @@ div.highlighter-rouge, figure.highlight {
       border-color: #4a9ae1;
     }
   }
+}
+
+// 修复面包屑导航乱码问题
+.breadcrumbs {
+  ol {
+    padding-left: 0;
+    margin-bottom: 0;
+    font-family: $sans-serif;
+    font-size: $type-size-6;
+    
+    li {
+      display: inline-block;
+      
+      &:not(:last-child)::after {
+        content: ">";
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        color: $text-color;
+      }
+    }
+  }
+}
+
+// 修复文章头部图片问题
+.page__hero--overlay {
+  img {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .wrapper {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// 确保图片正确加载
+.page__hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block !important;
+}
+
+// 修复teaser图片显示
+.archive__item-teaser {
+  img {
+    width: 100%;
+    height: auto;
+    display: block !important;
+    max-height: 200px;
+    object-fit: cover;
+  }
+}
+
+// 修复字符编码问题
+body {
+  font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+// 修复头部图片显示问题
+.page__hero {
+  position: relative;
+  margin-bottom: 2em;
+  clear: both;
+  
+  &--overlay {
+    position: relative;
+    margin-bottom: 2em;
+    padding: 3em 0;
+    clear: both;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: intro 0.3s both;
+    animation-delay: 0.25s;
+  }
 } 
