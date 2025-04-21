@@ -1,42 +1,102 @@
-/*
-Error: Invalid CSS after "@charset "utf-8"": expected "{", was ";"
-        on line 6 of main.scss
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
 
-1: ---
-2: # Only the main Sass file needs front matter (the dashes are enough)
-3: search: false
-4: ---
-5: 
-6: @charset "utf-8";
-7: 
-8: // 导入Minimal Mistakes默认变量
-9: @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
-10: @import "minimal-mistakes";
-11: 
+@charset "utf-8";
 
-Backtrace:
-main.scss:6
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:688:in `block'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
-D:/Ruby33-x64/lib/ruby/gems/3.3.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
-D:/Ruby33-x64/bin/sass:25:in `load'
-D:/Ruby33-x64/bin/sass:25:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"@charset \"utf-8\"\": expected \"{\", was \";\"\A         on line 6 of main.scss\A \A 1: ---\A 2: # Only the main Sass file needs front matter (the dashes are enough)\A 3: search: false\A 4: ---\A 5: \A 6: @charset \"utf-8\";\A 7: \A 8: // 导入Minimal Mistakes默认变量\A 9: @import \"minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}\";\A 10: @import \"minimal-mistakes\";\A 11: "; }
+// 导入Minimal Mistakes默认变量
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+// 自定义样式
+
+// 增强页面可读性
+.page__content {
+  p, li {
+    font-size: 1em;
+    line-height: 1.8;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+  }
+}
+
+// 优化代码块样式
+div.highlighter-rouge, figure.highlight {
+  border-radius: 4px;
+  
+  pre.highlight {
+    padding: 1em;
+  }
+}
+
+// 优化图片显示
+.page__content {
+  img {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+}
+
+// 自定义导航栏样式
+.masthead {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+// 优化按钮样式
+.btn {
+  &--primary {
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  }
+}
+
+// 优化文章网格样式
+.grid__item {
+  .archive__item-teaser {
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+  }
+  
+  .archive__item-title {
+    margin-top: 0.5em;
+  }
+}
+
+// 移动设备优化
+@media (max-width: 767px) {
+  .page__hero--overlay {
+    .page__title {
+      font-size: 1.5em;
+    }
+    
+    .page__lead {
+      font-size: 1em;
+    }
+  }
+}
+
+// 改进页脚样式
+.page__footer {
+  margin-top: 3em;
+  
+  .page__footer-copyright {
+    font-size: 0.8em;
+  }
+}
+
+// 改进站内搜索样式
+.search-content {
+  .search-input {
+    border-radius: 4px;
+    padding: 0.75em;
+    
+    &:focus {
+      border-color: #4a9ae1;
+    }
+  }
+} 
