@@ -1,5 +1,5 @@
 ---
-title: "CodeFormer 使用指南 - AI人脸修复与增强"
+title: "CodeFormer 使用指南 - AI人脸修复与增强工具"
 date: 2025-04-20T07:50:00+08:00
 categories:
   - 技术
