@@ -15,7 +15,7 @@ breadcrumbs              : true # 显示面包屑导航
 breadcrumb_home_label    : "首页"
 breadcrumb_separator     : "/"
 timezone                 : "Asia/Shanghai" # 设置东八区时间
-date_format              : "%Y年%m月%d日 %H:%M"
+date_format              : "%Y-%m-%d %H:%M:%S"
 
 # 网站主题设置
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"

@@ -27,7 +27,7 @@
     {% include page__meta.html type=include.type %}
     <div class="post-date">
       <time datetime="{{ post.date | date_to_xmlschema }}">
-        {% assign date_format = site.date_format | default: "%Y年%m月%d日 %H:%M" %}
+        {% assign date_format = site.date_format | default: "%Y-%m-%d %H:%M:%S" %}
         {{ post.date | date: date_format }}
       </time>
     </div>
