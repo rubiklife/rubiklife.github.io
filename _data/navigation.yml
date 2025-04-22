@@ -1,7 +1,7 @@
 main:
   - title: "首页"
     url: /
-  - title: "文章归档"
+  - title: "归档"
     url: /year-archive/
   - title: "分类"
     url: /categories/
