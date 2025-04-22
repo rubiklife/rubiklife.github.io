@@ -11,15 +11,13 @@ toc: true
 toc_label: "目录"
 toc_icon: "cog"
 header:
-  overlay_color: "#5e616c"
-  overlay_image: /assets/images/digital-network-technology.jpg
-  caption: "AI World - Modern Header Style"
-  teaser: /assets/images/post-teaser.jpg
+  image: /assets/images/digital-network-technology.jpg
+  teaser: /assets/images/ai-technology-blue.jpg
 ---
 
-## Minimal Mistakes主题简�?
+## Minimal Mistakes主题简介
 
-Minimal Mistakes是一个灵活的双栏Jekyll主题，非常适合个人网站、博客和项目文档。它的设计简洁、响应式，支持多种布局选项，是GitHub上最受欢迎的Jekyll主题之一。本文将详细介绍如何使用Minimal Mistakes主题来打造你的个人网站�?
+Minimal Mistakes是一个灵活的双栏Jekyll主题，非常适合个人网站、博客和项目文档。它的设计简洁、响应式，支持多种布局选项，是GitHub上最受欢迎的Jekyll主题之一。本文将详细介绍如何使用Minimal Mistakes主题来打造你的个人网站。
 
 ## 主题安装
 
@@ -51,14 +49,14 @@ cd minimal-mistakes
 
 ### 网站配置
 
-在`_config.yml`文件中设置网站的基本信息�?
+在`_config.yml`文件中设置网站的基本信息：
 
 ```yaml
 # 网站设置
 locale                   : "zh-CN"
 title                    : "网站标题"
 title_separator          : "-"
-subtitle                 : "网站副标�?
+subtitle                 : "网站副标题"
 name                     : "您的名字"
 description              : "网站描述"
 url                      : "https://yourdomain.com"
@@ -66,10 +64,10 @@ baseurl                  : # 留空或填写子路径
 repository               : "username/repo-name"
 ```
 
-### 作者信�?
+### 作者信息
 
 ```yaml
-# 作者信�?
+# 作者信息
 author:
   name             : "您的名字"
   avatar           : "/assets/images/bio-photo.jpg"
@@ -103,7 +101,7 @@ main:
 
 ## 布局选项
 
-Minimal Mistakes提供多种布局选项�?
+Minimal Mistakes提供多种布局选项：
 
 1. **默认布局**：`layout: default`
 2. **单页布局**：`layout: single`
@@ -117,7 +115,7 @@ Minimal Mistakes提供多种布局选项�?
 
 ## 文章撰写
 
-### 文章前置元数�?
+### 文章前置元数据
 
 每篇文章开头需要包含YAML前置元数据：
 
@@ -131,10 +129,8 @@ tags:
   - 标签1
   - 标签2
 header:
-  overlay_color: "#5e616c"
-  overlay_image: /assets/images/digital-network-technology.jpg
-  caption: "AI World - Modern Header Style"
-  teaser: /assets/images/post-teaser.jpg
+  image: /assets/images/image-name.jpg
+  teaser: /assets/images/teaser-image.jpg
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
@@ -143,23 +139,20 @@ toc_icon: "cog"
 
 ### 特色图片
 
-Minimal Mistakes支持多种特色图片设置�?
+Minimal Mistakes支持多种特色图片设置：
 
 ```yaml
 header:
-  overlay_color: "#5e616c"
-  overlay_image: /assets/images/digital-network-technology.jpg
-  caption: "AI World - Modern Header Style"
-  teaser: /assets/images/post-teaser.jpg
-  overlay_image: /assets/images/digital-network-technology.jpg
-  caption: "AI World - Modern Header Style"
+  image: /assets/images/image-name.jpg             # 页面顶部横幅图片
+  teaser: /assets/images/teaser-image.jpg          # 列表页面的缩略图
+  overlay_image: /assets/images/overlay-image.jpg  # 覆盖图片
   overlay_color: "#333"                            # 覆盖颜色
-  overlay_filter: 0.5                              # 透明度滤�?
+  overlay_filter: 0.5                              # 透明度滤镜
 ```
 
 ### 目录设置
 
-在文章中添加自动目录�?
+在文章中添加自动目录：
 
 ```yaml
 toc: true
@@ -180,9 +173,9 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 ```
 
-## 响应式图�?
+## 响应式图片
 
-使用Minimal Mistakes的图片辅助类�?
+使用Minimal Mistakes的图片辅助类：
 
 ```html
 <figure class="half">
@@ -203,14 +196,14 @@ print_hi('Tom')
 在`_config.yml`中启用社交分享功能：
 
 ```yaml
-share: true  # 在文章底部显示分享按�?
+share: true  # 在文章底部显示分享按钮
 ```
 
 ## 定制主题
 
 ### 更改皮肤
 
-在`_config.yml`中选择预设皮肤�?
+在`_config.yml`中选择预设皮肤：
 
 ```yaml
 minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
@@ -260,15 +253,12 @@ analytics:
 
 ## 常见问题排查
 
-1. **图片不显�?*：确保图片路径正确，并检查`baseurl`配置
+1. **图片不显示**：确保图片路径正确，并检查`baseurl`配置
 2. **样式丢失**：确保已添加`jekyll-include-cache`插件
 3. **页面布局混乱**：检查文章的YAML前置数据格式是否正确
 
 ## 总结
 
-Minimal Mistakes是一个功能强大且灵活的Jekyll主题，适合各种类型的网站。通过本文介绍的配置和技巧，你可以充分利用这个主题的优势，打造出美观且实用的个人网站�?
+Minimal Mistakes是一个功能强大且灵活的Jekyll主题，适合各种类型的网站。通过本文介绍的配置和技巧，你可以充分利用这个主题的优势，打造出美观且实用的个人网站。
 
-如有更多问题，可参考[官方文档](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/)或在GitHub上提交issue�?
-
-
-
+如有更多问题，可参考[官方文档](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/)或在GitHub上提交issue。 
