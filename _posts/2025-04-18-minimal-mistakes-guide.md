@@ -1,6 +1,6 @@
 ---
 title: "Minimal Mistakes主题使用指南"
-date: 2025-04-18T10:30:00+08:00
+date: 2025-04-18T07:30:00+08:00
 categories:
   - 教程
 tags:

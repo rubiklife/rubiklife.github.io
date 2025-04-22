@@ -70,15 +70,11 @@ header:
 
 - 修改 `_config.yml` 文件中的站点设置和作者信息
 - 修改 `_data/navigation.yml` 自定义导航菜单
-- 添加自定义 CSS 到 `assets/css/main.scss`
+- 添加自定义 CSS 到 `assets/css/main.css`
 
 ## 下载示例图片
 
-运行以下命令下载示例图片：
-
-```
-powershell -ExecutionPolicy Bypass -File assets/download-images.ps1
-```
+可以自行到unsplash下载示例图片
 
 ## 许可证
 
