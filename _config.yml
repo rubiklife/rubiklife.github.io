@@ -12,6 +12,8 @@ teaser                   : # 默认的帖子题图
 logo                     : # 网站logo路径
 masthead_title           : # 覆盖网站标题显示的标题
 breadcrumbs              : true # 显示面包屑导航
+breadcrumb_home_label    : "首页"
+breadcrumb_separator     : "/"
 timezone                 : "Asia/Shanghai" # 设置东八区时间
 date_format              : "%Y年%m月%d日 %H:%M"
 

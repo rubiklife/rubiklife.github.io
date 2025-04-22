@@ -1,0 +1,33 @@
+{% case site.locale %}
+  {% when "zh-CN" %}
+    {% assign home = "首页" %}
+    {% assign label_types = "分类,标签" | split: "," %}
+  {% else %}
+    {% assign home = "Home" %}
+    {% assign label_types = "categories,tags" | split: "," %}
+{% endcase %}
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ site.baseurl | absolute_url }}" itemprop="item"><span itemprop="name">{{ home }}</span></a>
+      <meta itemprop="position" content="1" />
+    </li>
+
+    {% for category in page.categories %}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
+        <a href="{{ site.baseurl }}/categories/#{{ category | slugify }}" itemprop="item"><span itemprop="name">{{ category }}</span></a>
+        <meta itemprop="position" content="{{ forloop.index | plus: 1 }}" />
+      </li>
+    {% endfor %}
+
+    {% if page.title %}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
+        <a href="{{ page.url | absolute_url }}" itemprop="item"><span itemprop="name">{{ page.title }}</span></a>
+        <meta itemprop="position" content="{{ page.categories.size | plus: 2 }}" />
+      </li>
+    {% endif %}
+  </ol>
+</nav> 
