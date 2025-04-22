@@ -7,5 +7,5 @@ main:
     url: /categories/
   - title: "标签"
     url: /tags/
-  - title: "订阅"
+  - title: "订阅指南"
     url: /subscribe/ 
