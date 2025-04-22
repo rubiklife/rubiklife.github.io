@@ -27,7 +27,7 @@
     <p class="page__meta">
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        {% assign date_format = site.date_format | default: "%Y-%m-%d %H:%M:%S" %}
+        {% assign date_format = site.date_format | default: "%Y年%m月%d日 %H:%M" %}
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
       </span>
     </p>

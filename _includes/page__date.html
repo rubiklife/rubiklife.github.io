@@ -1,6 +1,6 @@
 {% assign document = page %}
 {% if document.last_modified_at %}
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "更新时间:" }}</strong> <time datetime="{{ document.last_modified_at | date_to_xmlschema }}">{{ document.last_modified_at | date: "%Y-%m-%d %H:%M:%S" }}</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "更新时间:" }}</strong> <time datetime="{{ document.last_modified_at | date_to_xmlschema }}">{{ document.last_modified_at | date: "%Y年%m月%d日" }}</time></p>
 {% elsif document.date %}
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "发布时间:" }}</strong> <time datetime="{{ document.date | date_to_xmlschema }}">{{ document.date | date: "%Y-%m-%d %H:%M:%S" }}</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "发布时间:" }}</strong> <time datetime="{{ document.date | date_to_xmlschema }}">{{ document.date | date: "%Y年%m月%d日 %H:%M" }}</time></p>
 {% endif %} 
