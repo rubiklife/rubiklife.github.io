@@ -10,9 +10,6 @@ tags:
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
-header:
-  image: /assets/images/digital-network-technology.jpg
-  teaser: /assets/images/ai-technology-blue.jpg
 ---
 
 ## CodeFormer简介

@@ -10,9 +10,6 @@ tags:
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
-header:
-  image: /assets/images/digital-network-technology.jpg
-  teaser: /assets/images/ai-technology-blue.jpg
 ---
 
 ## Minimal Mistakes主题简介
@@ -128,9 +125,6 @@ categories:
 tags:
   - 标签1
   - 标签2
-header:
-  image: /assets/images/image-name.jpg
-  teaser: /assets/images/teaser-image.jpg
 toc: true
 toc_label: "目录"
 toc_icon: "cog"

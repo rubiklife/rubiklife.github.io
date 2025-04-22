@@ -9,9 +9,6 @@ tags:
   - 教程
 toc: true
 toc_label: "目录"
-header:
-  image: /assets/images/post-header.jpg
-  teaser: /assets/images/post-teaser.jpg
 ---
 
 ## Markdown 简介
