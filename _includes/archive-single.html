@@ -24,13 +24,13 @@
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    {% include page__meta.html type=include.type %}
-    <div class="post-date">
-      <time datetime="{{ post.date | date_to_xmlschema }}">
+    <p class="page__meta">
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
         {% assign date_format = site.date_format | default: "%Y-%m-%d %H:%M:%S" %}
-        {{ post.date | date: date_format }}
-      </time>
-    </div>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+      </span>
+    </p>
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>
 </div> 
