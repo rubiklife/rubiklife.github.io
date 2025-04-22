@@ -12,6 +12,8 @@ teaser                   : # 默认的帖子题图
 logo                     : # 网站logo路径
 masthead_title           : # 覆盖网站标题显示的标题
 breadcrumbs              : true # 显示面包屑导航
+timezone                 : "Asia/Shanghai" # 设置东八区时间
+date_format              : "%Y年%m月%d日 %H:%M"
 
 # 网站主题设置
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
@@ -102,6 +104,7 @@ defaults:
       comments: false
       share: true
       related: true
+      show_date: true
   # 所有页面
   - scope:
       path: ""
