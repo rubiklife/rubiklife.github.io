@@ -57,7 +57,10 @@ social:
 
 # 分析设置
 analytics:
-  provider               : false # 设置为false禁用分析
+  provider               : "google-gtag" # false (默认), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-7FWZY2QFBD" # 替换为您的Google Analytics跟踪ID
+    anonymize_ip         : false # true, false (默认)
 
 # 站点作者信息
 author:
