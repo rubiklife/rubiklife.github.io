@@ -22,7 +22,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # SEO相关
 atom_feed:
-  hide                   : false # 启用RSS
+  hide                   : true # 禁用默认的RSS链接
   path                   : "/feed.xml" # RSS feed路径
   title                  : "AI创未来 - 最新文章" # RSS标题
 
