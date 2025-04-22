@@ -86,7 +86,7 @@ footer:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://x.com/cn_zealot"
-    - label: "RSS订阅"
+    - label: "RSS"
       icon: "fas fa-fw fa-rss-square"
       url: "/feed.xml"
 
