@@ -22,7 +22,18 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # SEO相关
 atom_feed:
-  hide                   : true # 不启用RSS
+  hide                   : false # 启用RSS
+  path                   : "/feed.xml" # RSS feed路径
+  title                  : "AI创未来 - 最新文章" # RSS标题
+
+# Jekyll Feed 设置
+feed:
+  path: feed.xml
+  posts_limit: 20
+  excerpt_only: false
+  categories:
+    - 技术
+    - 教程
 
 # 站点搜索设置
 search                   : true
@@ -75,6 +86,9 @@ footer:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://x.com/cn_zealot"
+    - label: "RSS"
+      icon: "fas fa-fw fa-rss-square"
+      url: "/feed.xml"
 
 # 导入Minimal Mistakes主题
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"

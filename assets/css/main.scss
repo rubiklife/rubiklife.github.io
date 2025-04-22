@@ -1,0 +1,54 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minimal-mistakes";
+
+// 自定义样式
+
+// 订阅按钮样式
+.subscribe-button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 8px 20px;
+  background-color: #ff6b00;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken(#ff6b00, 10%);
+    color: white;
+    text-decoration: none;
+  }
+
+  i {
+    margin-right: 8px;
+  }
+}
+
+// RSS图标样式
+.rss-icon {
+  color: #f26522;
+}
+
+// 订阅页面样式
+.subscribe-page {
+  .app-box {
+    border: 1px solid #e9e9e9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    
+    h4 {
+      margin-top: 0;
+      color: #333;
+    }
+    
+    ul {
+      margin-bottom: 0;
+    }
+  }
+} 
