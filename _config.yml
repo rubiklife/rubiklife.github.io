@@ -184,4 +184,4 @@ comments:
     theme                : "github-light" # "github-light" (默认), "github-dark", "preferred-color-scheme", "github-dark-orange", etc.
     issue_term           : "pathname" # "pathname" (默认), "url", "title", "og:title"
     label                : "comment" # 可选，默认是空的
-    repository           : "idkkk/rubiklife.github.io" # 格式为 username/repo 
+    repository           : "rubiklife/rubiklife.github.io" # 格式为 username/repo 
