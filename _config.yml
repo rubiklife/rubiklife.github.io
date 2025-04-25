@@ -64,12 +64,21 @@ analytics:
 
 # 评论系统设置
 comments:
-  provider               : "utterances" # false (默认), "disqus", "discourse", "facebook", "staticman", "utterances", "giscus", "custom"
+  provider               : "giscus" # false (默认), "disqus", "discourse", "facebook", "staticman", "utterances", "giscus", "custom"
+  giscus:
+    repo                 : "rubiklife/rubiklife.github.io" # GitHub username/repo-name
+    repo_id              : "R_kgDOOZD27g" # 从giscus.app获取
+    category             : "Announcements" # 必须与giscus.app上配置的一致
+    category_id          : "DIC_kwDOOZD27s4Cpdf3" # 从giscus.app获取
+    discussion_term      : "pathname" # pathname (默认), url, title, og:title
+    reactions_enabled    : "1" # '1' for enabled (默认), '0' for disabled
+    theme                : "light" # 'light' (默认), 'dark', 'dark_dimmed', 'transparent_dark', 'preferred_color_scheme'
+    language             : "zh-CN" # en, zh-CN, zh-TW等
   utterances:
-    theme                : "github-light" # "github-light" (默认), "github-dark", "preferred-color-scheme", "github-dark-orange", etc.
+    theme                : "github-light" # "github-light" (默认), "github-dark"等
     issue_term           : "pathname" # "pathname" (默认), "url", "title", "og:title"
     label                : "comment" # 可选，默认是空的
-    repository           : "rubiklife/rubiklife.github.io" # 格式为 username/repo 
+    repository           : "rubiklife/rubiklife.github.io" # 格式为 username/repo
 
 # 站点作者信息
 author:

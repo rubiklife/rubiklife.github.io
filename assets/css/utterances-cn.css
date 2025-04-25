@@ -1,0 +1,57 @@
+/* 
+ * Utterances评论系统中文化样式
+ * 通过CSS content属性覆盖英文界面文本
+ */
+
+/* 隐藏"powered by utterances"页脚 */
+.utterances-frame {
+  margin-bottom: -30px !important;
+  min-height: 300px !important;
+}
+
+/* 创建覆盖层 */
+#utterances-footer-cover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  z-index: 9999;
+}
+
+/* 以下CSS选择器会在iframe加载后应用，修改特定元素的显示文本 */
+/* 注意：由于跨域限制，这些选择器需要在iframe内部应用才能生效 */
+/* 这里作为参考，实际通过js注入样式到iframe */
+
+/*
+.write-tab:after {
+  content: "编辑" !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.preview-tab:after {
+  content: "预览" !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.btn-primary:after {
+  content: "提交评论" !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+*/ 

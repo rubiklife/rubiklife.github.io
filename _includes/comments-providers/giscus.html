@@ -1,0 +1,19 @@
+<!-- 使用giscus评论系统 -->
+<div class="giscus-container" style="display: block; position: static; margin-top: 20px; width: 100%;">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ site.comments.giscus.repo }}"
+    data-repo-id="{{ site.comments.giscus.repo_id }}"
+    data-category="{{ site.comments.giscus.category }}"
+    data-category-id="{{ site.comments.giscus.category_id }}"
+    data-mapping="{{ site.comments.giscus.discussion_term | default: 'pathname' }}"
+    data-strict="0"
+    data-reactions-enabled="{{ site.comments.giscus.reactions_enabled | default: '1' }}"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="{{ site.comments.giscus.theme | default: 'light' }}"
+    data-lang="{{ site.comments.giscus.language | default: 'zh-CN' }}"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div> 
