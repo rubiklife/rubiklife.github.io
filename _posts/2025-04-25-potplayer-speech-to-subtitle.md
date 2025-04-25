@@ -1,5 +1,5 @@
 ---
-title: "PotPlayer视频自动识别与字幕生成指南"
+title: "PotPlayer播放视频自动识别与字幕生成"
 date: 2025-04-25T08:30:00+08:00
 categories:
   - 技术
