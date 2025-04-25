@@ -7,7 +7,7 @@ name                     : "聪明的笨猪"
 description              : "AI学习，AI分享，AI创意，AI编程"
 url                      : # 填写您的GitHub Pages URL
 baseurl                  : # 留空或填写子路径，如 "/blog"
-repository               : # GitHub用户名/仓库名
+repository               : "idkkk/rubiklife.github.io" # GitHub用户名/仓库名
 teaser                   : # 默认的帖子题图
 logo                     : # 网站logo路径
 masthead_title           : # 覆盖网站标题显示的标题
@@ -120,7 +120,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: false
-      comments: false
+      comments: true
       share: true
       related: true
       show_date: true
@@ -175,4 +175,13 @@ category_archive:
   path: /categories/
 tag_archive:
   type: liquid
-  path: /tags/ 
+  path: /tags/
+
+# 评论系统设置
+comments:
+  provider               : "utterances" # false (默认), "disqus", "discourse", "facebook", "staticman", "utterances", "giscus", "custom"
+  utterances:
+    theme                : "github-light" # "github-light" (默认), "github-dark", "preferred-color-scheme", "github-dark-orange", etc.
+    issue_term           : "pathname" # "pathname" (默认), "url", "title", "og:title"
+    label                : "comment" # 可选，默认是空的
+    repository           : "idkkk/rubiklife.github.io" # 格式为 username/repo 

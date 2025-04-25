@@ -1,0 +1,8 @@
+{% case site.comments.provider %}
+{% when "utterances" %}
+  {% include comments-providers/utterances.html %}
+{% when "disqus" %}
+  {% include comments-providers/disqus.html %}
+{% when "custom" %}
+  {% include comments-providers/custom.html %}
+{% endcase %} 
