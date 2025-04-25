@@ -74,11 +74,6 @@ comments:
     reactions_enabled    : "1" # '1' for enabled (默认), '0' for disabled
     theme                : "light" # 'light' (默认), 'dark', 'dark_dimmed', 'transparent_dark', 'preferred_color_scheme'
     language             : "zh-CN" # en, zh-CN, zh-TW等
-  utterances:
-    theme                : "github-light" # "github-light" (默认), "github-dark"等
-    issue_term           : "pathname" # "pathname" (默认), "url", "title", "og:title"
-    label                : "comment" # 可选，默认是空的
-    repository           : "rubiklife/rubiklife.github.io" # 格式为 username/repo
 
 # 站点作者信息
 author:
