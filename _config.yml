@@ -62,6 +62,15 @@ analytics:
     tracking_id          : "G-7FWZY2QFBD" # 替换为您的Google Analytics跟踪ID
     anonymize_ip         : false # true, false (默认)
 
+# 评论系统设置
+comments:
+  provider               : "utterances" # false (默认), "disqus", "discourse", "facebook", "staticman", "utterances", "giscus", "custom"
+  utterances:
+    theme                : "github-light" # "github-light" (默认), "github-dark", "preferred-color-scheme", "github-dark-orange", etc.
+    issue_term           : "pathname" # "pathname" (默认), "url", "title", "og:title"
+    label                : "comment" # 可选，默认是空的
+    repository           : "rubiklife/rubiklife.github.io" # 格式为 username/repo 
+
 # 站点作者信息
 author:
   name             : "聪明的笨猪"
@@ -176,12 +185,3 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
-
-# 评论系统设置
-comments:
-  provider               : "utterances" # false (默认), "disqus", "discourse", "facebook", "staticman", "utterances", "giscus", "custom"
-  utterances:
-    theme                : "github-light" # "github-light" (默认), "github-dark", "preferred-color-scheme", "github-dark-orange", etc.
-    issue_term           : "pathname" # "pathname" (默认), "url", "title", "og:title"
-    label                : "comment" # 可选，默认是空的
-    repository           : "rubiklife/rubiklife.github.io" # 格式为 username/repo 
