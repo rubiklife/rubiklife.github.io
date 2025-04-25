@@ -110,4 +110,36 @@ div.highlighter-rouge, figure.highlight {
       margin-bottom: 0;
     }
   }
+}
+
+// 评论区样式
+.page__comments {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #f2f3f3;
+  
+  .page__comments-title {
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    border-bottom: 1px solid #f2f3f3;
+  }
+}
+
+.utterances {
+  position: relative !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.utterances-container {
+  iframe.utterances-frame {
+    min-height: 250px;  // 确保足够的空间显示评论
+    border: none !important;
+  }
+}
+
+// 确保评论区文本显示为中文
+.timeline-comment-header-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif !important;
 } 

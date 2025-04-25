@@ -22,4 +22,9 @@
   {% endfor %}
 {% endif %}
 
+<!-- 自定义评论系统脚本 -->
+{% if page.comments %}
+  <script src="{{ '/assets/js/custom-utterances.js' | relative_url }}"></script>
+{% endif %}
+
 {% include analytics.html %} 

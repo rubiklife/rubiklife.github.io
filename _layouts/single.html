@@ -55,8 +55,11 @@ layout: default
       {% include post_pagination.html %}
     </div>
 
-    {% if jekyll.environment == 'production' and site.comments.provider and page.comments %}
-      {% include comments.html %}
+    {% if site.comments.provider and page.comments %}
+      <section class="page__comments">
+        <h4 class="page__comments-title">评论</h4>
+        {% include comments.html %}
+      </section>
     {% endif %}
   </article>
 
