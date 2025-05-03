@@ -1,5 +1,5 @@
 ---
-title: "Context7：为AI编码助手提供最新代码文档的MCP服务器"
+title: "Context7：完善AI编码的MCP工具"
 date: 2025-05-01T08:30:00+08:00
 categories:
   - 技术
