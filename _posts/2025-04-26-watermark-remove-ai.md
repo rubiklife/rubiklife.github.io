@@ -1,5 +1,5 @@
 ---
-title: "使用WatermarkRemover-AI工具轻松移除图片水印"
+title: "使用WatermarkRemover-AI工具移除图片水印"
 date: 2025-04-26T06:15:00+08:00
 categories:
   - 技术
