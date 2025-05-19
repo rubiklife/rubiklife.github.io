@@ -1,95 +1,215 @@
 ---
-title: "Context7：完善AI编码的MCP工具"
-date: 2025-05-01T08:30:00+08:00
+title: "Context7 使用指南 - 为AI编码助手提供最新文档"
+date: 2025-05-01T10:00:00+08:00
 categories:
-  - 技术
+  - 工具
 tags:
-  - AI工具
-  - 编程开发
-  - MCP
   - Context7
-  - 代码助手
+  - MCP
+  - AI编程
+  - 文档工具
 toc: true
 toc_label: "目录"
 toc_icon: "code"
 ---
 
-## Context7简介
+## Context7 简介
 
-在使用AI编码助手（如Cursor、Claude Desktop等）进行编程开发时，我们经常会遇到这样的问题：AI生成的代码基于过时的训练数据，导致API调用不存在、参数错误或者使用了已废弃的方法。Context7正是为了解决这一问题而诞生的一款强大工具，它能够为AI提供最新、最准确的代码文档。
+Context7是一个为大型语言模型(LLM)和AI编码助手提供最新代码文档的工具。它解决了传统AI编码助手依赖过时训练数据的问题，确保你获得最新、最准确的库文档信息。
 
-Context7是一个Model Context Protocol (MCP) 服务器，它能够实时获取各种库和框架的最新文档，并将这些文档作为上下文提供给AI模型。这样，当你让AI助手帮你编写代码时，它就能基于最新的API文档，生成准确、可用的代码。
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font-family: Arial; font-size: 24px; font-weight: bold; fill: #333; }
+    .subtitle { font-family: Arial; font-size: 16px; fill: #666; }
+    .logo { font-family: monospace; font-size: 48px; font-weight: bold; fill: #4a86e8; }
+    .highlight { fill: #ff6d00; }
+  </style>
+  <rect width="600" height="200" fill="#f9f9f9" rx="10" ry="10" stroke="#ddd" stroke-width="2"/>
+  <text x="300" y="70" text-anchor="middle" class="logo">Context<tspan class="highlight">7</tspan></text>
+  <text x="300" y="110" text-anchor="middle" class="title">最新代码文档服务</text>
+  <text x="300" y="140" text-anchor="middle" class="subtitle">为AI编码助手提供实时、准确的API文档</text>
+</svg>
 
-## Context7的优势
+## 为什么使用Context7？
 
-在没有Context7的情况下，AI编码助手面临以下问题：
+使用AI编码助手时，你可能会遇到这些问题：
 
 - ❌ 代码示例基于过时的训练数据
-- ❌ 可能会生成不存在的API（幻觉问题）
-- ❌ 只能提供针对旧版本库的通用答案
+- ❌ AI生成不存在的API或幻觉
+- ❌ 对旧版本包的泛泛而谈
 
-而使用Context7后：
+Context7解决了这些问题，它能：
 
-- ✅ 获取特定版本的最新文档和代码示例
-- ✅ 生成真实存在的API调用，避免幻觉问题
-- ✅ 根据当前版本库的特性提供更精准的代码建议
+- ✅ 提供最新的API文档和代码示例
+- ✅ 确保所有推荐的API实际存在
+- ✅ 提供特定版本的文档
+
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: #f5f5f5; stroke: #ddd; stroke-width: 2; rx: 8; ry: 8; }
+    .title { font-family: Arial; font-size: 18px; font-weight: bold; fill: #333; }
+    .content { font-family: Arial; font-size: 14px; fill: #555; }
+    .checkmark { fill: #4caf50; font-weight: bold; font-size: 22px; }
+    .xmark { fill: #f44336; font-weight: bold; font-size: 22px; }
+  </style>
+  
+  <!-- 左侧：没有Context7 -->
+  <rect x="20" y="20" width="260" height="260" class="box"/>
+  <text x="150" y="50" text-anchor="middle" class="title">不使用Context7</text>
+  
+  <text x="40" y="90" class="xmark">❌</text>
+  <text x="70" y="90" class="content">过时的API文档</text>
+  
+  <text x="40" y="130" class="xmark">❌</text>
+  <text x="70" y="130" class="content">错误的代码示例</text>
+  
+  <text x="40" y="170" class="xmark">❌</text>
+  <text x="70" y="170" class="content">不存在的API</text>
+  
+  <text x="40" y="210" class="xmark">❌</text>
+  <text x="70" y="210" class="content">版本不匹配</text>
+  
+  <text x="40" y="250" class="xmark">❌</text>
+  <text x="70" y="250" class="content">泛泛而谈</text>
+  
+  <!-- 右侧：使用Context7 -->
+  <rect x="320" y="20" width="260" height="260" class="box"/>
+  <text x="450" y="50" text-anchor="middle" class="title">使用Context7</text>
+  
+  <text x="340" y="90" class="checkmark">✅</text>
+  <text x="370" y="90" class="content">最新的API文档</text>
+  
+  <text x="340" y="130" class="checkmark">✅</text>
+  <text x="370" y="130" class="content">准确的代码示例</text>
+  
+  <text x="340" y="170" class="checkmark">✅</text>
+  <text x="370" y="170" class="content">实际存在的API</text>
+  
+  <text x="340" y="210" class="checkmark">✅</text>
+  <text x="370" y="210" class="content">版本特定文档</text>
+  
+  <text x="340" y="250" class="checkmark">✅</text>
+  <text x="370" y="250" class="content">具体实用建议</text>
+</svg>
+
+## Context7工作原理
+
+Context7是一个MCP（Model Context Protocol）服务器，它能与支持MCP协议的AI编码助手集成，提供实时的代码库文档。使用时，AI助手会通过Context7查询最新的API文档，确保其建议和代码生成基于最新信息。
+
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: white; stroke: #ddd; stroke-width: 2; rx: 10; ry: 10; }
+    .arrow { stroke: #666; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .label { font-family: Arial; font-size: 12px; fill: #555; }
+    .title { font-family: Arial; font-size: 14px; font-weight: bold; fill: #333; text-anchor: middle; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+  
+  <!-- 编码助手 -->
+  <rect x="50" y="100" width="120" height="80" class="box"/>
+  <text x="110" y="145" class="title">AI编码助手</text>
+  
+  <!-- Context7 -->
+  <rect x="250" y="100" width="120" height="80" class="box"/>
+  <text x="310" y="145" class="title">Context7</text>
+  
+  <!-- 文档库 -->
+  <rect x="450" y="100" width="120" height="80" class="box"/>
+  <text x="510" y="145" class="title">最新文档库</text>
+  
+  <!-- 箭头和标签 -->
+  <path d="M170 130 L250 130" class="arrow" />
+  <text x="210" y="120" class="label">查询库文档</text>
+  
+  <path d="M370 130 L450 130" class="arrow" />
+  <text x="410" y="120" class="label">获取最新文档</text>
+  
+  <path d="M450 150 L370 150" class="arrow" />
+  <text x="410" y="170" class="label">返回文档内容</text>
+  
+  <path d="M250 150 L170 150" class="arrow" />
+  <text x="210" y="170" class="label">提供准确回答</text>
+  
+  <!-- 用户 -->
+  <path d="M80 50 C90 30, 120 30, 130 50" stroke="#333" stroke-width="2" fill="none"/>
+  <circle cx="105" cy="25" r="15" fill="#333"/>
+  <rect x="85" y="50" width="40" height="30" rx="5" ry="5" fill="#333"/>
+  <text x="105" y="75" font-family="Arial" font-size="12" text-anchor="middle" fill="white">用户</text>
+  
+  <!-- 用户与AI助手交互 -->
+  <path d="M105 80 L105 100" class="arrow" />
+  <text x="120" y="90" class="label">提问</text>
+</svg>
+
+## 支持的平台
+
+Context7可以集成到多种支持MCP协议的AI编码助手和编辑器中：
+
+- VS Code
+- Cursor
+- Zed
+- Claude Code
+- Claude Desktop
+- BoltAI
+- Cline
+- Windsurf
+- 其他支持MCP的平台
+
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .platform { fill: #f5f5f5; stroke: #ddd; stroke-width: 1.5; rx: 8; ry: 8; }
+    .platform-name { font-family: Arial; font-size: 14px; font-weight: bold; fill: #333; text-anchor: middle; }
+    .platform-logo { font-size: 24px; text-anchor: middle; }
+  </style>
+  
+  <!-- 第一行平台 -->
+  <rect x="30" y="20" width="100" height="80" class="platform"/>
+  <text x="80" y="50" class="platform-logo">💻</text>
+  <text x="80" y="80" class="platform-name">VS Code</text>
+  
+  <rect x="160" y="20" width="100" height="80" class="platform"/>
+  <text x="210" y="50" class="platform-logo">🖱️</text>
+  <text x="210" y="80" class="platform-name">Cursor</text>
+  
+  <rect x="290" y="20" width="100" height="80" class="platform"/>
+  <text x="340" y="50" class="platform-logo">📝</text>
+  <text x="340" y="80" class="platform-name">Zed</text>
+  
+  <rect x="420" y="20" width="100" height="80" class="platform"/>
+  <text x="470" y="50" class="platform-logo">🤖</text>
+  <text x="470" y="80" class="platform-name">Claude Code</text>
+  
+  <!-- 第二行平台 -->
+  <rect x="30" y="120" width="100" height="80" class="platform"/>
+  <text x="80" y="150" class="platform-logo">🖥️</text>
+  <text x="80" y="180" class="platform-name">Claude Desktop</text>
+  
+  <rect x="160" y="120" width="100" height="80" class="platform"/>
+  <text x="210" y="150" class="platform-logo">⚡</text>
+  <text x="210" y="180" class="platform-name">BoltAI</text>
+  
+  <rect x="290" y="120" width="100" height="80" class="platform"/>
+  <text x="340" y="150" class="platform-logo">📊</text>
+  <text x="340" y="180" class="platform-name">Cline</text>
+  
+  <rect x="420" y="120" width="100" height="80" class="platform"/>
+  <text x="470" y="150" class="platform-logo">🏄</text>
+  <text x="470" y="180" class="platform-name">Windsurf</text>
+</svg>
 
 ## 安装指南
 
-Context7支持多种AI编码环境，下面介绍几种常见环境下的安装方法。
+下面介绍在各种平台上安装Context7的方法。所有平台都使用相似的配置原理，主要区别在于配置文件的位置和格式。
 
-### 环境要求
+### VS Code安装
 
-- Node.js >= v18.0.0
-- 支持MCP的客户端，如Cursor、Windsurf、Claude Desktop等
-
-### 在Cursor中安装
-
-Cursor是一款流行的AI辅助编程IDE，要在Cursor中安装Context7，请按照以下步骤操作：
-
-1. 打开Cursor设置：`设置` -> `Cursor设置` -> `MCP` -> `添加新的全局MCP服务器`
-2. 将以下配置添加到`~/.cursor/mcp.json`文件中：
-
-```json
-{
-  "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
-    }
-  }
-}
-```
-
-如果你使用Bun作为包管理器，可以使用以下配置：
-
-```json
-{
-  "mcpServers": {
-    "context7": {
-      "command": "bunx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
-    }
-  }
-}
-```
-
-如果你使用Deno，可以使用以下配置：
-
-```json
-{
-  "mcpServers": {
-    "context7": {
-      "command": "deno",
-      "args": ["run", "--allow-net", "npm:@upstash/context7-mcp"]
-    }
-  }
-}
-```
-
-### 在VS Code中安装
-
-VS Code用户可以使用以下配置：
+1. 打开VS Code
+2. 添加以下内容到你的VS Code MCP配置文件中：
 
 ```json
 {
@@ -103,9 +223,24 @@ VS Code用户可以使用以下配置：
 }
 ```
 
-### 在Claude Desktop中安装
+### Cursor安装
 
-Claude Desktop用户可以将以下配置添加到`claude_desktop_config.json`文件中：
+添加以下内容到你的Cursor MCP配置文件中：
+
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  }
+}
+```
+
+### Claude Desktop安装
+
+添加以下内容到你的Claude Desktop配置文件中：
 
 ```json
 {
@@ -118,81 +253,111 @@ Claude Desktop用户可以将以下配置添加到`claude_desktop_config.json`�
 }
 ```
 
-### 使用Docker安装
+### Windows特殊配置
 
-如果你喜欢使用Docker容器运行MCP服务器，可以遵循以下步骤：
-
-1. **创建Dockerfile**：
-
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-# 全局安装最新版本
-RUN npm install -g @upstash/context7-mcp@latest
-# 运行服务器的默认命令
-CMD ["context7-mcp"]
-```
-
-2. **构建Docker镜像**：
-
-```bash
-docker build -t context7-mcp .
-```
-
-3. **配置MCP客户端**：
+在Windows上，配置稍有不同：
 
 ```json
 {
   "mcpServers": {
-    "Сontext7": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "context7-mcp"],
-      "transportType": "stdio"
+    "github.com/upstash/context7-mcp": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "disabled": false,
+      "autoApprove": []
     }
   }
 }
 ```
 
+<svg width="600" height="260" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .step { fill: #f9f9f9; stroke: #ddd; stroke-width: 2; rx: 10; ry: 10; }
+    .step-number { font-family: Arial; font-size: 24px; font-weight: bold; fill: #4a86e8; }
+    .step-title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #333; }
+    .step-desc { font-family: Arial; font-size: 12px; fill: #666; }
+    .arrow { stroke: #999; stroke-width: 2; stroke-dasharray: 5,3; fill: none; }
+  </style>
+  
+  <!-- 第一步 -->
+  <rect x="50" y="20" width="500" height="60" class="step"/>
+  <text x="80" y="55" class="step-number">1</text>
+  <text x="110" y="45" class="step-title">安装Node.js和NPM</text>
+  <text x="110" y="65" class="step-desc">确保电脑上安装了Node.js和NPM环境</text>
+  
+  <!-- 第二步 -->
+  <rect x="50" y="100" width="500" height="60" class="step"/>
+  <text x="80" y="135" class="step-number">2</text>
+  <text x="110" y="125" class="step-title">找到编辑器的MCP配置文件</text>
+  <text x="110" y="145" class="step-desc">每个编辑器的配置文件位置不同，参考各平台文档</text>
+  
+  <!-- 第三步 -->
+  <rect x="50" y="180" width="500" height="60" class="step"/>
+  <text x="80" y="215" class="step-number">3</text>
+  <text x="110" y="205" class="step-title">添加Context7配置</text>
+  <text x="110" y="225" class="step-desc">将Context7的配置添加到MCP配置文件中</text>
+  
+  <!-- 连接箭头 -->
+  <path d="M300 80 L300 100" class="arrow" />
+  <path d="M300 160 L300 180" class="arrow" />
+</svg>
+
 ## 使用方法
 
-使用Context7非常简单，只需在你的提示词中添加`use context7`即可。以下是一些使用示例：
+安装完成后，您可以通过以下方式使用Context7：
 
-### 示例1：创建Next.js项目
+1. 在使用AI助手时，需要使用特定的工具函数查询文档
+2. Context7提供两个主要工具：
+   - `resolve-library-id`: 将一般的库名解析为Context7兼容的库ID
+   - `get-library-docs`: 使用Context7兼容的库ID获取文档
 
-```
-创建一个基于App Router的Next.js基础项目。use context7
-```
+例如，在Cursor或VS Code中，当你询问关于React的问题时，AI助手会自动调用Context7获取最新的React文档，然后基于这些最新文档回答你的问题。
 
-### 示例2：使用PostgreSQL
-
-```
-给定PostgreSQL凭据，创建一个脚本删除城市字段为空的行。use context7
-```
-
-Context7会自动检测你需要的库或框架，然后获取其最新文档并提供给AI模型，这样AI就能生成基于最新API的代码。
-
-## 工作原理
-
-Context7提供了两个主要工具：
-
-1. **resolve-library-id**：将一般的库名解析为Context7兼容的库ID
-2. **get-library-docs**：使用Context7兼容的库ID获取库的文档
-
-当你在提示词中使用`use context7`时，系统会自动：
-
-1. 分析你的问题，确定你需要的库
-2. 使用`resolve-library-id`获取兼容的库ID
-3. 使用`get-library-docs`获取最新文档
-4. 将这些文档作为上下文提供给AI模型
-5. AI基于这些最新文档生成代码答案
+<svg width="600" height="280" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: #f5f5f5; stroke: #ddd; stroke-width: 2; rx: 10; ry: 10; }
+    .code { font-family: monospace; font-size: 12px; fill: #333; }
+    .comment { font-family: monospace; font-size: 12px; fill: #090; }
+    .string { font-family: monospace; font-size: 12px; fill: #c00; }
+    .function { font-family: monospace; font-size: 12px; fill: #00c; }
+    .title { font-family: Arial; font-size: 14px; font-weight: bold; fill: #333; }
+  </style>
+  
+  <!-- 示例1：解析库ID -->
+  <rect x="20" y="20" width="560" height="100" class="box"/>
+  <text x="40" y="40" class="title">示例1：解析库ID</text>
+  <text x="40" y="60" class="function">resolve-library-id</text>
+  <text x="155" y="60" class="code">(</text>
+  <text x="40" y="80" class="code">  libraryName: </text>
+  <text x="120" y="80" class="string">"react"</text>
+  <text x="40" y="100" class="code">)</text>
+  
+  <!-- 示例2：获取文档 -->
+  <rect x="20" y="140" width="560" height="120" class="box"/>
+  <text x="40" y="160" class="title">示例2：获取文档</text>
+  <text x="40" y="180" class="function">get-library-docs</text>
+  <text x="155" y="180" class="code">(</text>
+  <text x="40" y="200" class="code">  context7CompatibleLibraryID: </text>
+  <text x="220" y="200" class="string">"facebook/react"</text>
+  <text x="40" y="220" class="code">  topic: </text>
+  <text x="85" y="220" class="string">"hooks"</text>
+  <text x="40" y="240" class="code">  tokens: </text>
+  <text x="85" y="240" class="code">15000</text>
+  <text x="40" y="260" class="code">)</text>
+</svg>
 
 ## 环境变量配置
 
-你可以通过设置环境变量来自定义Context7的行为：
+你可以通过环境变量自定义Context7的行为：
 
-- `DEFAULT_MINIMUM_TOKENS`：设置文档检索的最小令牌计数（默认：10000）
+- `DEFAULT_MINIMUM_TOKENS`：设置文档检索的最小令牌数（默认值：10000）
 
-配置示例：
+示例配置：
 
 ```json
 {
@@ -201,7 +366,7 @@ Context7提供了两个主要工具：
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"],
       "env": {
-        "DEFAULT_MINIMUM_TOKENS": "10000"
+        "DEFAULT_MINIMUM_TOKENS": "15000"
       }
     }
   }
@@ -210,9 +375,9 @@ Context7提供了两个主要工具：
 
 ## 常见问题解决
 
-### ERR_MODULE_NOT_FOUND错误
+### 模块未找到错误
 
-如果你遇到这个错误，尝试使用`bunx`代替`npx`：
+如果遇到`ERR_MODULE_NOT_FOUND`错误，尝试使用`bunx`替代`npx`：
 
 ```json
 {
@@ -227,7 +392,7 @@ Context7提供了两个主要工具：
 
 ### ESM解析问题
 
-如果你遇到类似`Error: Cannot find module 'uriTemplate.js'`的错误，尝试使用`--experimental-vm-modules`标志：
+如果遇到类似`Error: Cannot find module 'uriTemplate.js'`的错误，尝试使用`--experimental-vm-modules`标志：
 
 ```json
 {
@@ -237,63 +402,108 @@ Context7提供了两个主要工具：
       "args": [
         "-y",
         "--node-options=--experimental-vm-modules",
-        "@upstash/context7-mcp@1.0.6"
+        "@upstash/context7-mcp@latest"
       ]
     }
   }
 }
 ```
 
-### MCP客户端错误
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .error-box { fill: #fff9f9; stroke: #ffdddd; stroke-width: 2; rx: 10; ry: 10; }
+    .solution-box { fill: #f9fff9; stroke: #ddffdd; stroke-width: 2; rx: 10; ry: 10; }
+    .error-title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #c00; }
+    .solution-title { font-family: Arial; font-size: 16px; font-weight: bold; fill: #0c0; }
+    .code { font-family: monospace; font-size: 12px; fill: #333; }
+  </style>
+  
+  <!-- 错误1 -->
+  <rect x="20" y="20" width="270" height="70" class="error-box"/>
+  <text x="40" y="40" class="error-title">错误：模块未找到</text>
+  <text x="40" y="60" class="code">ERR_MODULE_NOT_FOUND</text>
+  
+  <!-- 解决方案1 -->
+  <rect x="310" y="20" width="270" height="70" class="solution-box"/>
+  <text x="330" y="40" class="solution-title">解决方案</text>
+  <text x="330" y="60" class="code">使用bunx替代npx</text>
+  
+  <!-- 错误2 -->
+  <rect x="20" y="110" width="270" height="70" class="error-box"/>
+  <text x="40" y="130" class="error-title">错误：ESM解析问题</text>
+  <text x="40" y="150" class="code">Cannot find module 'uriTemplate.js'</text>
+  
+  <!-- 解决方案2 -->
+  <rect x="310" y="110" width="270" height="70" class="solution-box"/>
+  <text x="330" y="130" class="solution-title">解决方案</text>
+  <text x="330" y="150" class="code">添加--experimental-vm-modules</text>
+</svg>
 
-如果遇到各种MCP客户端错误，可以尝试以下解决方案：
+## 效果对比
 
-1. 尝试删除`@latest`后缀
-2. 尝试使用`bunx`作为替代方案
-3. 尝试使用`deno`作为替代方案
-4. 确保你使用的是Node v18或更高版本，以支持原生fetch功能
+使用Context7前后的代码质量对比：
 
-## 使用场景
+### 不使用Context7
 
-Context7特别适合以下场景：
+```javascript
+// AI生成的代码，基于过时文档
+import React from 'react';
 
-### 1. 前端开发
+function MyComponent() {
+  // 错误：componentWillMount在新版React中已废弃
+  componentWillMount() {
+    console.log('This is deprecated');
+  }
+  
+  // 错误：不正确的hooks用法
+  const [count, setCount] = useState(0);
+  if(count > 0) {
+    const [name, setName] = useState('');
+  }
+  
+  return <div>Hello World</div>;
+}
+```
 
-- React、Vue、Angular等框架的最新API使用
-- Next.js、Nuxt.js等SSR框架的路由和配置
-- Tailwind CSS、Material UI等UI库的组件和样式
+### 使用Context7
 
-### 2. 后端开发
+```javascript
+// AI生成的代码，基于最新文档
+import React, { useState, useEffect } from 'react';
 
-- Express、Nest.js等Node.js框架的最新API
-- Django、Flask等Python框架的路由和视图
-- Spring Boot等Java框架的配置和服务
-
-### 3. 数据库操作
-
-- MongoDB、PostgreSQL等数据库的查询和优化
-- ORM工具如Sequelize、Prisma的模型定义和关系
-- Redis、Memcached等缓存系统的配置和使用
-
-### 4. 移动开发
-
-- React Native、Flutter等跨平台框架的组件和布局
-- Swift UI、Jetpack Compose等原生UI框架的视图构建
-- 移动设备功能如相机、GPS等的API调用
-
-## 注意事项
-
-使用Context7时，请注意以下几点：
-
-1. **文档获取速度**：首次获取某个库的文档可能需要一些时间，之后的使用会更快
-2. **网络要求**：Context7需要网络连接才能获取最新文档
-3. **令牌消耗**：获取的文档会占用部分上下文令牌数量，可能影响较长对话的上下文管理
-4. **不支持的库**：某些小众或专有库可能没有可用的文档
+function MyComponent() {
+  // 正确：使用useEffect替代废弃的生命周期方法
+  useEffect(() => {
+    console.log('Component mounted');
+  }, []);
+  
+  // 正确：hooks在顶层使用
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <p>Name: {name}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
 
 ## 总结
 
-Context7是AI编码助手的强大伙伴，它通过提供最新、准确的代码文档，显著提高了AI生成代码的质量和可用性。无需在浏览器中查找文档，无需担心AI生成过时或不存在的API，只需在提示词中添加`use context7`，即可获得基于最新文档的高质量代码答案。
+Context7是一个强大的MCP服务器，能够为AI编码助手提供最新的代码库文档。通过使用Context7，你可以：
 
-作为开源项目，Context7正在不断改进和扩展其功能。如果你在使用过程中遇到问题或有改进建议，可以在其[GitHub仓库](https://github.com/upstash/context7)提交issue或贡献代码。
+1. 获得基于最新文档的代码建议
+2. 避免使用已废弃或不存在的API
+3. 确保编写的代码与你使用的库版本兼容
+4. 提高AI编码助手的精确度和实用性
 
-希望本文的介绍能帮助你了解并使用Context7，让AI编码助手为你提供更准确、更有用的代码建议。 
+无论你是使用VS Code、Cursor还是其他支持MCP的平台，Context7都能显著提升你的编码体验，让AI助手成为更可靠的编程伙伴。
+
+## 参考资源
+
+- [Context7 GitHub仓库](https://github.com/upstash/context7)
+- [Context7官方网站](https://context7.com)
+- [MCP协议文档](https://modelcontextprotocol.github.io/) 
