@@ -1,5 +1,5 @@
 ---
-title: "Context7 完整使用指南 - 为AI编码助手提供最新文档"
+title: "Context7使用指南 - AI编码的超强辅助"
 date: 2025-05-01T10:00:00+08:00
 categories:
   - 工具
