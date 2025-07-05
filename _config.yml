@@ -20,6 +20,47 @@ date_format              : "%Y年%m月%d日 %H:%M"
 # 网站主题设置
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+# Mermaid配置
+mermaid:
+  # 是否全局启用Mermaid（建议设为false，在需要的页面单独启用）
+  enabled: false
+  # Mermaid CDN版本
+  version: "10.6.1"
+  # 默认主题
+  theme: "default"
+  # 配置选项
+  config:
+    startOnLoad: true
+    flowchart:
+      htmlLabels: true
+      useMaxWidth: true
+    sequence:
+      useMaxWidth: true
+      showSequenceNumbers: true
+    journey:
+      useMaxWidth: true
+
+# Kramdown配置增强
+kramdown:
+  auto_ids: true
+  entity_output: as_char
+  toc_levels: [1, 2, 3, 4, 5, 6]
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  input: GFM
+  hard_wrap: false
+  footnote_nr: 1
+  show_warnings: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    line_numbers: false
+    block:
+      line_numbers: false
+
+# 自定义包含文件
+include:
+  - "_includes/mermaid.html"
+
 # SEO相关
 atom_feed:
   hide                   : true # 禁用默认的RSS链接

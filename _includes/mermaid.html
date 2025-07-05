@@ -1,0 +1,61 @@
+{% if site.mermaid.enabled or page.mermaid %}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@{{ site.mermaid.version | default: '10.6.1' }}/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 基础配置
+    var config = {
+      startOnLoad: true,
+      theme: '{{ site.mermaid.theme | default: "default" }}',
+      flowchart: {
+        htmlLabels: true,
+        useMaxWidth: true
+      },
+      sequence: {
+        useMaxWidth: true,
+        showSequenceNumbers: true
+      },
+      journey: {
+        useMaxWidth: true
+      }
+    };
+
+    mermaid.initialize(config);
+
+    // 处理代码块转换
+    var mermaidCodeBlocks = document.querySelectorAll('.language-mermaid');
+    mermaidCodeBlocks.forEach(function(block, index) {
+      var mermaidDiv = document.createElement('div');
+      mermaidDiv.className = 'mermaid';
+      mermaidDiv.id = 'mermaid-' + index;
+      mermaidDiv.textContent = block.textContent;
+      block.parentNode.replaceChild(mermaidDiv, block);
+    });
+
+    // 重新渲染图表
+    mermaid.init();
+  });
+</script>
+
+<style>
+  .mermaid {
+    text-align: center;
+    margin: 1.5em 0;
+    background: #fafafa;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 1em;
+  }
+  
+  .mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .mermaid {
+      padding: 0.5em;
+      font-size: 0.9em;
+    }
+  }
+</style>
+{% endif %} 
