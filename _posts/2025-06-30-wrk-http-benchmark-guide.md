@@ -1,6 +1,6 @@
 ---
 title: "WRK HTTP 基准测试工具完全指南：现代高性能 Web 服务器压力测试利器"
-date: 2025-05-28T14:00:00+08:00
+date: 2025-06-30T14:00:00+08:00
 categories: [性能测试, HTTP基准测试, 工具]
 tags: [wrk, 性能测试, HTTP, 基准测试, 压力测试, 负载测试, Lua脚本]
 mermaid: true
