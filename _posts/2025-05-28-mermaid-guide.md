@@ -1,6 +1,6 @@
 ---
 title: "Jekyll 博客中使用 Mermaid 图表指南"
-date: 2025-01-20T10:00:00+08:00
+date: 2025-05-28T06:30:00+08:00
 categories: [Jekyll, 教程]
 tags: [jekyll, mermaid, 图表, 配置]
 mermaid: true
