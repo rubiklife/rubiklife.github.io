@@ -1,6 +1,6 @@
 ---
 title: "Embabel Agent 框架详细使用指南"
-date: 2025-07-03T06:00:00+08:00
+date: 2025-07-04T06:00:00+08:00
 categories: [AI, Agent Framework, Spring Boot]
 tags: [embabel, agent, java, kotlin, spring, ai, llm]
 mermaid: true
