@@ -1,6 +1,6 @@
 ---
 title: "Spring AI: 构建人工智能应用的完全指南"
-date: 2025-07-20T06:30:00+08:00
+date: 2025-07-19T06:30:00+08:00
 categories:
   - AI开发
 tags:
