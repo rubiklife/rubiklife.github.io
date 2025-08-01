@@ -73,8 +73,12 @@ feed:
   posts_limit: 20
   excerpt_only: false
   categories:
-    - 技术
-    - 教程
+    - Web开发
+    - AI工具
+    - 开发框架
+    - 自动化
+    - 多媒体
+    - 效率工具
 
 # 站点搜索设置
 search                   : true
