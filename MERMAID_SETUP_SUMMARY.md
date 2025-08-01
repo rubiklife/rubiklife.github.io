@@ -68,8 +68,8 @@ graph TD
 
 您可以通过以下方式测试：
 
-1. 访问新创建的指南文章：`/jekyll/教程/2025/01/20/mermaid-guide.html`
-2. 查看原始的 Embabel Agent 指南：`/ai/agent-framework/spring-boot/2025/06/06/embabel-agent-guide.html`
+1. 访问新创建的指南文章：`/web开发/2025/05/28/mermaid-guide.html`
+2. 查看原始的 Embabel Agent 指南：`/开发框架/2025/07/04/embabel-agent-guide.html`
 3. 构建并本地预览：`bundle exec jekyll serve`
 
 现在您的 Jekyll 博客已经完全支持 Mermaid 图表了！🎉 
