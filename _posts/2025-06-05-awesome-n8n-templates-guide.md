@@ -1,8 +1,12 @@
 ---
 title: "N8N 工作流自动化终极指南：精选模板集合让你的效率飞起来"
 date: 2025-06-05T07:00:00+08:00
-categories: [自动化, 工作流, N8N]
-tags: [n8n, 自动化, 工作流, 模板, no-code, 集成, 效率工具]
+categories:
+  - 自动化
+tags:
+  - 自动化
+  - 工具
+  - 开源
 mermaid: true
 toc: true
 toc_label: "目录"

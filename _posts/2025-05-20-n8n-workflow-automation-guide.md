@@ -2,13 +2,10 @@
 title: "n8n 使用指南 - AI工作流自动化平台"
 date: 2025-05-20T05:50:00+08:00
 categories:
-  - 工具
-tags:
-  - 工作流自动化
-  - n8n
-  - 低代码
-  - AI集成
   - 自动化
+tags:
+  - 自动化
+  - 工具
 toc: true
 toc_label: "目录"
 toc_icon: "sitemap"

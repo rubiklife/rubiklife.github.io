@@ -2,11 +2,10 @@
 title: "Jekyll 网站的 SEO 优化指南"
 date: 2025-04-15T06:30:00+08:00
 categories:
-  - 技术
+  - Web开发
 tags:
-  - SEO
   - Jekyll
-  - 网站优化
+  - 工具
 toc: true
 toc_label: "目录"
 ---

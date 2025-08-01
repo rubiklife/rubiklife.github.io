@@ -2,12 +2,9 @@
 title: "PotPlayer播放视频自动识别与字幕生成"
 date: 2025-04-25T08:30:00+08:00
 categories:
-  - 技术
+  - 多媒体
 tags:
-  - 视频处理
-  - 字幕生成
-  - PotPlayer
-  - 工具教程
+  - 工具
 toc: true
 toc_label: "目录"
 toc_icon: "list"

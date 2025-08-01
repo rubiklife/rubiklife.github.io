@@ -2,11 +2,9 @@
 title: "Minimal Mistakes主题使用指南"
 date: 2025-04-18T07:30:00+08:00
 categories:
-  - 教程
+  - Web开发
 tags:
   - Jekyll
-  - Minimal Mistakes
-  - 网站搭建
 toc: true
 toc_label: "目录"
 toc_icon: "cog"

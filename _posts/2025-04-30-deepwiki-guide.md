@@ -2,12 +2,10 @@
 title: "DeepWiki使用指南 - 基于Devin的代码库分析工具"
 date: 2025-04-30T07:15:00+08:00
 categories:
-  - 工具
+  - 开发框架
 tags:
-  - DeepWiki
-  - Devin
-  - 代码分析
-  - 开源工具
+  - 工具
+  - 开源
 toc: true
 toc_label: "目录"
 toc_icon: "code"

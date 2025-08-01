@@ -2,14 +2,9 @@
 title: "Spring Modulith: 构建模块化Spring应用程序的完全指南"
 date: 2025-07-15T06:00:00+08:00
 categories:
-  - 开发工具
+  - 开发框架
 tags:
-  - Spring Modulith
-  - Spring Boot
-  - 模块化设计
-  - 领域驱动设计
-  - 微服务
-  - 单体应用
+  - Spring
 toc: true
 toc_label: "目录"
 toc_icon: "list"

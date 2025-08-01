@@ -1,8 +1,11 @@
 ---
 title: "Flux.1 Kontext Dev 完整指南：在ComfyUI中实现AI图像编辑的革命性突破"
 date: 2025-06-25T06:15:00+08:00
-categories: [AI, 图像处理, ComfyUI]
-tags: [flux, kontext, comfyui, ai, 图像编辑, 机器学习, 扩散模型]
+categories:
+  - AI工具
+tags:
+  - AI
+  - 图像处理
 mermaid: true
 ---
 

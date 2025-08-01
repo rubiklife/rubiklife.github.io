@@ -2,13 +2,11 @@
 title: "WatermarkRemover使用指南 - AI智能水印移除工具"
 date: 2025-04-26T06:15:00+08:00
 categories:
-  - 工具
-tags:
   - AI工具
+tags:
+  - AI
   - 图像处理
-  - 水印移除
-  - Florence-2
-  - LaMA
+  - 工具
 toc: true
 toc_label: "目录"
 toc_icon: "eraser"

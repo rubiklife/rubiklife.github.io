@@ -1,8 +1,12 @@
 ---
 title: "Embabel Agent 智能代理框架完整指南"
 date: 2025-07-04T06:00:00+08:00
-categories: [AI, Agent Framework, Spring Boot]
-tags: [embabel, agent, java, kotlin, spring, ai, llm, goap]
+categories:
+  - 开发框架
+tags:
+  - AI
+  - Spring
+  - 开源
 mermaid: true
 ---
 

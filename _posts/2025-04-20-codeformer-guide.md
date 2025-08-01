@@ -2,13 +2,11 @@
 title: "CodeFormer使用指南 - 人脸修复的AI工具"
 date: 2025-04-20T07:50:00+08:00
 categories:
-  - 工具
-tags:
   - AI工具
-  - 人脸修复
+tags:
+  - AI
   - 图像处理
-  - Transformer
-  - NeurIPS
+  - 开源
 toc: true
 toc_label: "目录"
 toc_icon: "magic"

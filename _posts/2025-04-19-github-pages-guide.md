@@ -2,11 +2,10 @@
 title: "GitHub Pages 使用指南 - 免费托管个人网站"
 date: 2025-04-19T08:05:00+08:00
 categories:
-  - 教程
+  - Web开发
 tags:
-  - GitHub Pages
-  - 网站搭建
-  - Git
+  - Jekyll
+  - 开源
 toc: true
 toc_label: "目录"
 toc_icon: "book"

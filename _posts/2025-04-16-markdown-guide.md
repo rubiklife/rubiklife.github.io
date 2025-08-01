@@ -2,11 +2,9 @@
 title: "Markdown 指南 - 如何编写优美的文档"
 date: 2025-04-16T06:45:00+08:00
 categories:
-  - 技术
+  - Web开发
 tags:
-  - Markdown
-  - 写作
-  - 教程
+  - Jekyll
 toc: true
 toc_label: "目录"
 ---

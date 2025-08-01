@@ -2,15 +2,10 @@
 title: "Context7使用指南 - AI编码的超强辅助"
 date: 2025-05-01T07:30:00+08:00
 categories:
-  - 工具
-  - AI编程
+  - AI工具
 tags:
-  - Context7
-  - MCP
-  - AI编程
-  - 文档工具
-  - Cursor
-  - VS Code
+  - AI
+  - 工具
 toc: true
 toc_label: "目录"
 toc_icon: "code"

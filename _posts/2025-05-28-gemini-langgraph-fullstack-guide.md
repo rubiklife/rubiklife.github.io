@@ -1,8 +1,11 @@
 ---
 title: "Google Gemini LangGraph 全栈快速入门：构建智能研究代理的终极指南"
 date: 2025-05-28T08:00:00+08:00
-categories: [AI, LangGraph, 全栈开发]
-tags: [gemini, langgraph, react, fastapi, 研究代理, 人工智能, 搜索引擎]
+categories:
+  - AI工具
+tags:
+  - AI
+  - 开源
 mermaid: true
 toc: true
 toc_label: "目录"

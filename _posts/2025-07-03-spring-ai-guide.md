@@ -2,15 +2,10 @@
 title: "Spring AI: 构建人工智能应用的完全指南"
 date: 2025-07-03T06:30:00+08:00
 categories:
-  - AI开发
+  - 开发框架
 tags:
-  - Spring AI
-  - 人工智能
-  - 机器学习
-  - Spring Boot
-  - RAG
-  - 向量数据库
-  - 聊天机器人
+  - AI
+  - Spring
 toc: true
 toc_label: "目录"
 toc_icon: "robot"

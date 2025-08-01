@@ -2,11 +2,10 @@
 title: "科学上网指南"
 date: 2025-04-27T08:20:00+08:00
 categories:
-  - 技术
+  - 效率工具
 tags:
-  - 网络工具
-  - VPN
-  - 科学上网
+  - 网络
+  - 工具
 toc: true
 toc_label: "目录"
 toc_icon: "cog"

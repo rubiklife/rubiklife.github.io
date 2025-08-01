@@ -2,14 +2,11 @@
 title: "Microsoft Qlib: AI驱动的量化投资平台完全指南"
 date: 2025-07-10T06:00:00+08:00
 categories:
-  - 开发工具
+  - 效率工具
 tags:
-  - Qlib
-  - 量化投资
   - AI
-  - 机器学习
-  - Python
-  - 微软
+  - 工具
+  - 开源
 toc: true
 toc_label: "目录"
 toc_icon: "chart-line"
