@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Qlib: AI驱动的量化投资平台完全指南"
-date: 2025-07-10T06:00:00+08:00
+date: 2030-04-01T06:00:00+08:00
 categories:
   - 效率工具
 tags:
