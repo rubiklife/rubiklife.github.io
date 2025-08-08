@@ -5,7 +5,6 @@ categories:
   - 开发框架
 tags:
   - Spring
-  - 批处理
   - 开源
 mermaid: true
 toc: true
