@@ -10,6 +10,7 @@ tags:
   - 最佳实践
 toc: true
 toc_label: "目录"
+mermaid: true
 ---
 
 ## 引言
