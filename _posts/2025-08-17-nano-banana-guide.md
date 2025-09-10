@@ -5,6 +5,7 @@ categories:
   - AI工具
 tags:
   - 工具
+  - AI
 toc: true
 mermaid: true
 ---

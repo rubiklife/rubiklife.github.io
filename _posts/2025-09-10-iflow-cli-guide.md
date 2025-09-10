@@ -7,6 +7,7 @@ categories:
   - 开发工具
 tags:
   - 工具
+  - AI
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
