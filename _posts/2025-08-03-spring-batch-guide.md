@@ -6,10 +6,10 @@ categories:
 tags:
   - Spring
   - 开源
-mermaid: true
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
+mermaid: true
 ---
 
 # Spring Batch 完整指南：企业级批处理框架

@@ -6,9 +6,6 @@ categories:
 tags:
   - 工具
 toc: true
-header:
-  image: /assets/images/header-bg.jpg
-  teaser: /assets/images/header-bg.jpg
 mermaid: true
 ---
 

@@ -7,8 +7,6 @@ categories:
   - 开发工具
 tags:
   - 工具
-header:
-  teaser: /assets/images/iflow-cli-teaser.jpg
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
