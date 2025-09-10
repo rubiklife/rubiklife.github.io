@@ -123,13 +123,13 @@ Claude Code 采用保守的权限策略，默认会对所有可能修改系统�
 graph TD
     A[权限请求] --> B[管理方式]
     B --> C[会话中授权]
-    B --> D[/permissions 命令]
+    B --> D[~/permissions 命令]
     B --> E[编辑配置文件]
     B --> F[命令行参数]
     
     C --> G[Always Allow]
     D --> H[添加/移除工具]
-    E --> I[.claude/settings.json]
+    E --> I[~/.claude/settings.json]
     F --> J[--allowedTools]
 ```
 
