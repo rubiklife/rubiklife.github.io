@@ -1,13 +1,10 @@
 ---
 title: "Claude Code 最佳实践完整使用指南"
-date: 2025-09-10T10:00:00+08:00
+date: 2025-09-10T08:00:00+08:00
 categories:
   - AI工具
 tags:
-  - Claude
-  - AI编程
-  - 开发工具
-  - 最佳实践
+  - 工具
 toc: true
 toc_label: "目录"
 mermaid: true
@@ -123,8 +120,8 @@ Claude Code 采用保守的权限策略，默认会对所有可能修改系统�
 #### 权限管理方式
 
 ```mermaid
-graph LR
-    A[权限请求] --> B{管理方式}
+graph TD
+    A[权限请求] --> B[管理方式]
     B --> C[会话中授权]
     B --> D[/permissions 命令]
     B --> E[编辑配置文件]
