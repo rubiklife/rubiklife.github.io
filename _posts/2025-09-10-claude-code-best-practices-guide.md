@@ -1,5 +1,5 @@
 ---
-title: "Claude Code 最佳实践使用指南"
+title: "Claude Code 最佳实践完整使用指南"
 date: 2025-09-10T10:00:00+08:00
 categories:
   - AI工具
@@ -7,210 +7,636 @@ tags:
   - Claude
   - AI编程
   - 开发工具
+  - 最佳实践
 toc: true
 toc_label: "目录"
 ---
 
 ## 引言
 
-Claude Code 是 Anthropic 开发的一款用于智能编码（Agentic Coding）的命令行工具。它为开发者提供了一种更原生的方式将 Claude 集成到编码工作流程中。Claude Code 保持低层级和无强制性，几乎提供了对模型的原始访问，而不强加特定的工作流。这种设计理念造就了一个灵活、可定制、可脚本化且安全的强大工具。
+Claude Code 是 Anthropic 开发的一款革命性的智能编程（Agentic Coding）命令行工具，旨在为开发者提供更原生、更高效的编程体验。它采用低层级和非强制性的设计理念，几乎提供了对 Claude 模型的原始访问权限，不会强加特定的工作流程，从而创造出一个灵活、可定制、可脚本化且安全的强大工具。
 
-本文将详细介绍 Claude Code 的最佳实践，帮助开发者更好地利用这一工具提升编码效率。
+本文将基于 Anthropic 官方工程博客的最佳实践，详细介绍如何高效使用 Claude Code，帮助开发者在各种代码库、编程语言和开发环境中最大化其效用。
 
-## 自定义设置
+## 核心设计理念
 
-### 创建 CLAUDE.md 文件
+Claude Code 的设计遵循以下核心原则：
 
-CLAUDE.md 是一个特殊文件，Claude 在开始对话时会自动将其拉入上下文。这使其成为记录以下内容的理想场所：
-
-- 常用 bash 命令
-- 核心文件和工具函数
-- 代码风格指南
-- 测试说明
-- 仓库规范（如分支命名、合并 vs. rebase 等）
-- 开发环境设置（如 pyenv 使用、可用编译器等）
-- 项目中特有的异常行为或警告
-- 其他信息你希望 Claude 记住
-
-示例 CLAUDE.md 内容：
-
-```markdown
-# Bash commands
-- npm run build: Build the project
-- npm run typecheck: Run the typechecker
-
-# Code style
-- Use ES modules (import/export) syntax, not CommonJS (require)
-- Destructure imports when possible (eg. import { foo } from 'bar')
-
-# Workflow
-- Be sure to typecheck when you're done making a series of code changes
-- Prefer running single tests, and not the whole test suite, for performance
+```mermaid
+mindmap
+  root((Claude Code))
+    低层级访问
+      原始模型接口
+      最小化抽象
+    非强制性
+      灵活工作流
+      用户自主选择
+    安全第一
+      权限管理
+      操作确认
+    可扩展性
+      MCP 集成
+      自定义命令
 ```
 
-你可以将 CLAUDE.md 文件放在多个位置：
+## 自定义设置详解
 
-- 仓库根目录，或你运行 claude 的地方（最常见）。命名为 CLAUDE.md 并提交到 git，以便在会话间和团队成员间共享（推荐）；或命名为 CLAUDE.local.md 并加入 .gitignore
-- 你运行 claude 目录的任意父级。这对 monorepo 特别有用
-- 你运行 claude 目录的任意子级。这种情况下，Claude 会在你处理子目录文件时按需拉入 CLAUDE.md
-- 你的 home 文件夹（~/.claude/CLAUDE.md），适用于所有 claude 会话
+### 创建和优化 CLAUDE.md 文件
 
-### 管理 Claude 的允许工具列表
+`CLAUDE.md` 是 Claude Code 的核心配置文件，会在每次会话开始时自动加载到上下文中。合理配置这个文件是提升效率的关键。
 
-默认情况下，Claude Code 对任何可能修改系统的操作（如文件写入、许多 bash 命令、MCP 工具等）都会请求权限。我们有意采用这种保守设计以优先保证安全。你可以自定义允许列表，添加你认为安全的工具，或允许易于撤销的潜在不安全工具（如文件编辑、git commit）。
+#### 推荐的 CLAUDE.md 结构
 
-管理允许工具有四种方式：
+```markdown
+# 项目概览
+这是一个基于 React 和 TypeScript 的前端项目
 
-1. 在会话中被提示时选择"Always allow"
-2. 启动 Claude Code 后使用 /permissions 命令添加或移除允许列表中的工具
-3. 手动编辑 .claude/settings.json 或 ~/.claude.json 文件
-4. 使用 --allowedTools 命令行参数设置会话特定权限
+# 常用命令
+- `npm run dev`: 启动开发服务器
+- `npm run build`: 构建生产版本
+- `npm run test`: 运行测试套件
+- `npm run lint`: 运行代码检查
+- `npm run typecheck`: 运行类型检查
 
-## 为 Claude 提供更多工具
+# 代码风格指南
+- 使用 ES6+ 模块语法 (import/export)
+- 优先使用函数式组件和 Hooks
+- 使用 TypeScript 严格模式
+- 遵循 ESLint 和 Prettier 配置
+- 组件文件使用 PascalCase 命名
 
-### 使用 Claude 与 bash 工具结合
+# 项目结构
+- `/src/components`: 可复用组件
+- `/src/pages`: 页面组件
+- `/src/utils`: 工具函数
+- `/src/types`: TypeScript 类型定义
 
-Claude Code 继承你的 bash 环境，使其能够访问你的所有工具。虽然 Claude 知道常见的实用程序如 unix 工具和 gh，但如果没有指示，它不会知道您的自定义 bash 工具：
+# 测试策略
+- 使用 Jest 和 React Testing Library
+- 每个组件都应有对应的测试文件
+- 优先编写单元测试，再考虑集成测试
 
-1. 告诉 Claude 工具名称及使用示例
-2. 让 Claude 运行 --help 查看工具文档
-3. 在 CLAUDE.md 中记录常用工具
+# 开发环境
+- Node.js 18+
+- 使用 pnpm 作为包管理器
+- 开发时使用 Vite 作为构建工具
 
-### 使用 Claude 与 MCP 结合
+# 特殊注意事项
+- API 调用需要处理错误状态
+- 所有用户输入都需要验证
+- 图片资源放在 /public/images 目录下
+```
 
-Claude Code 既可作为 MCP 服务器也可作为客户端。作为客户端时，它可以通过三种方式连接任意数量的 MCP 服务器以访问其工具：
+#### CLAUDE.md 文件位置策略
 
-- 在项目配置中（在该目录下运行 Claude Code 时可用）
-- 在全局配置中（在所有项目中可用）
-- 在已提交的 .mcp.json 文件中（对代码库中的任何人都可用）
-
-### 使用自定义斜杠命令
-
-对于重复的工作流程——调试循环、日志分析等——将提示模板存储在 .claude/commands 文件夹中的 Markdown 文件中。当您键入 / 时，这些命令会出现在斜杠命令菜单中。您可以将这些命令提交到 git 中，使其对团队其他成员可用。
-
-自定义斜杠命令可以包含特殊关键字 $ARGUMENTS，用于从命令调用中传递参数。
-
-## 常见工作流程
-
-### 探索、计划、编码、提交
-
-这个多功能的工作流程适用于许多问题：
-
-1. 让 Claude 阅读相关文件、图像或 URL，可以提供一般性指引（"读取处理日志的文件"）或具体文件名（"读取 logging.py"），但要明确告诉它暂时不要编写任何代码。
-2. 让 Claude 制定解决特定问题的计划。我们建议使用 "think" 这个词来触发扩展思考模式，这会给 Claude 更多的计算时间来更彻底地评估替代方案。
-3. 让 Claude 用代码实现其解决方案。
-4. 让 Claude 提交结果并创建一个 pull request。
-
-### 编写测试、提交；编码、迭代、提交
-
-这是 Anthropic 最喜欢的工作流程，适用于可以通过单元测试、集成测试或端到端测试轻松验证的更改。测试驱动开发（TDD）在智能编码中变得更加强大：
-
-1. 让 Claude 根据预期的输入/输出对编写测试。明确说明您正在进行测试驱动开发，这样它可以避免创建模拟实现，即使对于代码库中尚不存在的功能也是如此。
-2. 告诉 Claude 运行测试并确认它们是否失败。
-3. 当您对测试满意时，让 Claude 提交测试。
-4. 让 Claude 编写通过测试的代码，命令它不要修改测试。
-5. 告诉 Claude 继续直到所有测试通过。
-6. 让 Claude 提交代码，当您对更改满意时。
-
-### 编写代码、截图结果、迭代
-
-与测试工作流程类似，您可以为 Claude 提供视觉目标：
-
-1. 为 Claude 提供一种截取浏览器截图的方法（例如使用 Puppeteer MCP 服务器或手动将截图复制/粘贴到 Claude 中）。
-2. 通过复制/粘贴或拖放图像，或给 Claude 图像文件路径，为 Claude 提供一个视觉模拟。
-3. 让 Claude 用代码实现设计，截取结果的截图，并迭代直到其结果与模拟匹配。
-4. 当您满意时，让 Claude 提交。
-
-## 优化工作流程
-
-### 指令要具体明确
-
-Claude Code 的成功率会随着指令的具体程度显著提高，特别是在首次尝试时。预先给出明确指示能减少后续修正的需要。
-
-### 为 Claude 提供图像
-
-Claude 通过以下几种方式能出色处理图像和图表：
-
-- 直接粘贴截图
-- 将图像直接拖拽至提示输入框
-- 提供图像文件路径
-
-### 明确指定需要 Claude 查看或处理的文件
-
-使用 Tab 键自动补全功能快速引用代码库中的任意文件或文件夹，帮助 Claude 准确定位或更新目标资源。
-
-### 为 Claude 提供 URL 链接
-
-在提示词中粘贴特定 URL，Claude 将自动获取并阅读内容。
-
-### 及时修正与频繁调整
-
-虽然自动接受模式（通过 shift+tab 切换）能让 Claude 自主工作，但通过主动协作引导 Claude 通常能获得更好结果。最佳实践是在任务开始时向 Claude 完整说明需求，但您也可随时进行以下修正操作：
-
-- 预先规划：要求 Claude 先制定计划，明确指示其未经确认不得开始编码
-- 即时中断（按 Esc 键）：可在 Claude 思考、调用工具或编辑文件时暂停当前操作
-- 历史回溯（双击 Esc 键）：回退至历史节点，修改先前提示以探索不同方案
-- 撤销变更：常与第 2 项配合使用，要求 Claude 撤回更改并尝试新方案
-
-### 使用 /clear 保持上下文聚焦
-
-在长时间会话中，Claude 的上下文窗口可能积累无关对话、文件内容和命令，从而影响性能或导致分心。建议在不同任务间频繁使用 /clear 命令重置上下文窗口。
-
-### 使用检查清单和草稿板处理复杂工作流
-
-对于多步骤任务或需要详尽解决方案的场景（如代码迁移、修复大量 lint 错误、运行复杂构建脚本），可通过让 Claude 使用 Markdown 文件（甚至 GitHub issue！）作为检查清单和工作草稿板来提升效率。
-
-## 多 Claude 协作提升效率
-
-### 一个 Claude 写代码，另一个 Claude 审查
-
-一个简单但有效的方法是让一个 Claude 编写代码，同时另一个审查或测试它。类似于与多个工程师合作，有时保持独立的上下文是有益的：
-
-1. 使用 Claude 编写代码
-2. 运行 /clear 或在另一个终端启动第二个 Claude
-3. 让第二个 Claude 审查第一个 Claude 的工作
-4. 启动另一个 Claude（或再次 /clear）来阅读代码和审查反馈
-5. 让这个 Claude 根据反馈修改代码
-
-### 创建仓库的多个检出
-
-Anthropic 的许多工程师不是等待 Claude 完成每一步，而是这样做：
-
-1. 在单独的文件夹中创建 3-4 个 git 检出
-2. 在每个终端标签页中打开每个文件夹
-3. 在每个文件夹中启动 Claude 执行不同的任务
-4. 循环检查进度并批准/拒绝权限请求
-
-### 使用 git worktree
-
-这种方法适用于多个独立任务，提供了比多个检出更轻量级的替代方案。Git worktree 允许您将同一仓库的多个分支检出到单独的目录中。每个 worktree 都有自己的工作目录和隔离的文件，同时共享相同的 Git 历史和 reflog。
-
-## Claude Code 工作流程图示
-
-下面的流程图展示了 Claude Code 的典型工作流程：
+Claude Code 会按以下优先级查找 CLAUDE.md 文件：
 
 ```mermaid
 graph TD
-    A[开始] --> B[自定义设置]
-    B --> C[配置 CLAUDE.md]
-    B --> D[管理工具权限]
-    C --> E[提供工具]
-    D --> E
-    E --> F[选择工作流程]
-    F --> G[探索、计划、编码、提交]
-    F --> H[测试驱动开发]
-    F --> I[视觉目标迭代]
-    G --> J[优化工作流程]
+    A[启动 Claude Code] --> B[当前工作目录]
+    B --> C{找到 CLAUDE.md?}
+    C -->|是| D[加载文件]
+    C -->|否| E[检查父目录]
+    E --> F{找到 CLAUDE.md?}
+    F -->|是| D
+    F -->|否| G[检查子目录]
+    G --> H{找到 CLAUDE.md?}
+    H -->|是| D
+    H -->|否| I[检查 ~/.claude/CLAUDE.md]
+    I --> J{找到 CLAUDE.md?}
+    J -->|是| D
+    J -->|否| K[无配置文件]
+    D --> L[开始会话]
+    K --> L
+```
+
+**文件命名建议：**
+- `CLAUDE.md`: 团队共享配置，提交到版本控制
+- `CLAUDE.local.md`: 个人配置，添加到 .gitignore
+- `~/.claude/CLAUDE.md`: 全局配置，适用于所有项目
+
+### 权限管理系统
+
+Claude Code 采用保守的权限策略，默认会对所有可能修改系统的操作请求授权。
+
+#### 权限管理方式
+
+```mermaid
+graph LR
+    A[权限请求] --> B{管理方式}
+    B --> C[会话中授权]
+    B --> D[/permissions 命令]
+    B --> E[编辑配置文件]
+    B --> F[命令行参数]
+    
+    C --> G[Always Allow]
+    D --> H[添加/移除工具]
+    E --> I[.claude/settings.json]
+    F --> J[--allowedTools]
+```
+
+#### 推荐的权限配置
+
+```json
+{
+  "allowedTools": [
+    "str_replace_editor",
+    "bash",
+    "computer",
+    "mcp"
+  ],
+  "alwaysAllow": [
+    "read_file",
+    "list_files",
+    "grep_search"
+  ]
+}
+```
+
+## 扩展 Claude 的能力
+
+### 与 Bash 工具集成
+
+Claude Code 继承您的完整 bash 环境，可以访问所有已安装的工具和命令。
+
+#### 工具发现策略
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant C as Claude
+    participant S as 系统
+    
+    U->>C: 提到工具名称
+    C->>S: 运行 tool_name --help
+    S-->>C: 返回帮助信息
+    C->>U: 理解工具功能
+    
+    Note over C: 将工具信息记录到 CLAUDE.md
+```
+
+#### 常用工具集成示例
+
+```markdown
+# 开发工具集成
+
+## Git 工具
+- `gh`: GitHub CLI，用于 PR 管理
+- `git-flow`: Git Flow 工作流支持
+
+## 构建工具
+- `docker`: 容器化部署
+- `kubectl`: Kubernetes 集群管理
+
+## 代码质量
+- `sonar-scanner`: 代码质量分析
+- `eslint`: JavaScript/TypeScript 代码检查
+
+## 数据库工具
+- `psql`: PostgreSQL 客户端
+- `redis-cli`: Redis 命令行工具
+```
+
+### MCP (Model Context Protocol) 集成
+
+Claude Code 支持通过 MCP 连接外部服务和工具，大大扩展其功能范围。
+
+#### MCP 配置层次
+
+```mermaid
+graph TB
+    A[MCP 配置] --> B[项目配置]
+    A --> C[全局配置]
+    A --> D[.mcp.json 文件]
+    
+    B --> E[仅当前项目可用]
+    C --> F[所有项目可用]
+    D --> G[团队共享配置]
+    
+    subgraph "配置示例"
+        H[文件系统访问]
+        I[数据库连接]
+        J[API 集成]
+        K[云服务]
+    end
+```
+
+#### MCP 配置示例
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"],
+      "env": {}
+    },
+    "postgres": {
+      "command": "mcp-server-postgres",
+      "args": ["--connection-string", "postgresql://localhost/mydb"],
+      "env": {
+        "POSTGRES_PASSWORD": "secret"
+      }
+    },
+    "github": {
+      "command": "mcp-server-github",
+      "args": ["--token", "${GITHUB_TOKEN}"],
+      "env": {}
+    }
+  }
+}
+```
+
+### 自定义斜杠命令
+
+为重复性工作流创建可复用的命令模板，提高开发效率。
+
+#### 创建自定义命令
+
+在 `.claude/commands/` 目录下创建 Markdown 文件：
+
+```markdown
+<!-- debug-loop.md -->
+# 调试循环命令
+
+请执行以下调试步骤：
+1. 检查日志文件中的错误信息
+2. 分析错误的根本原因
+3. 提出修复建议
+4. 实施修复方案
+5. 验证修复结果
+
+参数：$ARGUMENTS
+```
+
+#### 命令使用示例
+
+```bash
+# 调用自定义命令
+/debug-loop "用户登录失败问题"
+```
+
+## 核心工作流程详解
+
+### 探索-计划-编码-提交工作流
+
+这是最通用的开发工作流程，适用于大多数编程任务。
+
+```mermaid
+graph TD
+    A[开始任务] --> B[探索阶段]
+    B --> C[制定计划]
+    C --> D[编码实现]
+    D --> E[测试验证]
+    E --> F[代码审查]
+    F --> G[提交代码]
+    G --> H[创建 PR]
+    
+    B --> B1[阅读相关文件]
+    B --> B2[理解需求]
+    B --> B3[分析现有代码]
+    
+    C --> C1[分解任务]
+    C --> C2[评估方案]
+    C --> C3[制定时间线]
+    
+    D --> D1[编写代码]
+    D --> D2[处理边界情况]
+    D --> D3[添加注释]
+    
+    E --> E1[单元测试]
+    E --> E2[集成测试]
+    E --> E3[手动测试]
+```
+
+#### 实践示例
+
+```markdown
+# 探索阶段
+请先阅读以下文件来理解当前的用户认证系统：
+- src/auth/login.ts
+- src/auth/middleware.ts
+- tests/auth.test.ts
+
+暂时不要编写任何代码，只需要理解现有实现。
+
+# 计划阶段
+基于你的理解，请制定一个详细的计划来实现双因素认证功能。
+使用 "think" 关键词来触发深度思考模式，全面评估不同的实现方案。
+
+# 编码阶段
+现在请根据计划实现双因素认证功能。
+
+# 提交阶段
+请提交你的更改并创建一个 pull request，包含详细的描述和测试说明。
+```
+
+### 测试驱动开发 (TDD) 工作流
+
+TDD 在智能编程中变得更加强大，能够确保代码质量和功能正确性。
+
+```mermaid
+sequenceDiagram
+    participant D as 开发者
+    participant C as Claude
+    participant T as 测试系统
+    
+    D->>C: 描述需求和期望的输入/输出
+    C->>T: 编写失败的测试
+    T-->>C: 测试失败确认
+    C->>D: 提交测试代码
+    
+    D->>C: 实现功能代码
+    C->>T: 编写通过测试的代码
+    T-->>C: 测试通过确认
+    C->>D: 提交功能代码
+    
+    loop 迭代改进
+        D->>C: 优化需求
+        C->>T: 更新测试
+        C->>T: 更新代码
+    end
+```
+
+#### TDD 实践指南
+
+```markdown
+# 第一步：编写测试
+我们正在进行测试驱动开发，请为用户注册功能编写测试。
+期望的输入输出：
+- 输入：{ email: "test@example.com", password: "securePassword123" }
+- 输出：{ success: true, userId: "generated-id" }
+
+请避免创建模拟实现，即使功能尚未存在。
+
+# 第二步：确认测试失败
+请运行测试并确认它们按预期失败。
+
+# 第三步：实现功能
+现在请编写通过所有测试的代码，不要修改测试文件。
+
+# 第四步：迭代完善
+请继续迭代直到所有测试通过。
+```
+
+### 视觉驱动开发工作流
+
+适用于前端开发和 UI 组件创建，通过视觉反馈指导开发过程。
+
+```mermaid
+graph LR
+    A[提供设计稿] --> B[编写初始代码]
+    B --> C[截图当前效果]
+    C --> D[对比设计稿]
+    D --> E{是否匹配?}
+    E -->|否| F[调整代码]
+    F --> C
+    E -->|是| G[提交代码]
+    
+    subgraph "工具支持"
+        H[Puppeteer MCP]
+        I[手动截图]
+        J[拖拽图片]
+    end
+```
+
+#### 视觉开发实践
+
+```markdown
+# 设置截图工具
+请使用 Puppeteer MCP 服务器来自动截取浏览器截图。
+
+# 提供设计目标
+[拖拽设计稿图片到此处]
+
+# 实现和迭代
+请实现这个设计，截取结果截图，并持续迭代直到与设计稿匹配。
+
+# 完成确认
+当你满意结果时，请提交代码。
+```
+
+## 高级优化策略
+
+### 上下文管理和性能优化
+
+```mermaid
+graph TD
+    A[长时间会话] --> B{上下文是否过载?}
+    B -->|是| C[使用 /clear 命令]
+    B -->|否| D[继续当前会话]
+    C --> E[重置上下文窗口]
+    E --> F[重新加载必要信息]
+    F --> D
+    
+    subgraph "上下文优化策略"
+        G[定期清理]
+        H[精简 CLAUDE.md]
+        I[使用检查清单]
+        J[分离不同任务]
+    end
+```
+
+### 指令优化技巧
+
+#### 明确性原则
+
+```markdown
+# 模糊指令（不推荐）
+"修复这个 bug"
+
+# 明确指令（推荐）
+"修复用户登录时出现的 'Invalid token' 错误，
+该错误发生在 src/auth/login.ts 第 45 行，
+需要检查 JWT token 的验证逻辑"
+```
+
+#### 上下文提供
+
+```markdown
+# 缺乏上下文（不推荐）
+"优化这个函数"
+
+# 提供充分上下文（推荐）
+"优化 getUserData 函数的性能，因为它在用户仪表板页面
+被频繁调用，导致页面加载缓慢。请考虑添加缓存机制
+或减少数据库查询次数。"
+```
+
+### 多 Claude 协作模式
+
+利用多个 Claude 实例并行工作，提高开发效率。
+
+```mermaid
+graph TB
+    A[主任务] --> B[Claude 1: 编写代码]
+    A --> C[Claude 2: 代码审查]
+    A --> D[Claude 3: 编写测试]
+    A --> E[Claude 4: 文档编写]
+    
+    B --> F[代码实现完成]
+    C --> G[审查反馈]
+    D --> H[测试用例]
+    E --> I[技术文档]
+    
+    F --> J[整合结果]
+    G --> J
     H --> J
     I --> J
-    J --> K[使用 /clear 保持聚焦]
-    J --> L[使用检查清单]
-    J --> M[多 Claude 协作]
-    K --> N[结束]
-    L --> N
-    M --> N
+    
+    J --> K[最终交付]
+```
+
+#### Git Worktree 工作流
+
+```bash
+# 创建多个工作树
+git worktree add ../project-feature-a feature-a
+git worktree add ../project-feature-b feature-b
+git worktree add ../project-bugfix bugfix
+
+# 在不同目录启动 Claude
+cd ../project-feature-a && claude
+cd ../project-feature-b && claude
+cd ../project-bugfix && claude
+```
+
+## 常见问题和解决方案
+
+### 权限和安全问题
+
+```mermaid
+flowchart TD
+    A[权限被拒绝] --> B{检查允许列表}
+    B -->|未配置| C[添加到允许列表]
+    B -->|已配置| D[检查命令语法]
+    C --> E[重新尝试]
+    D --> F{语法正确?}
+    F -->|否| G[修正命令]
+    F -->|是| H[检查系统权限]
+    G --> E
+    H --> I[调整系统设置]
+    I --> E
+```
+
+### 性能优化建议
+
+```markdown
+# 上下文管理
+- 定期使用 /clear 清理上下文
+- 保持 CLAUDE.md 文件精简
+- 避免在单次会话中处理过多不相关任务
+
+# 工具使用
+- 优先使用并行工具调用
+- 合理配置 MCP 服务器
+- 定期更新工具权限列表
+
+# 工作流程
+- 将复杂任务分解为小步骤
+- 使用检查清单跟踪进度
+- 及时提交中间结果
+```
+
+## 完整工作流程图
+
+```mermaid
+graph TB
+    subgraph "初始化阶段"
+        A1[安装 Claude Code] --> A2[配置 CLAUDE.md]
+        A2 --> A3[设置权限]
+        A3 --> A4[配置 MCP 服务器]
+    end
+    
+    subgraph "开发阶段"
+        B1[启动 Claude] --> B2[选择工作流程]
+        B2 --> B3[探索-计划-编码]
+        B2 --> B4[测试驱动开发]
+        B2 --> B5[视觉驱动开发]
+    end
+    
+    subgraph "协作阶段"
+        C1[多 Claude 实例] --> C2[任务分配]
+        C2 --> C3[并行开发]
+        C3 --> C4[结果整合]
+    end
+    
+    subgraph "优化阶段"
+        D1[性能监控] --> D2[上下文管理]
+        D2 --> D3[工具优化]
+        D3 --> D4[流程改进]
+    end
+    
+    A4 --> B1
+    B5 --> C1
+    C4 --> D1
+    D4 --> B1
+```
+
+## 实际应用案例
+
+### 案例1：全栈 Web 应用开发
+
+```markdown
+# 项目：电商平台开发
+
+## 阶段1：项目初始化
+- 使用 Claude 设置项目结构
+- 配置开发环境和工具链
+- 创建基础的 CLAUDE.md 配置
+
+## 阶段2：后端 API 开发
+- 使用 TDD 工作流开发 REST API
+- 实现用户认证和授权
+- 集成数据库和缓存系统
+
+## 阶段3：前端界面开发
+- 使用视觉驱动工作流创建 UI 组件
+- 实现响应式设计
+- 集成状态管理和路由
+
+## 阶段4：测试和部署
+- 编写端到端测试
+- 配置 CI/CD 流水线
+- 部署到生产环境
+```
+
+### 案例2：遗留系统重构
+
+```markdown
+# 项目：老旧 PHP 系统迁移到 Node.js
+
+## 阶段1：代码分析
+- 使用 Claude 分析现有 PHP 代码结构
+- 识别核心业务逻辑和数据流
+- 制定迁移策略和时间计划
+
+## 阶段2：渐进式迁移
+- 创建多个 git worktree 并行工作
+- 逐模块重写为 Node.js
+- 保持 API 兼容性
+
+## 阶段3：数据迁移
+- 设计数据迁移脚本
+- 实现数据验证和一致性检查
+- 执行灰度发布
+
+## 阶段4：监控和优化
+- 实施性能监控
+- 优化数据库查询
+- 调整系统配置
 ```
 
 ## 结论
 
-Claude Code 是一个功能强大的智能编码工具，通过合理配置和使用最佳实践，可以显著提升开发效率。本文介绍的各种技巧和方法，既适用于 Anthropic 内部团队，也适用于在各种代码库、语言和环境中使用 Claude Code 的外部工程师。建议开发者根据自己的实际需求，灵活运用这些方法，找到最适合自己的工作方式。
+Claude Code 作为一款革命性的智能编程工具，通过其灵活的设计和强大的扩展能力，为开发者提供了前所未有的编程体验。通过合理配置环境、选择适当的工作流程、优化使用策略，开发者可以显著提升编程效率和代码质量。
+
+本指南涵盖了从基础配置到高级优化的完整使用方法，适用于个人开发者和团队协作场景。随着 AI 技术的不断发展，Claude Code 将继续演进，为智能编程领域带来更多创新可能。
+
+建议开发者：
+1. 从简单的配置开始，逐步探索高级功能
+2. 根据项目特点选择合适的工作流程
+3. 积极参与社区讨论，分享使用经验
+4. 持续关注工具更新，及时采用新特性
+
+通过持续实践和优化，每个开发者都能找到最适合自己的 Claude Code 使用方式，真正实现智能编程的价值最大化。
