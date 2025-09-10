@@ -500,7 +500,7 @@ timeline
 ### 未来发展规划
 
 ```mermaid
-roadmap
+timeline
     title 产品发展路线图
     section 短期规划
         更多画风选项
