@@ -669,7 +669,7 @@ eBPF 正在改变我们构建可观测性、网络和安全工具的方式，掌
 - [Cilium eBPF Go 库](https://github.com/cilium/ebpf)
 - [eBPF 内核文档](https://www.kernel.org/doc/Documentation/networking/filter.txt)
 - [BCC 工具集](https://github.com/iovisor/bcc)
-- [eBPF 峰会](https://ebpf.io/summit/)
+- [eBPF 峰会](https://ebpf.io/events/)
 
 ---
 
