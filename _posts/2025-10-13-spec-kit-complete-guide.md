@@ -41,9 +41,9 @@ graph TB
     B2[plan-template.md] --> B
     B3[tasks-template.md] --> B
     
-    C1[/speckit.specify] --> C
-    C2[/speckit.plan] --> C
-    C3[/speckit.tasks] --> C
+    C1[speckit.specify] --> C
+    C2[speckit.plan] --> C
+    C3[speckit.tasks] --> C
     
     D1[update-agent-context.sh] --> D
     D2[check-prerequisites.sh] --> D
@@ -95,7 +95,7 @@ graph LR
     A[项目原则] --> B[编码规范]
     A --> C[架构约束]
     A --> D[质量要求]
-    B --> E[/speckit.constitution]
+    B --> E[speckit.constitution]
     C --> E
     D --> E
 ```
