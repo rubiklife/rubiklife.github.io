@@ -5,7 +5,6 @@ categories:
   - AI工具
 tags:
   - AI
-  - 图像处理
   - 工具
 toc: true
 toc_label: "目录"

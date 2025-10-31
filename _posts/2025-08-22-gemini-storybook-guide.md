@@ -6,8 +6,6 @@ categories:
 tags:
   - 工具
   - AI
-  - 故事书
-  - 内容创作
 toc: true
 mermaid: true
 ---

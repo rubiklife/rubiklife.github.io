@@ -5,8 +5,7 @@ date: 2025-09-14T10:00:00+08:00
 categories:
   - 科技前沿
 tags:
-  - 特斯拉
-  - 人工智能
+  - AI
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
