@@ -1,14 +1,11 @@
 ---
 title: "NotebookLM 完整指南：Google 的 AI 驱动研究助手"
-date: 2025-12-14T10:00:00+08:00
+date: 2025-11-28T10:00:00+08:00
 categories:
   - AI工具
 tags:
-  - AI
-  - Google
-  - 笔记工具
-  - 研究助手
-  - 生产力
+  - 工具
+  - 开源
 toc: true
 toc_label: "目录"
 toc_icon: "cog"
