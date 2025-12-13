@@ -1,14 +1,11 @@
 ---
 title: "PaddleOCR 3.0 完整指南：开源 OCR 领域的首选工具"
-date: 2025-12-13T10:00:00+08:00
+date: 2025-11-18T10:00:00+08:00
 categories:
   - AI工具
 tags:
-  - OCR
+  - 工具
   - 开源
-  - PaddlePaddle
-  - 文档解析
-  - 深度学习
 mermaid: true
 toc: true
 toc_label: "目录"
