@@ -1,6 +1,6 @@
 ---
 title: "Nano Banana Pro 完整指南：专业资产制作的10大技巧"
-date: 2025-12-13 10:00:00 +0800
+date: 2025-11-10 10:00:00 +0800
 categories:
   - AI工具
 tags:
@@ -11,7 +11,7 @@ toc: true
 mermaid: true
 ---
 
-## 概述
+## Nano Banana Pro最佳实践
 
 Nano Banana Pro（Gemini 3 Pro Image）代表了 AI 图像生成技术的重大飞跃，从"有趣的图像生成"进化到"功能性的专业资产制作"。它在文本渲染、角色一致性、视觉合成、世界知识（Search）和高分辨率（4K）输出方面表现卓越。
 
