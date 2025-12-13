@@ -11,7 +11,7 @@ toc: true
 mermaid: true
 ---
 
-## 概述
+## Nano Banana Pro参考手册
 
 Nano Banana Pro（Gemini 3 Pro Image）是 Google 推出的新一代 AI 图像生成模型,相比前代模型实现了从"有趣"到"功能性"专业资产制作的重大飞跃。它在文本渲染、角色一致性、视觉合成、世界知识（搜索）和高分辨率（4K）输出方面表现卓越。
 
