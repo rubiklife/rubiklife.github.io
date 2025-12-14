@@ -2129,10 +2129,11 @@ agent_system/
 
 ### 完整示例代码
 
-访问GitHub仓库获取完整示例代码：
-- **示例仓库**: [Agent Design Patterns Examples](https://github.com)
-- **交互式教程**: [Agent Patterns Tutorial](https://github.com)
-- **最佳实践集**: [Agent Best Practices](https://github.com)
+访问以下优质开源项目学习Agent设计模式实现：
+- **LangChain Agent示例**: [LangChain官方示例](https://github.com/langchain-ai/langchain/tree/master/cookbook)
+- **LangGraph教程**: [LangGraph Tutorials](https://github.com/langchain-ai/langgraph/tree/main/examples)
+- **Agent最佳实践**: [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook)
+- **开源Agent项目**: [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | [MetaGPT](https://github.com/geekan/MetaGPT) | [CrewAI](https://github.com/joaomdmoura/crewAI)
 
 ---
 
