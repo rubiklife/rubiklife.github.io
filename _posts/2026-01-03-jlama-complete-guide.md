@@ -339,9 +339,9 @@ graph TB
     end
     
     subgraph "Jlama REST API"
-        D[/v1/chat/completions]
-        E[/v1/completions]
-        F[/v1/models]
+        D["/v1/chat/completions"]
+        E["/v1/completions"]
+        F["/v1/models"]
     end
     
     subgraph "推理引擎"
