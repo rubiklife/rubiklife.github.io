@@ -1,6 +1,6 @@
 ---
 title: "Google A2UI 完整指南：Agent到用户界面的革命性方案"
-date: 2026-01-25 10:00:00 +0800
+date: 2026-03-14 10:00:00 +0800
 categories:
   - AI工具
 tags:
