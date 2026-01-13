@@ -182,7 +182,7 @@ graph TD
     
     F -->|build 代理| G[开发模式]
     F -->|plan 代理| H[规划模式]
-    F -->|@general| I[通用代理]
+    F -->|general| I[通用代理]
     
     G --> J[AI 分析代码]
     H --> J
@@ -756,7 +756,7 @@ graph TD
     B -->|否| D[Plan 代理]
     
     A --> E{复杂搜索?}
-    E -->|是| F[@general 代理]
+    E -->|是| F[general 代理]
     E -->|否| G[直接查询]
     
     A --> H{探索未知代码?}
