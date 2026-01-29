@@ -1,6 +1,6 @@
 ---
 title: "Agent Skills完全指南：开放式AI智能体技能生态系统详解与Top 10技能实践"
-date: 2026-02-01T10:00:00+08:00
+date: 2026-02-02T10:00:00+08:00
 categories:
   - AI工具
 tags:
