@@ -1,6 +1,6 @@
 ---
 title: "NocoDB完全指南 - 开源Airtable替代方案"
-date: 2026-03-01 08:00:00 +0800
+date: 2026-03-01T08:00:00+08:00
 categories:
   - 数据库工具
 tags:

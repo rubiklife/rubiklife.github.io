@@ -1,6 +1,6 @@
 ---
 title: "LeRobot 完整指南：Hugging Face 机器人学习库全解析"
-date: 2026-02-08 10:00:00 +0800
+date: 2026-02-08T10:00:00+08:00
 categories:
   - AI工具
 tags:

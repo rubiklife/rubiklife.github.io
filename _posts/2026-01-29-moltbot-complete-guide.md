@@ -1,6 +1,6 @@
 ---
 title: "Moltbot完全指南：打造你的个人AI助手平台"
-date: 2026-01-29 10:00:00 +0800
+date: 2026-01-29T10:00:00+08:00
 categories:
   - AI工具
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "Agent Skills 完全指南：为 Claude 构建专业技能的实践手册"
-date: 2025-10-18 10:00:00 +0800
+date: 2025-10-18T10:00:00+08:00
 categories:
   - AI工具
 tags:

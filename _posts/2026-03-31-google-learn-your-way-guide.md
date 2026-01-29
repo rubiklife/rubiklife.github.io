@@ -1,6 +1,6 @@
 ---
 title: "Google Learn Your Way 完全指南：打造个性化学习路径"
-date: 2026-03-31 10:00:00 +0800
+date: 2026-03-31T10:00:00+08:00
 categories:
   - 在线学习
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "Skill Seekers完全指南 - 将任何文档转换为Claude AI技能"
-date: 2026-03-07 10:00:00 +0800
+date: 2026-03-07T10:00:00+08:00
 categories:
   - AI工具
 tags:

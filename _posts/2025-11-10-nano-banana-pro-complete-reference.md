@@ -1,6 +1,6 @@
 ---
 title: "Nano Banana Pro 完整指南：专业资产制作的10大技巧"
-date: 2025-11-10 10:00:00 +0800
+date: 2025-11-10T10:00:00+08:00
 categories:
   - AI工具
 tags:

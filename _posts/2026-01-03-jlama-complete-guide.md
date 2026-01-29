@@ -1,6 +1,6 @@
 ---
 title: "Jlama 完整指南：Java生态的现代化LLM推理引擎"
-date: 2026-01-03 10:00:00 +0800
+date: 2026-01-03T10:00:00+08:00
 categories:
   - AI工具
 tags:

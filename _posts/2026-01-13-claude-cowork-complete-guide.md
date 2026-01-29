@@ -1,6 +1,6 @@
 ---
 title: "Claude Cowork 完全指南：知识工作的智能协作新范式"
-date: 2026-01-13 10:00:00 +0800
+date: 2026-01-13T10:00:00+08:00
 categories:
   - AI工具
 tags:

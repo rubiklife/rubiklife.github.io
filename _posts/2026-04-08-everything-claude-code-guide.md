@@ -1,6 +1,6 @@
 ---
 title: "Everything Claude Code：Anthropic黑客松冠军的完整配置指南"
-date: 2026-04-08 10:00:00 +0800
+date: 2026-04-08T10:00:00+08:00
 categories:
   - AI工具
 tags:
