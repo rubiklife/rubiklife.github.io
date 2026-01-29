@@ -5,10 +5,8 @@ categories:
   - AI工具
 tags:
   - AI
-  - Moltbot
   - 个人助手
   - 自动化
-  - 多渠道
 toc: true
 toc_label: "目录"
 toc_icon: "robot"

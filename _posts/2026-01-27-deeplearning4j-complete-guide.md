@@ -1,6 +1,6 @@
 ---
 title: "Deeplearning4J: JVM深度学习完全指南"
-date: 2026-01-27T10:30:00+08:00
+date: 2026-01-27 10:30:00 +0800
 categories:
   - 机器学习
 tags:

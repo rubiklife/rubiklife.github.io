@@ -1,6 +1,6 @@
 ---
 title: "LangChain4j完全指南 - Java应用中的LLM集成利器"
-date: 2026-01-21T14:30:00+08:00
+date: 2026-01-21 14:30:00 +0800
 categories:
   - Java
   - AI开发
