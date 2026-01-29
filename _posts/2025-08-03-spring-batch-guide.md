@@ -241,6 +241,7 @@ public class SimpleBatchConfig {
 
 ### 文件处理作业
 
+{% raw %}
 ```java
 @Configuration
 @EnableBatchProcessing
@@ -301,6 +302,7 @@ public class FileProcessingConfig {
     }
 }
 ```
+{% endraw %}
 
 ## 高级功能
 
