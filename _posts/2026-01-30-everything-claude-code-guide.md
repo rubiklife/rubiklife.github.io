@@ -600,8 +600,8 @@ graph LR
     B --> C[自动配置]
     C --> D[开始使用]
     
-    A -.-> A1[/plugin marketplace add]
-    B -.-> B1[/plugin install]
+    A --> A1[plugin marketplace add]
+    B --> B1[plugin install]
     
     style A fill:#e1f5fe
     style C fill:#c8e6c9
