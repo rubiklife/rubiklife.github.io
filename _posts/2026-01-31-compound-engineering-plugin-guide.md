@@ -120,17 +120,17 @@ pie title 时间分配原则
 
 ```mermaid
 graph TD
-    A[开始] --> B[/workflows:plan<br/>详细规划]
+    A[开始] --> B[workflows:plan<br/>详细规划]
     B --> C{需要分支开发?}
-    C -->|是| D[/workflows:work<br/>创建 worktree]
+    C -->|是| D[workflows:work<br/>创建 worktree]
     C -->|否| E[直接开发]
     D --> F[执行实现]
     E --> F
-    F --> G[/workflows:review<br/>多代理审查]
+    F --> G[workflows:review<br/>多代理审查]
     G --> H{审查通过?}
     H -->|否| I[修复问题]
     I --> G
-    H -->|是| J[/workflows:compound<br/>知识沉淀]
+    H -->|是| J[workflows:compound<br/>知识沉淀]
     J --> K[合并代码]
     K --> L[下一个循环]
     L --> B
@@ -199,7 +199,7 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    A[/workflows:work] --> B{检测分支}
+    A[workflows:work] --> B{检测分支}
     B -->|主分支| C[创建 feature 分支]
     B -->|feature 分支| D[直接使用]
     C --> E[创建 Git Worktree]
@@ -230,7 +230,7 @@ graph TD
 
 ```mermaid
 graph TD
-    A[/workflows:review] --> B[启动审查流程]
+    A[workflows:review] --> B[启动审查流程]
     B --> C[架构审查代理]
     B --> D[安全审查代理]
     B --> E[性能审查代理]
@@ -272,7 +272,7 @@ graph TD
 
 ```mermaid
 graph LR
-    A[/workflows:compound] --> B[分析本次变更]
+    A[workflows:compound] --> B[分析本次变更]
     B --> C[提取模式]
     C --> D[创建/更新技能]
     D --> E[更新文档]
@@ -429,10 +429,10 @@ mindmap
 
 ```mermaid
 graph LR
-    A[实用工具] --> B[/git-worktree-prune]
-    A --> C[/context7-search]
-    A --> D[/setup-mcp-servers]
-    A --> E[/report-bug]
+    A[实用工具] --> B[git-worktree-prune]
+    A --> C[context7-search]
+    A --> D[setup-mcp-servers]
+    A --> E[report-bug]
     
     B --> B1[清理无用的 worktree]
     C --> C1[搜索技术文档]
@@ -1214,14 +1214,14 @@ gantt
 graph TD
     A[接到任务] --> B{复杂度评估}
     B -->|简单<br/>< 1小时| C[直接编码]
-    B -->|中等<br/>1-4小时| D[/workflows:plan<br/>+ /workflows:work]
-    B -->|复杂<br/>> 4小时| E[/workflows:brainstorm<br/>+ 完整流程]
+    B -->|中等<br/>1-4小时| D[workflows:plan<br/>+ /workflows:work]
+    B -->|复杂<br/>> 4小时| E[workflows:brainstorm<br/>+ 完整流程]
     
     C --> F[代码审查]
-    D --> G[/workflows:review]
+    D --> G[workflows:review]
     E --> G
     
-    G --> H[/workflows:compound]
+    G --> H[workflows:compound]
     
     style C fill:#51cf66
     style D fill:#ffd43b
@@ -1259,7 +1259,7 @@ graph LR
 graph TD
     A[代码变更] --> B{变更大小}
     B -->|小<br/>< 50行| C[提交前自查]
-    B -->|中<br/>50-500行| D[/workflows:review]
+    B -->|中<br/>50-500行| D[workflows:review]
     B -->|大<br/>> 500行| E[分阶段审查]
     
     E --> F[架构审查]
@@ -1318,9 +1318,9 @@ graph TD
 
 ```mermaid
 graph LR
-    A[Coding Tutor] --> B[/teach-me]
-    A --> C[/quiz-me]
-    A --> D[/sync-tutorials]
+    A[Coding Tutor] --> B[teach-me]
+    A --> C[quiz-me]
+    A --> D[sync-tutorials]
     
     B --> E[创建教程]
     C --> F[间隔重复测验]
@@ -1407,7 +1407,7 @@ const expensiveValue = useMemo(() => {
 
 ```mermaid
 graph TD
-    A[/quiz-me] --> B[加载待复习教程]
+    A[quiz-me] --> B[加载待复习教程]
     B --> C{有待复习教程?}
     C -->|否| D[全部掌握!]
     C -->|是| E[选择教程]
