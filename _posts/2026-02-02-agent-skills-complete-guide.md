@@ -502,6 +502,7 @@ npx skills add remotion-dev/skills/remotion-best-practices
 
 #### 实践示例
 
+{% raw %}
 ```typescript
 import { spring, useCurrentFrame, useVideoConfig } from 'remotion';
 
@@ -539,6 +540,7 @@ export const AnimatedTitle: React.FC<{ title: string }> = ({ title }) => {
   );
 };
 ```
+{% endraw %}
 
 ### 4. Find Skills (38.1K 安装)
 

@@ -114,6 +114,7 @@ flowchart TD
 
 **Python实现**：
 
+{% raw %}
 ```python
 class ReflectionAgent:
     """反思模式Agent实现"""
@@ -193,6 +194,7 @@ class ReflectionAgent:
 agent = ReflectionAgent(llm)
 result = agent.run("写一篇关于气候变化的文章")
 ```
+{% endraw %}
 
 ### 应用场景
 
@@ -540,6 +542,7 @@ flowchart TD
 
 **Python实现**：
 
+{% raw %}
 ```python
 from dataclasses import dataclass
 from typing import List, Optional
@@ -711,6 +714,7 @@ class PlanningAgent:
 agent = PlanningAgent(llm)
 result = agent.run("研究并撰写一份关于量子计算的报告")
 ```
+{% endraw %}
 
 ### 规划模式类型
 
@@ -754,6 +758,7 @@ sequenceDiagram
 
 **ReAct实现示例**：
 
+{% raw %}
 ```python
 class ReActAgent:
     """ReAct模式Agent"""
@@ -867,6 +872,7 @@ agent = ReActAgent(llm, tools={
 
 result = agent.run("OpenAI的GPT-4发布于哪一年?那一年距离现在多少年?")
 ```
+{% endraw %}
 
 ## 模式四：多智能体协作模式 (Multi-agent Collaboration)
 

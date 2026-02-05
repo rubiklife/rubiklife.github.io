@@ -982,6 +982,7 @@ response2 = agent("我可以退货吗？")
 
 确保 Claude 输出符合特定格式：
 
+{% raw %}
 ```python
 import anthropic
 import json
@@ -1033,6 +1034,7 @@ def ensure_json_output(user_query):
 result = ensure_json_output("分析这段文本的情感：'我对这个产品非常满意！'")
 print(json.dumps(result, ensure_ascii=False, indent=2))
 ```
+{% endraw %}
 
 ### 5.3 元提示（Metaprompt）
 
@@ -1749,6 +1751,7 @@ graph TB
 
 **实现示例：**
 
+{% raw %}
 ```python
 class MultiAgentSystem:
     """多智能体协作系统"""
@@ -1894,6 +1897,7 @@ output = system.execute_complex_task(
     "创建一份关于AI Agent的完整技术报告，包括架构设计、实现方案和案例分析"
 )
 ```
+{% endraw %}
 
 ### 8.2 记忆与上下文管理
 
