@@ -1316,6 +1316,6 @@ mindmap
 
 **相关阅读：**
 - [LangChain4j 完整指南]({% post_url 2026-01-21-langchain4j-complete-guide %})
-- [DeepLearning4j 完整指南]({% post_url 2026-01-15-deeplearning4j-complete-guide %})
+- [DeepLearning4j 完整指南]({% post_url 2026-01-27-deeplearning4j-complete-guide %})
 - [Apache OpenNLP 完整指南]({% post_url 2026-01-09-apache-opennlp-complete-guide %})
 
