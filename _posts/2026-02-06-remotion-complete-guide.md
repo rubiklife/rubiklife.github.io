@@ -528,6 +528,7 @@ AI 助手会根据 Remotion 的最佳实践提供更准确的代码建议：
 
 **示例场景**：当你输入 `useCurrentFrame` 时，AI 会建议正确的用法：
 
+{% raw %}
 ```typescript
 // ✓ AI 会建议这样使用
 import { useCurrentFrame, interpolate } from 'remotion';
@@ -544,11 +545,13 @@ export const MyComponent = () => {
 // ✗ 避免直接进行复杂计算
 // const opacity = Math.min(1, frame / 30); // AI 会建议使用 interpolate
 ```
+{% endraw %}
 
 #### 2. 常见模式识别
 
 AI 助手能识别并建议 Remotion 中的常见模式：
 
+{% raw %}
 ```typescript
 // 当你开始编写动画时，AI 会建议使用 spring
 import { spring, useCurrentFrame, useVideoConfig } from 'remotion';
@@ -574,11 +577,13 @@ export const BouncyText = () => {
   );
 };
 ```
+{% endraw %}
 
 #### 3. 性能优化建议
 
 AI 会主动提醒性能相关的注意事项：
 
+{% raw %}
 ```typescript
 import React from 'react';
 import { useCurrentFrame } from 'remotion';
@@ -601,11 +606,13 @@ const STATIC_STYLES = {
   },
 };
 ```
+{% endraw %}
 
 #### 4. 错误预防
 
 AI 会帮助你避免常见错误：
 
+{% raw %}
 ```typescript
 // ✗ AI 会警告：delayRender 必须在组件渲染时同步调用
 export const BadComponent = () => {
@@ -628,6 +635,7 @@ export const GoodComponent = () => {
   }, [handle]);
 };
 ```
+{% endraw %}
 
 ### 与不同 AI 助手配合使用
 
@@ -658,6 +666,7 @@ Claude (无 Skills):
 
 GitHub Copilot 也能从 Skills 中学习：
 
+{% raw %}
 ```typescript
 // 当你开始输入时，Copilot 会基于 Skills 提供更好的建议
 import { Composition } from 'remotion';
@@ -678,6 +687,7 @@ export const RemotionRoot: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### Skills 的实际效果
 
