@@ -323,6 +323,7 @@ my-video-project/
 
 ### 第一个视频组件
 
+{% raw %}
 ```typescript
 // src/MyVideo.tsx
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
@@ -363,9 +364,11 @@ export const MyVideo: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### 注册合成
 
+{% raw %}
 ```typescript
 // src/Root.tsx
 import { Composition } from 'remotion';
@@ -387,6 +390,7 @@ export const RemotionRoot: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### 开发和渲染
 
@@ -471,6 +475,7 @@ export const RemotionRoot: React.FC = () => {
 
 #### useCurrentFrame Hook
 
+{% raw %}
 ```typescript
 import { useCurrentFrame } from 'remotion';
 
@@ -501,6 +506,7 @@ export const AnimatedCircle: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 #### Sequence 组件
 
@@ -559,6 +565,7 @@ gantt
 
 #### Video 组件
 
+{% raw %}
 ```typescript
 import { Video } from 'remotion';
 
@@ -579,6 +586,7 @@ export const VideoScene: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 #### Audio 组件
 
@@ -621,6 +629,7 @@ export const AudioScene: React.FC = () => {
 
 #### Img 组件
 
+{% raw %}
 ```typescript
 import { Img, staticFile, useCurrentFrame } from 'remotion';
 
@@ -643,6 +652,7 @@ export const ImageScene: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### 4. 延迟渲染（处理异步操作）
 
@@ -687,6 +697,7 @@ export const DataDrivenVideo: React.FC = () => {
 
 #### 使用插值函数
 
+{% raw %}
 ```typescript
 import { interpolate, useCurrentFrame } from 'remotion';
 
@@ -733,6 +744,7 @@ export const SmoothAnimation: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 #### 预设缓动函数
 
@@ -776,6 +788,7 @@ graph LR
 
 ### 2. Spring 动画（物理引擎）
 
+{% raw %}
 ```typescript
 import { spring, useCurrentFrame, useVideoConfig } from 'remotion';
 
@@ -817,6 +830,7 @@ export const SpringAnimation: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### 3. 数据可视化
 
@@ -883,6 +897,7 @@ export const AnimatedBarChart: React.FC<ChartProps> = ({ data }) => {
 
 ### 4. Three.js 3D 场景
 
+{% raw %}
 ```typescript
 import { ThreeCanvas } from '@remotion/three';
 import { useCurrentFrame } from 'remotion';
@@ -909,9 +924,11 @@ export const ThreeScene: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### 5. Lottie 动画集成
 
+{% raw %}
 ```typescript
 import { Lottie } from '@remotion/lottie';
 import animationData from './animation.json';
@@ -928,6 +945,7 @@ export const LottieScene: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ## 渲染和部署
 
@@ -1261,6 +1279,7 @@ export const TypeWriter: React.FC<{ text: string; duration: number }> = ({
 
 为企业创建数据驱动的视频报告。
 
+{% raw %}
 ```typescript
 interface DashboardProps {
   companyName: string;
@@ -1307,11 +1326,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
   );
 };
 ```
+{% endraw %}
 
 ### 案例4：社交媒体自动化
 
 批量生成品牌一致的社交媒体内容。
 
+{% raw %}
 ```typescript
 interface SocialPostProps {
   platform: 'instagram' | 'twitter' | 'tiktok';
@@ -1367,6 +1388,7 @@ async function generateBatchVideos() {
   }
 }
 ```
+{% endraw %}
 
 ## 最佳实践
 
@@ -1422,6 +1444,7 @@ graph TD
 
 ### 3. 代码质量
 
+{% raw %}
 ```typescript
 // ✓ 好的做法：组件化和复用
 export const Badge: React.FC<{ text: string; color: string }> = ({ text, color }) => {
@@ -1471,6 +1494,7 @@ export const BadComponent = () => {
   return <div>...</div>;
 };
 ```
+{% endraw %}
 
 ### 4. 测试策略
 
@@ -1754,6 +1778,7 @@ graph LR
 
 可以！使用 `@remotion/player`:
 
+{% raw %}
 ```typescript
 import { Player } from '@remotion/player';
 import { MyVideo } from './MyVideo';
@@ -1773,6 +1798,7 @@ export const App = () => {
   );
 };
 ```
+{% endraw %}
 
 ### Q4: 支持哪些视频格式？
 
