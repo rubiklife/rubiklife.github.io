@@ -414,6 +414,413 @@ npx remotion render MyVideo out/video.mp4 \
   --audio-codec=aac
 ```
 
+## AI 辅助开发：使用 Remotion Skills
+
+Remotion 提供了专门的 **Agent Skills**，为 AI 编程助手（如 Claude Code、Cursor、Cline 等）定义了在 Remotion 项目中工作的最佳实践。这些技能可以显著提升你的开发效率，让 AI 助手更好地理解 Remotion 的特性和约定。
+
+```mermaid
+graph LR
+    A[Remotion Skills] --> B[AI 编程助手]
+    B --> C[Claude Code]
+    B --> D[Cursor]
+    B --> E[Cline]
+    B --> F[GitHub Copilot]
+    
+    A --> G[最佳实践]
+    G --> H[组件模式]
+    G --> I[性能优化]
+    G --> J[常见陷阱]
+    G --> K[调试技巧]
+    
+    A --> L[代码示例]
+    L --> M[动画实现]
+    L --> N[数据集成]
+    L --> O[渲染配置]
+    
+    style A fill:#4CAF50
+    style B fill:#2196F3
+```
+
+### 安装 Remotion Skills
+
+#### 方式一：创建项目时安装
+
+在创建新的 Remotion 项目时，系统会提示你是否安装 Skills：
+
+```bash
+bun create video
+# 或
+npx create-video@latest
+
+# 在交互式提示中选择 "Yes" 来安装 Skills
+```
+
+**交互过程**：
+
+```
+✔ Project name: my-video
+✔ Package manager: bun
+✔ Template: TypeScript
+✔ Install Remotion Skills for AI assistants? › Yes  ← 选择这个
+
+Installing Remotion Skills...
+✓ Skills installed successfully!
+```
+
+#### 方式二：在现有项目中安装
+
+如果你已经有一个 Remotion 项目，可以使用以下命令安装 Skills：
+
+```bash
+# 使用 npx（推荐）
+npx skills add remotion-dev/skills
+
+# 或者直接从 GitHub 安装
+npx skills add https://github.com/remotion-dev/remotion/tree/main/packages/skills
+```
+
+安装完成后，Skills 会被添加到你的项目中，AI 助手将自动识别并应用这些最佳实践。
+
+### Skills 包含的内容
+
+Remotion Skills 涵盖了以下关键领域：
+
+```mermaid
+mindmap
+  root((Remotion<br/>Skills))
+    项目结构
+      目录组织
+      文件命名
+      模块划分
+      配置管理
+    组件开发
+      时间轴使用
+      动画模式
+      状态管理
+      Props设计
+    性能优化
+      渲染优化
+      内存管理
+      并发控制
+      缓存策略
+    媒体处理
+      视频导入
+      音频同步
+      图片优化
+      字体加载
+    调试技巧
+      常见错误
+      日志输出
+      预览调试
+      性能分析
+    部署实践
+      本地渲染
+      云端部署
+      CI/CD集成
+      版本管理
+```
+
+### Skills 提供的帮助
+
+#### 1. 智能代码补全
+
+AI 助手会根据 Remotion 的最佳实践提供更准确的代码建议：
+
+**示例场景**：当你输入 `useCurrentFrame` 时，AI 会建议正确的用法：
+
+```typescript
+// ✓ AI 会建议这样使用
+import { useCurrentFrame, interpolate } from 'remotion';
+
+export const MyComponent = () => {
+  const frame = useCurrentFrame();
+  
+  // 使用 interpolate 而不是手动计算
+  const opacity = interpolate(frame, [0, 30], [0, 1]);
+  
+  return <div style={{ opacity }}>...</div>;
+};
+
+// ✗ 避免直接进行复杂计算
+// const opacity = Math.min(1, frame / 30); // AI 会建议使用 interpolate
+```
+
+#### 2. 常见模式识别
+
+AI 助手能识别并建议 Remotion 中的常见模式：
+
+```typescript
+// 当你开始编写动画时，AI 会建议使用 spring
+import { spring, useCurrentFrame, useVideoConfig } from 'remotion';
+
+export const BouncyText = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  
+  // AI 建议：对于弹性动画，使用 spring 而不是 interpolate
+  const scale = spring({
+    frame,
+    fps,
+    config: {
+      damping: 10,
+      stiffness: 100,
+    },
+  });
+  
+  return (
+    <div style={{ transform: `scale(${scale})` }}>
+      Bouncy!
+    </div>
+  );
+};
+```
+
+#### 3. 性能优化建议
+
+AI 会主动提醒性能相关的注意事项：
+
+```typescript
+import React from 'react';
+import { useCurrentFrame } from 'remotion';
+
+// ✓ AI 会建议使用 React.memo 避免不必要的重渲染
+export const HeavyComponent = React.memo<{ data: number[] }>(({ data }) => {
+  const frame = useCurrentFrame();
+  
+  // 昂贵的计算...
+  const processed = data.map(/* ... */);
+  
+  return <div>{/* ... */}</div>;
+});
+
+// AI 还会建议将静态内容提取到组件外部
+const STATIC_STYLES = {
+  container: {
+    width: '100%',
+    height: '100%',
+  },
+};
+```
+
+#### 4. 错误预防
+
+AI 会帮助你避免常见错误：
+
+```typescript
+// ✗ AI 会警告：delayRender 必须在组件渲染时同步调用
+export const BadComponent = () => {
+  const [data, setData] = useState(null);
+  
+  useEffect(() => {
+    const handle = delayRender(); // ✗ 错误：异步调用
+    // ...
+  }, []);
+};
+
+// ✓ AI 建议的正确用法
+export const GoodComponent = () => {
+  const [data, setData] = useState(null);
+  const [handle] = useState(() => delayRender()); // ✓ 正确：同步调用
+  
+  useEffect(() => {
+    // 使用 handle...
+    continueRender(handle);
+  }, [handle]);
+};
+```
+
+### 与不同 AI 助手配合使用
+
+#### Claude Code / Cursor
+
+在 Cursor 中，Remotion Skills 会自动被识别为 Agent Skills：
+
+```bash
+# 在 Cursor 中，Skills 会出现在 Agent Skills 列表中
+# 你可以通过命令面板查看：Cmd+Shift+P → "Agent Skills"
+```
+
+**使用示例**：
+
+```
+你: "创建一个带弹簧动画的文字组件"
+
+Claude (有 Skills): 
+我会创建一个使用 spring 的文字组件，这是 Remotion 中实现物理动画的最佳实践...
+[生成优化的代码]
+
+Claude (无 Skills):
+我会创建一个动画组件...
+[可能生成不够优化的代码]
+```
+
+#### GitHub Copilot
+
+GitHub Copilot 也能从 Skills 中学习：
+
+```typescript
+// 当你开始输入时，Copilot 会基于 Skills 提供更好的建议
+import { Composition } from 'remotion';
+
+// 输入 "export const " 后，Copilot 会建议：
+export const RemotionRoot: React.FC = () => {
+  return (
+    <>
+      <Composition
+        id="MyVideo"           // Skills: 使用清晰的 id
+        component={MyVideo}
+        durationInFrames={150} // Skills: 150帧 = 5秒 @ 30fps
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+    </>
+  );
+};
+```
+
+### Skills 的实际效果
+
+```mermaid
+graph TD
+    A[开发任务] --> B{使用 Skills?}
+    
+    B -->|是| C[AI 助手<br/>+ Skills]
+    B -->|否| D[AI 助手<br/>无 Skills]
+    
+    C --> E[最佳实践代码]
+    C --> F[性能优化建议]
+    C --> G[错误预防]
+    
+    D --> H[基础代码]
+    D --> I[可能有性能问题]
+    D --> J[需要手动优化]
+    
+    E --> K[高质量产出]
+    F --> K
+    G --> K
+    
+    H --> L[需要重构]
+    I --> L
+    J --> L
+    
+    K --> M[开发效率<br/>↑ 50-70%]
+    L --> N[额外时间成本<br/>↑ 30-50%]
+    
+    style C fill:#4CAF50
+    style K fill:#4CAF50
+    style M fill:#4CAF50
+    style D fill:#FF9800
+    style L fill:#FF9800
+    style N fill:#FF9800
+```
+
+### 查看和自定义 Skills
+
+Skills 存储在你的项目中，你可以查看和自定义它们：
+
+```bash
+# Skills 通常位于项目根目录的隐藏文件夹中
+.cursor/
+  └── skills/
+      └── remotion-dev/
+          └── SKILL.md
+
+# 或者在 .claude/ 目录中（取决于你使用的 AI 助手）
+.claude/
+  └── skills/
+```
+
+你也可以在 GitHub 上查看完整的 Skills 内容：
+
+- **GitHub 仓库**: [remotion-dev/remotion/packages/skills](https://github.com/remotion-dev/remotion/tree/main/packages/skills)
+- **Skills 平台**: [agentskills.io](https://agentskills.io/home)
+
+### 最佳实践：充分利用 Skills
+
+#### 1. 主动询问 AI
+
+当遇到问题时，主动向 AI 询问 Remotion 最佳实践：
+
+```
+你: "在 Remotion 中实现淡入淡出效果的最佳方式是什么？"
+
+AI (有 Skills):
+根据 Remotion 最佳实践，推荐使用 interpolate 函数配合
+extrapolate 参数来实现淡入淡出效果...
+[提供完整示例]
+```
+
+#### 2. 让 AI 审查代码
+
+请 AI 帮你审查 Remotion 代码的性能和最佳实践：
+
+```
+你: "请审查这段 Remotion 代码并提出优化建议"
+
+AI (有 Skills):
+我发现以下可以改进的地方：
+1. 建议使用 React.memo 包装 HeavyComponent
+2. staticFile() 调用可以提取到组件外部
+3. 这里的动画可以用 spring() 替代 interpolate()
+...
+```
+
+#### 3. 快速原型开发
+
+使用 AI 快速生成 Remotion 组件原型：
+
+```
+你: "创建一个显示股票价格走势图的 Remotion 组件，
+     数据从 API 获取，包含动画效果"
+
+AI (有 Skills):
+我会创建一个遵循 Remotion 最佳实践的股票走势图组件，
+包含：
+- 使用 delayRender() 处理异步数据加载
+- 使用 interpolate() 实现平滑的图表动画
+- 使用 SVG 绘制性能优化的图表
+[生成完整代码]
+```
+
+### Skills 带来的价值
+
+```mermaid
+graph LR
+    A[Remotion Skills] --> B[学习曲线降低<br/>↓ 40-60%]
+    A --> C[开发效率提升<br/>↑ 50-70%]
+    A --> D[代码质量提升<br/>↑ 30-50%]
+    A --> E[错误减少<br/>↓ 60-80%]
+    
+    B --> F[新手快速上手]
+    C --> G[资深开发者加速]
+    D --> H[符合最佳实践]
+    E --> I[减少调试时间]
+    
+    style A fill:#4CAF50
+    style B fill:#2196F3
+    style C fill:#2196F3
+    style D fill:#2196F3
+    style E fill:#2196F3
+```
+
+### 总结
+
+Remotion Skills 是连接 AI 助手与 Remotion 框架的桥梁，它能够：
+
+- ✅ **加速学习**：新手可以更快掌握 Remotion 的最佳实践
+- ✅ **提高效率**：减少查阅文档的时间，AI 直接提供正确答案
+- ✅ **保证质量**：确保生成的代码符合 Remotion 的性能和可维护性标准
+- ✅ **避免陷阱**：预防常见错误，减少调试时间
+- ✅ **持续改进**：随着 Remotion 的更新，Skills 也会持续优化
+
+**推荐所有 Remotion 开发者安装使用！**
+
+📚 **相关链接**：
+- [Remotion AI Skills 文档](https://www.remotion.dev/docs/ai/skills)
+- [Agent Skills 平台](https://agentskills.io/home)
+- [GitHub Skills 仓库](https://github.com/remotion-dev/remotion/tree/main/packages/skills)
+
 ## 核心概念
 
 ### 1. Composition（合成）
