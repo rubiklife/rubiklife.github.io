@@ -855,6 +855,7 @@ graph TD
 
 **多合成管理**：
 
+{% raw %}
 ```typescript
 export const RemotionRoot: React.FC = () => {
   return (
@@ -887,6 +888,7 @@ export const RemotionRoot: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### 2. 时间轴系统
 
@@ -929,6 +931,7 @@ export const AnimatedCircle: React.FC = () => {
 
 Sequence 用于在时间轴上排列内容：
 
+{% raw %}
 ```typescript
 import { Sequence, useCurrentFrame } from 'remotion';
 
@@ -953,6 +956,7 @@ export const Timeline: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 **时间轴可视化**：
 
@@ -1007,6 +1011,7 @@ export const VideoScene: React.FC = () => {
 
 #### Audio 组件
 
+{% raw %}
 ```typescript
 import { Audio, Sequence } from 'remotion';
 
@@ -1043,6 +1048,7 @@ export const AudioScene: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 #### Img 组件
 
@@ -1073,6 +1079,7 @@ export const ImageScene: React.FC = () => {
 
 ### 4. 延迟渲染（处理异步操作）
 
+{% raw %}
 ```typescript
 import { continueRender, delayRender, useCurrentFrame } from 'remotion';
 import { useEffect, useState } from 'react';
@@ -1107,6 +1114,7 @@ export const DataDrivenVideo: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ## 高级技术
 
