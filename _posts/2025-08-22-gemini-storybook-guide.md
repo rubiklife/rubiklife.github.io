@@ -1,6 +1,6 @@
 ---
 title: "Gemini Storybook 详细使用指南：从入门到精通"
-date: 2025-08-22 07:00:00 +0800
+date: 2025-08-22T07:00:00+08:00
 categories:
   - AI工具
 tags:

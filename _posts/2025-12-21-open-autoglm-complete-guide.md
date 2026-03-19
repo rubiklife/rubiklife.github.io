@@ -1,6 +1,6 @@
 ---
 title: "Open-AutoGLM 完全指南：AI驱动的移动设备自动化框架"
-date: 2025-12-21 10:00:00 +0800
+date: 2025-12-21T10:00:00+08:00
 categories:
   - AI工具
 tags:

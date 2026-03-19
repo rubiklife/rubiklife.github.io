@@ -1,6 +1,6 @@
 ---
 title: "Superpowers 完全指南：AI编程助手的超能力工作流系统"
-date: 2026-01-17 10:00:00 +0800
+date: 2026-01-17T10:00:00+08:00
 categories:
   - AI工具
 tags:

@@ -725,6 +725,7 @@ graph TD
 
 ### 基本数组操作
 
+{% raw %}
 ```java
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
@@ -771,6 +772,7 @@ public class ND4JBasics {
     }
 }
 ```
+{% endraw %}
 
 ### 高级操作
 

@@ -1,6 +1,6 @@
 ---
 title: "vLLM 完整指南：高性能大语言模型推理与服务引擎"
-date: 2026-02-01 10:00:00 +0800
+date: 2026-02-04T10:00:00+08:00
 categories:
   - AI工具
 tags:
@@ -1316,6 +1316,6 @@ mindmap
 
 **相关阅读：**
 - [LangChain4j 完整指南]({% post_url 2026-01-21-langchain4j-complete-guide %})
-- [DeepLearning4j 完整指南]({% post_url 2026-01-15-deeplearning4j-complete-guide %})
+- [DeepLearning4j 完整指南]({% post_url 2026-01-27-deeplearning4j-complete-guide %})
 - [Apache OpenNLP 完整指南]({% post_url 2026-01-09-apache-opennlp-complete-guide %})
 

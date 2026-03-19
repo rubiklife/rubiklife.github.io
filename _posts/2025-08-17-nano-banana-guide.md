@@ -1,6 +1,6 @@
 ---
 title: "Nano Banana AI 图像生成完全指南：Gemini 2.5 Flash Image 深度解析"
-date: 2025-08-17 07:30:00 +0800
+date: 2025-08-17T07:30:00+08:00
 categories:
   - AI工具
 tags:

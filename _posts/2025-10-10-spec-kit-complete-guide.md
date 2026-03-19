@@ -1,6 +1,6 @@
 ---
 title: "GitHub Spec Kit 完全指南：规范驱动开发的实践手册"
-date: 2025-10-10 16:00:00 +0800
+date: 2025-10-10T16:00:00+08:00
 categories:
   - 开发工具
 tags:

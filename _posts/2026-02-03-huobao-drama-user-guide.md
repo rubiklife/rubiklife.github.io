@@ -1,0 +1,1451 @@
+---
+title: "火宝短剧使用手册：AI驱动的一站式短剧制作平台完全指南"
+date: 2026-02-03T10:00:00+08:00
+categories:
+  - AI工具
+tags:
+  - AI
+  - 短剧制作
+  - 视频生成
+  - 火宝短剧
+  - Docker
+  - Vue3
+  - Go
+toc: true
+toc_label: "目录"
+toc_icon: "video"
+mermaid: true
+excerpt: "火宝短剧 - 基于 AI 的一站式短剧生成平台使用手册。从安装配置到完整短剧制作，一句话生成短剧，从剧本到成片全自动化。支持 Docker 部署、多 AI 服务商集成。"
+---
+
+## 项目简介
+
+**火宝短剧（Huobao Drama）** 是一个基于 AI 的一站式短剧生成平台，能够实现"一句话生成完整短剧"的全自动化工作流程。从剧本创作到角色图像生成，从分镜脚本到最终视频合成，整个过程无缝衔接，大幅降低短剧制作门槛。
+
+```mermaid
+mindmap
+  root((火宝短剧))
+    核心功能
+      一句话生成短剧
+      AI剧本创作
+      角色图像生成
+      场景图像生成
+      分镜自动拆解
+      视频自动生成
+      时间轴编辑
+    技术架构
+      后端Go语言
+      前端Vue3
+      数据库SQLite
+      视频处理FFmpeg
+      AI集成多服务商
+    部署方式
+      Docker部署
+      二进制部署
+      开发模式
+    AI支持
+      OpenAI GPT/DALL-E
+      Chatfire API
+      豆包/火山引擎
+      Gemini
+      自定义模型
+    工作流程
+      Stage0剧本创作
+      Stage1图像生成
+      Stage2分镜拆解
+      Stage3专业编辑
+```
+
+### 项目特色
+
+✨ **全流程自动化**
+- 从剧本到成片全部自动化处理
+- AI 驱动的角色与场景提取
+- 智能分镜脚本生成
+- 批量图像与视频生成
+
+🎨 **专业级制作工具**
+- 可视化时间轴编辑器
+- 支持分镜级别的精细调整
+- 多种镜头类型与运动效果
+- 视频转场与特效支持
+
+🔌 **灵活的 AI 集成**
+- 支持多种 AI 服务提供商
+- 优先级机制实现自动故障转移
+- 统一的配置管理界面
+- 可自定义模型选择
+
+📦 **开箱即用**
+- Docker 一键部署
+- 内置 SQLite 数据库
+- 响应式 Web 界面
+- 支持暗黑/明亮主题
+
+## 系统架构
+
+### 整体架构图
+
+```mermaid
+graph TB
+    subgraph "前端层 - Vue3"
+        A1[DramaList.vue<br/>项目管理]
+        A2[DramaManagement.vue<br/>剧集管理]
+        A3[EpisodeWorkflow.vue<br/>三阶段向导]
+        A4[ProfessionalEditor.vue<br/>专业编辑器]
+        A5[AIConfig.vue<br/>AI配置]
+    end
+
+    subgraph "API层 - Gin"
+        B1[drama_handler<br/>剧本接口]
+        B2[video_handler<br/>视频接口]
+        B3[image_handler<br/>图像接口]
+        B4[ai_handler<br/>AI配置接口]
+    end
+
+    subgraph "业务层 - Services"
+        C1[DramaService<br/>剧本业务逻辑]
+        C2[VideoGenerationService<br/>视频生成服务]
+        C3[ImageGenerationService<br/>图像生成服务]
+        C4[AIService<br/>AI服务管理]
+    end
+
+    subgraph "领域层 - Models"
+        D1[Drama<br/>短剧]
+        D2[Episode<br/>剧集]
+        D3[Character<br/>角色]
+        D4[Scene<br/>场景]
+        D5[Storyboard<br/>分镜]
+    end
+
+    subgraph "基础设施层"
+        E1[GORM + SQLite<br/>数据持久化]
+        E2[LocalStorage<br/>文件存储]
+        E3[FFmpeg<br/>视频处理]
+        E4[AI Clients<br/>AI接口客户端]
+    end
+
+    subgraph "外部服务"
+        F1[OpenAI<br/>GPT-4/DALL-E/Sora]
+        F2[Chatfire<br/>多模型网关]
+        F3[豆包<br/>Seedance视频]
+        F4[Gemini<br/>Google AI]
+    end
+
+    A1 & A2 & A3 & A4 & A5 --> B1 & B2 & B3 & B4
+    B1 & B2 & B3 & B4 --> C1 & C2 & C3 & C4
+    C1 & C2 & C3 & C4 --> D1 & D2 & D3 & D4 & D5
+    D1 & D2 & D3 & D4 & D5 --> E1
+    C2 & C3 --> E2 & E3
+    C4 --> E4
+    E4 --> F1 & F2 & F3 & F4
+```
+
+### 技术栈
+
+#### 后端技术栈
+
+| 组件 | 技术 | 版本 | 用途 |
+|------|------|------|------|
+| **语言** | Go | 1.23+ | 核心运行时 |
+| **Web框架** | Gin | 1.9+ | REST API服务器 |
+| **ORM** | GORM | 最新版 | 数据库抽象层 |
+| **数据库** | SQLite | 3.x | 数据持久化 |
+| **日志** | Zap | 最新版 | 结构化日志 |
+| **视频处理** | FFmpeg | 4.0+ | 视频合并/剪辑 |
+
+#### 前端技术栈
+
+| 组件 | 技术 | 版本 | 用途 |
+|------|------|------|------|
+| **框架** | Vue | 3.4+ | 响应式UI |
+| **语言** | TypeScript | 5+ | 类型安全 |
+| **构建工具** | Vite | 5 | 开发服务器与打包 |
+| **UI组件** | Element Plus | 最新版 | 组件库 |
+| **CSS框架** | TailwindCSS | 最新版 | 样式工具 |
+| **状态管理** | Pinia | 最新版 | 集中状态管理 |
+| **路由** | Vue Router | 4 | 客户端路由 |
+
+## 快速开始
+
+### 前置要求
+
+| 依赖项 | 版本 | 用途 | 必需性 |
+|--------|------|------|--------|
+| **FFmpeg** | 4.0+ | 视频处理与合并 | 所有部署方式 |
+| **Docker** | 20.10+ | 容器运行时 | Docker部署 |
+| **Go** | 1.23+ | 后端编译 | 源码编译 |
+| **Node.js** | 18+ | 前端构建 | 源码编译 |
+
+### Docker 快速部署（推荐）
+
+Docker 是最快捷的部署方式，2分钟即可启动完整系统。
+
+```mermaid
+graph LR
+    A[拉取镜像] --> B[启动容器]
+    B --> C[访问Web界面]
+    C --> D[配置AI服务]
+    D --> E[开始创作]
+    
+    style A fill:#e1f5ff
+    style E fill:#c8e6c9
+```
+
+#### 1. 使用 docker-compose（最简单）
+
+```bash
+# 下载 docker-compose.yml
+curl -O https://raw.githubusercontent.com/chatfire-AI/huobao-drama/master/docker-compose.yml
+
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+```
+
+#### 2. 使用 docker run
+
+```bash
+# 拉取并运行容器
+docker run -d \
+  --name huobao-drama \
+  -p 5678:5678 \
+  -v huobao-data:/app/data \
+  --restart unless-stopped \
+  huobao/huobao-drama:latest
+
+# 查看运行状态
+docker ps | grep huobao-drama
+
+# 查看日志
+docker logs -f huobao-drama
+```
+
+#### 3. 验证部署
+
+```bash
+# 检查健康状态
+curl http://localhost:5678/health
+
+# 检查API可用性
+curl http://localhost:5678/api/v1/dramas
+```
+
+**预期输出：**
+- Health 端点：`200 OK`
+- Dramas 端点：`[]`（空数组，表示尚未创建项目）
+
+#### 4. 访问 Web 界面
+
+打开浏览器访问：`http://localhost:5678`
+
+你将看到火宝短剧的主界面。
+
+### 配置 AI 服务
+
+在开始创作前，需要配置至少一个 AI 服务提供商。
+
+```mermaid
+graph TB
+    A[访问AI配置页面] --> B{选择服务类型}
+    B -->|文本生成| C[配置GPT-4等]
+    B -->|图像生成| D[配置DALL-E等]
+    B -->|视频生成| E[配置Sora等]
+    
+    C & D & E --> F[填写API密钥]
+    F --> G[测试连接]
+    G -->|成功| H[启用服务]
+    G -->|失败| I[检查配置]
+    I --> F
+    
+    style H fill:#c8e6c9
+    style I fill:#ffcdd2
+```
+
+#### 配置步骤
+
+1. **进入配置页面**
+   - 点击页面右上角的"设置"按钮
+   - 选择"AI服务配置"
+
+2. **选择服务类型**
+   - **文本生成**：用于剧本解析、角色提取、分镜拆解
+   - **图像生成**：用于角色肖像和场景背景
+   - **视频生成**：用于分镜视频生成
+
+3. **添加配置**
+   - 点击"添加配置"按钮
+   - 选择提供商（OpenAI、Chatfire、豆包等）
+   - 填写以下信息：
+
+| 字段 | 说明 | 示例 |
+|------|------|------|
+| **提供商** | AI服务商名称 | `openai` |
+| **模型** | 可用模型列表（JSON数组） | `["gpt-4", "gpt-4-turbo"]` |
+| **API密钥** | 服务商提供的密钥 | `sk-...` |
+| **Base URL** | API端点地址 | `https://api.openai.com/v1` |
+| **优先级** | 数字越小优先级越高 | `1` |
+
+4. **测试连接**
+   - 点击"测试连接"按钮
+   - 确认配置有效
+
+5. **启用服务**
+   - 切换"启用"开关
+   - 保存配置
+
+#### 最小配置要求
+
+```mermaid
+graph LR
+    A[文本生成服务<br/>至少1个] 
+    B[图像生成服务<br/>至少1个] 
+    C[视频生成服务<br/>至少1个]
+    
+    A & B & C --> D[完整功能]
+    
+    style D fill:#c8e6c9
+```
+
+**推荐配置组合：**
+
+- **文本生成**：OpenAI GPT-4 或 Chatfire（支持多模型）
+- **图像生成**：OpenAI DALL-E-3 或 Midjourney
+- **视频生成**：豆包 Seedance 或 OpenAI Sora
+
+## 短剧制作工作流
+
+火宝短剧采用四阶段线性工作流程，每个阶段必须完成后才能进入下一阶段，确保数据质量和一致性。
+
+```mermaid
+graph LR
+    A[Stage 0<br/>剧本与实体提取] --> B[Stage 1<br/>图像生成]
+    B --> C[Stage 2<br/>分镜拆解]
+    C --> D[Stage 3<br/>专业编辑]
+    D --> E[最终视频]
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5
+    style C fill:#e8f5e9
+    style D fill:#fff3e0
+    style E fill:#c8e6c9
+```
+
+### Stage 0: 剧本与实体提取
+
+这是创作的起点，支持 AI 生成或手动上传剧本。
+
+```mermaid
+graph TB
+    A[创建剧集] --> B{选择剧本来源}
+    B -->|AI生成| C[输入一句话主题]
+    B -->|手动上传| D[粘贴剧本文本]
+    
+    C --> E[AI生成完整剧本]
+    D --> F[保存剧本内容]
+    E --> F
+    
+    F --> G[提取角色信息]
+    F --> H[提取场景信息]
+    
+    G & H --> I[完成Stage 0]
+    
+    style C fill:#e3f2fd
+    style D fill:#f3e5f5
+    style I fill:#c8e6c9
+```
+
+#### 操作步骤
+
+1. **创建短剧项目**
+   ```
+   - 在主页点击"创建项目"
+   - 填写短剧标题和描述
+   - 点击"确认"
+   ```
+
+2. **创建剧集**
+   ```
+   - 进入短剧详情页
+   - 在"剧集管理"标签页点击"创建剧集"
+   - 选择剧集编号
+   ```
+
+3. **AI 生成剧本**
+   ```
+   - 选择"AI生成"选项
+   - 输入主题，例如："一个程序员穿越到古代成为状元的故事"
+   - 选择文本生成模型（如 GPT-4）
+   - 点击"生成剧本"
+   - 等待 AI 生成完整剧本内容
+   ```
+
+4. **或上传现有剧本**
+   ```
+   - 选择"上传剧本"选项
+   - 在文本框中粘贴剧本内容
+   - 点击"保存"
+   ```
+
+5. **提取角色与场景**
+   ```
+   - 点击"提取角色和场景"按钮
+   - AI 会自动分析剧本
+   - 提取出所有角色信息（姓名、描述、性别等）
+   - 提取出所有场景信息（位置、时间、描述等）
+   ```
+
+#### 数据结构
+
+提取后的数据包括：
+
+**角色（Character）：**
+- 姓名
+- 角色描述
+- 外貌特征
+- 性别
+- 年龄
+
+**场景（Scene）：**
+- 场景位置
+- 时间（白天/夜晚）
+- 场景描述
+- 氛围
+
+#### 状态验证
+
+完成此阶段后，你将看到：
+- ✅ 剧本内容已保存
+- ✅ 角色列表已生成（如：主角、配角等）
+- ✅ 场景列表已生成（如：皇宫大殿、书房等）
+
+### Stage 1: 图像生成
+
+为每个角色和场景生成视觉素材。
+
+```mermaid
+graph TB
+    A[开始Stage 1] --> B[选择角色]
+    A --> C[选择场景]
+    
+    B --> D{生成方式}
+    D -->|单个生成| E[点击角色卡片]
+    D -->|批量生成| F[勾选多个角色]
+    
+    C --> G{生成方式}
+    G -->|单个生成| H[点击场景卡片]
+    G -->|批量生成| I[勾选多个场景]
+    
+    E & F --> J[选择图像模型]
+    H & I --> J
+    
+    J --> K[提交生成任务]
+    K --> L[轮询任务状态<br/>每6秒检查一次]
+    
+    L -->|处理中| L
+    L -->|完成| M[显示生成图像]
+    L -->|失败| N[点击重新生成]
+    
+    M --> O{所有图像完成?}
+    O -->|否| B
+    O -->|是| P[进入Stage 2]
+    
+    style M fill:#c8e6c9
+    style N fill:#ffcdd2
+    style P fill:#c8e6c9
+```
+
+#### 操作步骤
+
+1. **单个角色图像生成**
+   ```
+   - 在角色卡片上点击"生成图像"按钮
+   - 选择图像生成模型（如 DALL-E-3）
+   - 系统会自动根据角色描述生成 Prompt
+   - 等待生成完成（通常 10-30 秒）
+   ```
+
+2. **批量角色图像生成**
+   ```
+   - 勾选多个角色的复选框
+   - 或点击"全选"按钮
+   - 点击"批量生成角色图像"按钮
+   - 选择模型
+   - 所有选中的角色将依次生成
+   ```
+
+3. **场景图像生成**
+   ```
+   - 操作与角色生成类似
+   - 在"场景"区域选择场景
+   - 单个或批量生成
+   ```
+
+#### 生成状态说明
+
+| 状态 | 标识 | 说明 |
+|------|------|------|
+| **待生成** | 灰色占位符 | 尚未提交生成任务 |
+| **排队中** | 橙色标签+旋转图标 | 任务已提交，等待处理 |
+| **处理中** | 橙色标签+旋转图标 | AI 正在生成图像 |
+| **已完成** | 显示图像 | 生成成功，图像可用 |
+| **失败** | 红色错误图标 | 生成失败，可点击重试 |
+
+#### 轮询机制
+
+系统使用自动轮询机制检查任务状态：
+- **轮询间隔**：6 秒
+- **最大尝试次数**：100 次
+- **超时时间**：10 分钟
+
+```mermaid
+sequenceDiagram
+    participant UI as 用户界面
+    participant API as 后端API
+    participant AI as AI服务
+    
+    UI->>API: 提交生成请求
+    API->>AI: 调用图像生成API
+    API-->>UI: 返回任务ID
+    
+    loop 每6秒轮询
+        UI->>API: 查询任务状态(task_id)
+        API-->>UI: 返回状态
+        
+        alt 状态=完成
+            UI->>UI: 显示图像
+        else 状态=失败
+            UI->>UI: 显示错误
+        else 状态=处理中
+            UI->>UI: 继续等待
+        end
+    end
+```
+
+#### 注意事项
+
+- ⚠️ 必须所有角色和场景都有图像才能进入下一阶段
+- 💡 可以随时修改角色描述后重新生成
+- 🔄 生成失败的图像可以点击卡片重试
+- 📦 生成的图像会自动缓存到本地存储
+
+### Stage 2: 分镜拆解
+
+AI 自动将剧本拆解为详细的分镜脚本。
+
+```mermaid
+graph TB
+    A[开始Stage 2] --> B[点击AI自动拆分]
+    B --> C[选择文本模型]
+    C --> D[提交拆分任务]
+    
+    D --> E[AI分析剧本]
+    E --> F[生成分镜脚本]
+    
+    F --> G[轮询任务状态<br/>每2秒检查一次]
+    
+    G -->|处理中| G
+    G -->|完成| H[显示分镜列表]
+    G -->|失败| I[显示错误]
+    
+    H --> J[自动跳转到<br/>专业编辑器]
+    
+    style H fill:#c8e6c9
+    style I fill:#ffcdd2
+    style J fill:#c8e6c9
+```
+
+#### 操作步骤
+
+1. **启动分镜拆解**
+   ```
+   - 在 Stage 2 页面点击"AI 自动拆分分镜"
+   - 选择文本生成模型（推荐 GPT-4）
+   - 点击"确认"
+   ```
+
+2. **等待 AI 处理**
+   ```
+   - AI 会分析剧本内容
+   - 识别场景变化和对话节点
+   - 生成完整的分镜脚本
+   - 处理时间取决于剧本长度（通常 1-3 分钟）
+   ```
+
+3. **查看生成结果**
+   ```
+   - 任务完成后，系统会显示分镜总数
+   - 点击"查看详情"可预览分镜列表
+   ```
+
+4. **自动跳转**
+   ```
+   - 拆解完成后会自动跳转到"专业编辑器"
+   - 或手动点击"进入专业编辑器"按钮
+   ```
+
+#### 分镜数据结构
+
+每个分镜（Storyboard）包含：
+
+| 字段 | 说明 | 示例 |
+|------|------|------|
+| **sequence** | 镜头序号 | `1` |
+| **shot_type** | 镜头类型 | `特写`、`全景`、`中景` |
+| **movement** | 运镜方式 | `推进`、`拉远`、`固定` |
+| **action** | 动作描述 | "李明打开房门，环顾四周" |
+| **dialogue** | 对白内容 | "这里就是传说中的藏书阁？" |
+| **duration** | 镜头时长（秒） | `5` |
+| **image_prompt** | 图像生成提示词 | 自动生成 |
+| **video_prompt** | 视频生成提示词 | 自动生成 |
+
+#### 轮询机制
+
+- **轮询间隔**：2 秒
+- **无超时限制**：持续轮询直到完成
+- **进度显示**：实时显示拆解进度
+
+### Stage 3: 专业编辑器
+
+这是最终的视频制作阶段，提供可视化的时间轴编辑器。
+
+```mermaid
+graph TB
+    A[进入专业编辑器] --> B[查看分镜列表]
+    
+    B --> C[编辑分镜内容]
+    C --> D[生成分镜图像]
+    C --> E[生成分镜视频]
+    
+    D & E --> F[添加到时间轴]
+    
+    F --> G[调整时间轴]
+    G --> H[设置转场效果]
+    G --> I[调整播放顺序]
+    
+    H & I --> J[合并视频]
+    J --> K[轮询合并任务]
+    
+    K -->|处理中| K
+    K -->|完成| L[下载最终视频]
+    
+    style L fill:#c8e6c9
+```
+
+#### 界面布局
+
+```mermaid
+graph TB
+    subgraph "专业编辑器界面"
+        A[顶部工具栏]
+        B[左侧分镜列表<br/>可滚动]
+        C[中间预览区]
+        D[右侧属性面板]
+        E[底部时间轴]
+    end
+    
+    A --> |保存/导出| F[操作按钮]
+    B --> |拖拽| E
+    C --> |播放预览| G[视频播放器]
+    D --> |编辑| H[分镜属性]
+    E --> |合并| I[最终视频]
+```
+
+#### 操作步骤
+
+##### 1. 编辑分镜
+
+```
+- 点击左侧分镜卡片
+- 在右侧面板编辑内容：
+  * 标题
+  * 镜头类型（特写/中景/全景/远景）
+  * 运镜方式（推进/拉远/摇移/固定）
+  * 动作描述
+  * 对白内容
+  * 时长（秒）
+  * 图像提示词
+  * 视频提示词
+- 点击"保存"按钮
+```
+
+##### 2. 生成分镜图像
+
+```
+分镜支持四种画面类型：
+1. 起始帧：视频开始画面
+2. 结束帧：视频结束画面
+3. 参考图：用于视频生成的参考
+4. 定格画面：视频的固定画面
+
+操作：
+- 选择画面类型
+- 点击"生成图像"按钮
+- 选择图像模型
+- 等待生成完成
+```
+
+##### 3. 生成分镜视频
+
+```
+- 确保已有起始帧或参考图
+- 点击"生成视频"按钮
+- 选择视频生成模型
+- 视频会根据提示词自动生成
+- 轮询间隔：5秒
+- 预计时长：5-15分钟（取决于服务商）
+```
+
+##### 4. 管理时间轴
+
+```mermaid
+graph LR
+    A[分镜列表] -->|拖拽| B[时间轴]
+    B --> C[调整顺序]
+    B --> D[设置转场]
+    B --> E[预览播放]
+    
+    C & D & E --> F[最终序列]
+```
+
+操作：
+- **添加到时间轴**：拖拽分镜卡片到时间轴区域
+- **调整顺序**：在时间轴内拖拽重新排序
+- **设置转场**：点击时间轴片段间的连接点
+  - 淡入淡出（Fade）
+  - 切换（Cut）
+  - 溶解（Dissolve）
+- **预览播放**：点击播放按钮预览效果
+
+##### 5. 合并最终视频
+
+```
+- 确认时间轴内所有片段就绪
+- 点击"合并视频"按钮
+- FFmpeg 会在后台合并所有片段
+- 应用转场效果和音频
+- 轮询合并状态（每3秒检查）
+- 合并完成后显示下载按钮
+```
+
+#### 视频生成流程
+
+```mermaid
+sequenceDiagram
+    participant User as 用户
+    participant UI as 编辑器界面
+    participant API as 后端API
+    participant AI as AI视频服务
+    participant FFmpeg as FFmpeg
+    
+    User->>UI: 点击生成视频
+    UI->>API: 提交视频生成请求
+    API->>AI: 调用视频生成API
+    AI-->>API: 返回任务ID
+    API-->>UI: 返回任务ID
+    
+    loop 每5秒轮询
+        UI->>API: 查询视频状态
+        API->>AI: 查询任务进度
+        AI-->>API: 返回状态+进度
+        API-->>UI: 返回状态
+    end
+    
+    AI->>API: 视频生成完成
+    API->>API: 下载并缓存视频
+    
+    User->>UI: 添加到时间轴
+    User->>UI: 点击合并视频
+    
+    UI->>API: 提交合并请求
+    API->>FFmpeg: 执行合并命令
+    FFmpeg-->>API: 合并完成
+    API-->>UI: 返回最终视频URL
+    
+    User->>UI: 下载视频
+```
+
+#### 高级功能
+
+**批量生成视频**
+```
+- 勾选多个分镜
+- 点击"批量生成视频"
+- 所有选中分镜会依次生成
+- 可在后台继续编辑
+```
+
+**参考图上传**
+```
+- 点击分镜卡片
+- 选择"参考图"类型
+- 点击"上传图像"
+- 选择本地图片文件
+- 该图片将用于视频生成参考
+```
+
+**视频库功能**
+```
+- 查看所有已生成的视频
+- 按分镜筛选
+- 重新使用已有视频
+- 删除无用视频
+```
+
+## 数据模型关系
+
+```mermaid
+erDiagram
+    DRAMA ||--o{ EPISODE : contains
+    DRAMA ||--o{ CHARACTER : has
+    DRAMA ||--o{ SCENE : has
+    
+    EPISODE ||--o{ STORYBOARD : contains
+    
+    STORYBOARD ||--o| VIDEO_GENERATION : generates
+    STORYBOARD ||--o{ IMAGE_GENERATION : generates
+    
+    DRAMA {
+        uint id PK
+        string title
+        string description
+        string script
+        timestamp created_at
+        timestamp updated_at
+    }
+    
+    EPISODE {
+        uint id PK
+        uint drama_id FK
+        int episode_number
+        string title
+        string content
+        string status
+    }
+    
+    CHARACTER {
+        uint id PK
+        uint drama_id FK
+        string name
+        string description
+        string image_url
+        string gender
+    }
+    
+    SCENE {
+        uint id PK
+        uint drama_id FK
+        string description
+        string location
+        string image_url
+    }
+    
+    STORYBOARD {
+        uint id PK
+        uint episode_id FK
+        int sequence
+        string shot_type
+        string description
+        string image_prompt
+        string video_prompt
+    }
+    
+    VIDEO_GENERATION {
+        uint id PK
+        uint storyboard_id FK
+        string status
+        string task_id
+        string video_url
+        string provider
+        string model
+    }
+    
+    IMAGE_GENERATION {
+        uint id PK
+        string status
+        string image_url
+        string prompt
+        string frame_type
+        string provider
+    }
+```
+
+## 常见问题与解决方案
+
+### 安装与部署
+
+#### Q1: Docker 容器如何访问主机的 Ollama？
+
+**问题**：使用 Docker 部署时，容器内无法访问主机上运行的 Ollama 服务。
+
+**解决方案**：
+
+```bash
+# 1. 确保 Ollama 监听所有接口
+export OLLAMA_HOST=0.0.0.0:11434 && ollama serve
+
+# 2. 在容器内使用特殊域名
+# Base URL 配置为：http://host.docker.internal:11434/v1
+
+# 3. Linux 用户需要添加额外参数
+docker run --add-host=host.docker.internal:host-gateway ...
+```
+
+```mermaid
+graph TB
+    A[主机 Ollama<br/>0.0.0.0:11434] 
+    B[Docker容器<br/>火宝短剧]
+    
+    B -->|host.docker.internal:11434| A
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5
+```
+
+**AI 配置界面设置**：
+- Base URL: `http://host.docker.internal:11434/v1`
+- Provider: `openai`（Ollama 兼容 OpenAI API）
+- Model: `qwen2.5:latest`（或其他已拉取的模型）
+
+#### Q2: FFmpeg 未安装或找不到？
+
+**问题**：启动时提示 `FFmpeg not found`。
+
+**解决方案**：
+
+```bash
+# macOS
+brew install ffmpeg
+
+# Ubuntu/Debian
+sudo apt update && sudo apt install ffmpeg
+
+# 验证安装
+ffmpeg -version
+```
+
+**Docker 用户无需手动安装**，镜像已包含 FFmpeg。
+
+#### Q3: 前端无法连接后端 API？
+
+**问题**：浏览器控制台显示 CORS 错误或连接拒绝。
+
+**解决方案**：
+
+1. **检查后端是否运行**
+   ```bash
+   curl http://localhost:5678/health
+   ```
+
+2. **检查端口是否正确**
+   - 默认端口：`5678`
+   - 修改配置：`configs/config.yaml` 中的 `server.port`
+
+3. **开发模式代理配置**
+   - 前端开发服务器：`http://localhost:3012`
+   - 代理配置文件：`web/vite.config.ts`
+   - 确保 `proxy` 目标指向 `http://localhost:5678`
+
+#### Q4: SQLite 写入权限错误？
+
+**问题**：日志显示 `attempt to write a readonly database`。
+
+**原因**：数据库文件或目录权限不足。
+
+**解决方案**：
+
+```bash
+# 1. 检查当前运行用户
+sudo systemctl status huobao-drama | grep "Main PID"
+ps aux | grep huobao-drama
+
+# 2. 修复权限（将 YOUR_USER 替换为实际用户）
+sudo chown -R YOUR_USER:YOUR_USER /opt/huobao-drama/data
+sudo chmod -R 755 /opt/huobao-drama/data
+
+# 3. 验证权限
+ls -la /opt/huobao-drama/data
+
+# 4. 重启服务
+sudo systemctl restart huobao-drama
+```
+
+**Docker 部署自动处理权限**，无需手动设置。
+
+### 使用问题
+
+#### Q5: 图像生成一直显示"处理中"？
+
+**可能原因**：
+1. AI 服务配置错误
+2. API 密钥无效
+3. 余额不足
+4. 网络连接问题
+
+**排查步骤**：
+
+```mermaid
+graph TB
+    A[图像处理中] --> B{检查配置}
+    B -->|配置错误| C[重新配置AI服务]
+    B -->|配置正确| D{测试连接}
+    
+    D -->|连接失败| E[检查网络/密钥]
+    D -->|连接成功| F{查看后端日志}
+    
+    F --> G[docker logs -f huobao-drama]
+    G --> H{错误信息}
+    
+    H -->|余额不足| I[充值API账户]
+    H -->|超时| J[等待或重试]
+    H -->|其他错误| K[联系技术支持]
+    
+    style C fill:#fff3e0
+    style I fill:#ffcdd2
+```
+
+**操作**：
+1. 进入 AI 配置页面
+2. 点击"测试连接"按钮
+3. 查看返回的错误信息
+4. 根据错误信息调整配置
+
+#### Q6: 视频合并失败？
+
+**问题**：点击"合并视频"后任务失败。
+
+**可能原因**：
+1. FFmpeg 未正确安装
+2. 视频文件损坏
+3. 磁盘空间不足
+4. 文件路径权限问题
+
+**解决方案**：
+
+```bash
+# 1. 检查 FFmpeg
+ffmpeg -version
+
+# 2. 检查磁盘空间
+df -h
+
+# 3. 检查日志
+# Docker:
+docker logs huobao-drama | grep -i "error"
+
+# 二进制:
+tail -f logs/app.log | grep -i "error"
+
+# 4. 手动测试 FFmpeg
+ffmpeg -i test.mp4 -c copy output.mp4
+```
+
+#### Q7: 分镜拆解结果不理想？
+
+**问题**：AI 拆解的分镜脚本不符合预期。
+
+**优化建议**：
+
+1. **优化剧本格式**
+   ```
+   ✅ 推荐格式：
+   场景：皇宫大殿 - 白天
+   人物：李明（穿着状元服）
+   动作：李明跪拜皇帝，接过圣旨
+   对白：李明："谢主隆恩！"
+   
+   ❌ 避免格式：
+   李明来到皇宫见皇帝并接过圣旨说谢主隆恩
+   ```
+
+2. **调整 AI 模型**
+   - 推荐使用 GPT-4 或更高级模型
+   - 避免使用 GPT-3.5 等较弱模型
+
+3. **手动调整**
+   - 在专业编辑器中修改分镜内容
+   - 添加或删除分镜
+   - 调整镜头类型和时长
+
+#### Q8: 如何备份数据？
+
+**方法 1：Docker 数据卷备份**
+
+```bash
+# 查看数据卷位置
+docker volume inspect huobao-data
+
+# 创建备份
+docker run --rm \
+  -v huobao-data:/data \
+  -v $(pwd):/backup \
+  alpine tar czf /backup/huobao-backup-$(date +%Y%m%d).tar.gz /data
+
+# 恢复备份
+docker run --rm \
+  -v huobao-data:/data \
+  -v $(pwd):/backup \
+  alpine sh -c "cd /data && tar xzf /backup/huobao-backup-YYYYMMDD.tar.gz --strip 1"
+```
+
+**方法 2：直接复制数据库**
+
+```bash
+# 备份
+cp ./data/drama_generator.db ./backups/drama_generator.db.backup
+
+# 恢复
+cp ./backups/drama_generator.db.backup ./data/drama_generator.db
+```
+
+**备份内容包括**：
+- SQLite 数据库（剧本、角色、场景、分镜等）
+- 存储文件（生成的图像和视频）
+
+**推荐备份频率**：每天或每周
+
+## 高级配置
+
+### 生产环境部署
+
+#### 使用 Nginx 反向代理
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    # 主应用代理
+    location / {
+        proxy_pass http://localhost:5678;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # WebSocket 支持（如需要）
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+    # 静态文件直接访问
+    location /static/ {
+        alias /opt/huobao-drama/data/storage/;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # HTTPS 配置（推荐）
+    # listen 443 ssl http2;
+    # ssl_certificate /path/to/cert.pem;
+    # ssl_certificate_key /path/to/key.pem;
+}
+```
+
+#### systemd 服务配置
+
+```ini
+# /etc/systemd/system/huobao-drama.service
+[Unit]
+Description=Huobao Drama Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/huobao-drama
+ExecStart=/opt/huobao-drama/huobao-drama
+Restart=on-failure
+RestartSec=10
+
+# 环境变量
+Environment="GIN_MODE=release"
+
+# 资源限制
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**启动服务**：
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable huobao-drama
+sudo systemctl start huobao-drama
+sudo systemctl status huobao-drama
+```
+
+### 性能优化
+
+#### 数据库优化
+
+SQLite 默认配置已优化，但可根据需要调整：
+
+```yaml
+# configs/config.yaml
+database:
+  type: sqlite
+  path: ./data/drama_generator.db
+  max_idle: 10        # 最大空闲连接
+  max_open: 100       # 最大打开连接
+  conn_max_lifetime: 3600  # 连接最大生命周期（秒）
+```
+
+#### 存储优化
+
+**本地存储配置**：
+
+```yaml
+storage:
+  type: local
+  local_path: ./data/storage
+  base_url: http://your-domain.com/static
+  max_file_size: 104857600  # 100MB
+  allowed_types:
+    - image/jpeg
+    - image/png
+    - video/mp4
+```
+
+**定期清理**：
+
+```bash
+# 清理失败的生成任务文件
+find ./data/storage -type f -name "*.tmp" -mtime +7 -delete
+
+# 清理孤立文件（数据库中不存在的文件）
+# 需要自定义脚本
+```
+
+#### 视频处理优化
+
+**FFmpeg 参数调优**：
+
+- **硬件加速**（如有 GPU）：
+  ```go
+  // 在代码中启用硬件加速
+  "-hwaccel", "cuda"  // NVIDIA GPU
+  "-hwaccel", "videotoolbox"  // macOS
+  ```
+
+- **并发处理**：
+  - 限制同时生成的视频数量
+  - 避免 CPU 过载
+
+### 监控与日志
+
+#### 日志配置
+
+```yaml
+# configs/config.yaml
+log:
+  level: info        # debug, info, warn, error
+  format: json       # json 或 text
+  output: stdout     # stdout 或文件路径
+  file_path: ./logs/app.log
+  max_size: 100      # MB
+  max_backups: 3     # 保留日志文件数
+  max_age: 28        # 天
+```
+
+#### 健康检查
+
+```bash
+# 手动检查
+curl http://localhost:5678/health
+
+# 使用监控工具
+# Prometheus + Grafana
+# 可添加自定义指标
+```
+
+#### Docker 日志
+
+```bash
+# 查看实时日志
+docker logs -f huobao-drama
+
+# 查看最近 100 行
+docker logs --tail 100 huobao-drama
+
+# 导出日志
+docker logs huobao-drama > huobao-drama.log 2>&1
+```
+
+## 最佳实践
+
+### 剧本创作建议
+
+1. **明确场景划分**
+   - 每个场景独立段落
+   - 标注时间和地点
+   - 清晰的场景转换
+
+2. **角色描述详细**
+   - 外貌特征（发型、服装、年龄）
+   - 性格特点
+   - 关键道具
+
+3. **对白简洁**
+   - 每句对白独立一行
+   - 避免过长独白
+   - 标注说话人
+
+### 图像生成技巧
+
+1. **优化提示词**
+   - 包含风格描述（如："动漫风格"、"写实风格"）
+   - 指定光线（"柔和光线"、"戏剧性光影"）
+   - 添加氛围词（"温馨的"、"紧张的"）
+
+2. **一致性控制**
+   - 为同一角色使用相似的提示词结构
+   - 保持风格统一
+   - 可使用参考图功能
+
+3. **批量生成**
+   - 同类型素材批量生成
+   - 节省时间
+   - 便于统一调整
+
+### 视频制作流程
+
+```mermaid
+graph TB
+    A[完整剧本准备] --> B[角色场景设计]
+    B --> C[图像素材生成]
+    C --> D[分镜脚本拆解]
+    D --> E[分镜图像生成]
+    E --> F[分镜视频生成]
+    F --> G[时间轴编辑]
+    G --> H[预览调整]
+    H --> I[最终合成]
+    
+    style A fill:#e3f2fd
+    style E fill:#f3e5f5
+    style I fill:#c8e6c9
+```
+
+**推荐工作顺序**：
+1. 先完成所有图像生成
+2. 再进行分镜拆解
+3. 批量生成分镜视频
+4. 最后统一编辑时间轴
+
+### 成本控制
+
+1. **API 使用优化**
+   - 使用缓存避免重复生成
+   - 选择性价比高的模型
+   - 批量生成降低单价
+
+2. **存储管理**
+   - 定期清理无用素材
+   - 压缩存储历史项目
+   - 使用对象存储（可选）
+
+3. **模型选择**
+   ```
+   文本生成：
+   - 预算充足：GPT-4
+   - 性价比：GPT-3.5 Turbo
+   - 本地化：Ollama + Qwen
+   
+   图像生成：
+   - 高质量：DALL-E-3
+   - 快速迭代：Stable Diffusion
+   - 成本优先：Midjourney
+   
+   视频生成：
+   - 商业级：OpenAI Sora
+   - 稳定性：豆包 Seedance
+   - 实验性：Runway Gen-2
+   ```
+
+## 社区与支持
+
+### 官方资源
+
+- 🏠 **GitHub 仓库**：[https://github.com/chatfire-AI/huobao-drama](https://github.com/chatfire-AI/huobao-drama)
+- 📚 **技术文档**：[https://deepwiki.com/chatfire-AI/huobao-drama](https://deepwiki.com/chatfire-AI/huobao-drama)
+- 📧 **联系邮箱**：18550175439@163.com
+
+### 问题反馈
+
+**提交 Issue 时请包含**：
+1. 问题描述
+2. 复现步骤
+3. 系统环境（OS、Docker版本等）
+4. 日志片段
+5. 截图（如有）
+
+### 贡献指南
+
+欢迎贡献代码或提交 Pull Request：
+
+1. Fork 项目
+2. 创建功能分支（`git checkout -b feature/AmazingFeature`）
+3. 提交更改（`git commit -m 'Add some AmazingFeature'`）
+4. 推送到分支（`git push origin feature/AmazingFeature`）
+5. 创建 Pull Request
+
+## 更新日志
+
+### v1.0.4 (2026-01-27)
+
+#### 🚀 重大更新
+- ✨ 引入本地存储策略，缓存生成内容，缓解外部资源链接过期风险
+- 🖼️ 实现参考图 Base64 编码传输
+- 🐛 修复切换分镜时镜头图像提示词状态未重置的问题
+- 🐛 修复添加库视频时视频时长显示为 0 的问题
+- ✨ 添加场景迁移到剧集功能
+
+#### 历史数据迁移
+- 📦 添加迁移脚本处理历史数据（详见 `MIGRATE_README.md`）
+
+### v1.0.3 (2026-01-16)
+
+#### 🚀 重大更新
+- 🔧 纯 Go SQLite 驱动（`modernc.org/sqlite`），支持 `CGO_ENABLED=0` 跨平台编译
+- ⚡ 优化并发性能（WAL 模式），解决"database is locked"错误
+- 🐳 Docker 跨平台支持 `host.docker.internal` 访问主机服务
+- 📝 精简文档和部署指南
+
+### v1.0.2 (2026-01-14)
+
+#### 🐛 Bug 修复 / 🔧 改进
+- 🐛 修复视频生成 API 响应解析问题
+- ✨ 添加 OpenAI Sora 视频端点配置
+- 🔧 优化错误处理和日志记录
+
+## 结语
+
+火宝短剧通过 AI 技术极大地降低了短剧制作的门槛，让个人创作者也能快速产出专业级的短剧作品。无论你是内容创作者、营销人员，还是技术爱好者，都可以通过这个平台实现自己的创意想法。
+
+```mermaid
+graph LR
+    A[创意灵感] --> B[AI剧本]
+    B --> C[角色场景]
+    C --> D[分镜脚本]
+    D --> E[视频素材]
+    E --> F[成品短剧]
+    
+    style A fill:#e3f2fd
+    style F fill:#c8e6c9
+```
+
+开始你的短剧创作之旅吧！🎬
+
+---
+
+**项目地址**：<https://github.com/chatfire-AI/huobao-drama>
+
+**技术支持**：如有问题欢迎提交 Issue 或发送邮件至 18550175439@163.com
+
+**⭐ 如果这个项目对你有帮助，请给它一个 Star！**
+

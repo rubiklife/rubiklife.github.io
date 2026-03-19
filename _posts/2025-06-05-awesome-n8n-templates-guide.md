@@ -346,6 +346,7 @@ graph TB
 
 #### 2. 意图识别节点
 
+{% raw %}
 ```json
 {
   "name": "OpenAI Intent Recognition",
@@ -358,9 +359,11 @@ graph TB
   }
 }
 ```
+{% endraw %}
 
 #### 3. 条件判断与路由
 
+{% raw %}
 ```json
 {
   "name": "Route by Intent",
@@ -383,6 +386,7 @@ graph TB
   }
 }
 ```
+{% endraw %}
 
 ### 性能优化策略
 
@@ -674,6 +678,7 @@ graph TD
 ### 2. 自定义修改指南
 
 **节点配置示例**：
+{% raw %}
 ```javascript
 // Gmail 节点配置
 {
@@ -705,6 +710,7 @@ graph TD
   }
 }
 ```
+{% endraw %}
 
 ### 3. 模板优化技巧
 

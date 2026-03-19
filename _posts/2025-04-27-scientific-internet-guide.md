@@ -893,9 +893,11 @@ docker run -v $HOME/.warp:/var/lib/cloudflare-warp:rw \
 
 这条命令会在容器上的 40001 开启一个 socks5 代理，接下来查看这个容器的 ip:
 
+{% raw %}
 ```shell
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cloudflare-warp
 ```
+{% endraw %}
 
 然后可以通过 curl 镜像来测试，例如，如果容器的 ip 是 `172.17.0.2`，则可以运行:
 
