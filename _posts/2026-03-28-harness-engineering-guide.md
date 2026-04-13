@@ -7,8 +7,6 @@ tags:
   - AI
   - 智能体
   - Harness Engineering
-  - Claude
-  - Codex
   - 工程实践
 toc: true
 mermaid: true
