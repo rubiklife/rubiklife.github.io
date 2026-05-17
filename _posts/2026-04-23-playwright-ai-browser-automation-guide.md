@@ -11,7 +11,7 @@ toc: true
 toc_label: "目录"
 toc_icon: "robot"
 mermaid: true
-excerpt: "基于 Playwright 官方最新发布的 Agent CLI（playwright-cli）+ Skills 机制，带你从零搭建一套面向 AI 编码 Agent 的浏览器自动化框架——比 MCP 更省 Token、比传统脚本更智能，配合 5 个递进式实战案例，把 Cursor / Claude Code 真正变成会"动手开浏览器"的助手。"
+excerpt: "基于 Playwright 官方最新发布的 Agent CLI（playwright-cli）+ Skills 机制，带你从零搭建一套面向 AI 编码 Agent 的浏览器自动化框架——比 MCP 更省 Token、比传统脚本更智能，配合 5 个递进式实战案例，把 Cursor / Claude Code 真正变成会“动手开浏览器”的助手。"
 ---
 
 > 本文系统整理自 Playwright 官方文档 [Agent CLI / Skills](https://playwright.dev/agent-cli/skills) 与 GitHub 仓库 [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli)，并结合 YouTube 上 Playwright 团队的 [Skills 演示视频](https://www.youtube.com/watch?v=nlK7-zuYDcs) 进行实战拆解。所有命令均基于 `@playwright/cli@latest`（v0.1.11+）验证。
