@@ -1,16 +1,11 @@
 ---
 title: "AI 编码 Agent 开发者完全指南：从入门配置到实战案例（基于《马书》驾驭工程）"
-date: 2026-05-17 19:30:00 +0800
+date: 2026-05-05 19:30:00 +0800
 categories:
   - AI工程
 tags:
-  - AI Agent
-  - Claude Code
   - Harness Engineering
-  - 驾驭工程
   - Agent 开发
-  - 提示工程
-  - 上下文管理
 toc: true
 toc_label: "目录"
 toc_icon: "robot"
