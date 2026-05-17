@@ -26,7 +26,7 @@ excerpt: "基于 ZhangHanDong《驾驭工程：从 Claude Code 源码到 AI 编�
 - 提示词缓存是省钱命脉，但任何一个微小改动都能让 50K token 的前缀失效。
 - 安全和权限不做"失败关闭"，一次错误的 `rm -rf` 就能让用户卸载你的产品。
 
-《马书》之所以叫"驾驭工程（Harness Engineering）"，正是因为它告诉你：**不要继续优化模型本身，而是优化模型运行的"环境"**——约束、反馈回路、缓存、上下文、权限的整套基础设施。这一点和我之前写的 [Harness Engineering 入门](/aiengineering/harness-engineering-guide/) 是一脉相承的，但这次我们要进入"源码级落地"。
+《马书》之所以叫"驾驭工程（Harness Engineering）"，正是因为它告诉你：**不要继续优化模型本身，而是优化模型运行的"环境"**——约束、反馈回路、缓存、上下文、权限的整套基础设施。这一点和我之前写的 [Harness Engineering 入门](/2026-03-28-harness-engineering-guide) 是一脉相承的，但这次我们要进入"源码级落地"。
 
 | 范式 | 关注点 | 代表产物 |
 |------|--------|----------|
@@ -984,11 +984,13 @@ graph TD
 - Anthropic 官方博文：[Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - OpenAI 官方博文：[工程技术：在智能体优先的世界中利用 Codex](https://openai.com/zh-Hans-CN/index/harness-engineering/)
 - 本博客延伸阅读：
-  - [Harness Engineering：驾驭 AI 智能体的工程方法论](/aiengineering/harness-engineering-guide/)
-  - [Agent Skills 完全指南](/aiengineering/agent-skills-complete-guide/)
-  - [Claude Code 最佳实践指南](/aiengineering/claude-code-best-practices-guide/)
-  - [Compound Engineering 插件指南](/aiengineering/compound-engineering-plugin-guide/)
-  - [Playwright AI 浏览器自动化完全指南](/aitools/playwright-ai-browser-automation-guide/)
+  - [Harness Engineering：驾驭 AI 智能体的工程方法论](/2026-03-28-harness-engineering-guide)
+  - [Agent Skills 完全指南](/2026-02-02-agent-skills-complete-guide)
+  - [Claude Code 最佳实践指南](/2025-08-12-claude-code-best-practices-guide)
+  - [Compound Engineering 插件指南](/2026-01-31-compound-engineering-plugin-guide)
+  - [Playwright AI 浏览器自动化完全指南](/2026-04-23-playwright-ai-browser-automation-guide)
+  - [Everything Claude Code 指南](/2026-01-30-everything-claude-code-guide)
+  - [Claude Agent 最佳实践指南](/2025-12-12-claude-agent-best-practices-guide)
 
 ---
 
