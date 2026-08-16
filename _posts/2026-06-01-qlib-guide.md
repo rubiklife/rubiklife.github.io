@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Qlib: AI驱动的量化投资平台完全指南"
-date: 2030-04-01T06:00:00+08:00
+date: 2026-06-01T06:00:00+08:00
 categories:
   - 效率工具
 tags:
@@ -48,14 +48,14 @@ graph TD
         DS[数据服务器] --> |高性能数据管理| IF[基础设施]
         TR[训练器] --> |模型训练控制| IF
     end
-    
+
     subgraph "工作流层"
         IF --> IE[信息提取器]
         IE --> FM[预测模型]
         FM --> |预测信号| PG[投资组合生成器]
         PG --> |订单| OE[订单执行器]
     end
-    
+
     subgraph "接口层"
         OE --> AN[分析器]
         AN --> |报告和可视化| UI[用户界面]
@@ -64,7 +64,7 @@ graph TD
     classDef infrastructure fill:#e1f5fe,stroke:#01579b
     classDef workflow fill:#e8f5e9,stroke:#2e7d32
     classDef interface fill:#fff3e0,stroke:#e65100
-    
+
     class DS,TR,IF infrastructure
     class IE,FM,PG,OE workflow
     class AN,UI interface
@@ -96,7 +96,7 @@ graph LR
     C[强大模型库] --> E
     D[性能优化] --> E
     E --> F[更好的投资决策]
-    
+
     classDef main fill:#f9f9f9,stroke:#333,stroke-width:2px
     classDef feature fill:#e1f5fe,stroke:#01579b
     class E,F main
@@ -120,7 +120,7 @@ graph LR
     D --> E[分析评估]
     E --> F[投资组合优化]
     F --> G[订单执行]
-    
+
     classDef process fill:#e8f5e9,stroke:#2e7d32
     class A,B,C,D,E,F,G process
 ```
@@ -205,7 +205,7 @@ graph TD
         LGB[LightGBM]
         CAT[Catboost]
     end
-    
+
     subgraph "深度学习"
         DL[深度学习模型]
         MLP[MLP]
@@ -216,7 +216,7 @@ graph TD
         TRANS[Transformer]
         LOCAL[Localformer]
     end
-    
+
     subgraph "专业量化模型"
         QM[专业量化模型]
         TRA[TRA]
@@ -225,11 +225,11 @@ graph TD
         SAND[Sandwich]
         DBEN[DoubleEnsemble]
     end
-    
+
     GBDT --> XGB
     GBDT --> LGB
     GBDT --> CAT
-    
+
     DL --> MLP
     DL --> RNN
     RNN --> LSTM
@@ -241,7 +241,7 @@ graph TD
     classDef ml fill:#e1f5fe,stroke:#01579b
     classDef dl fill:#e8f5e9,stroke:#2e7d32
     classDef quant fill:#fff3e0,stroke:#e65100
-    
+
     class GBDT,XGB,LGB,CAT ml
     class DL,MLP,RNN,LSTM,GRU,ATTN,TRANS,LOCAL dl
     class QM,TRA,HIST,KRNN,SAND,DBEN quant
@@ -273,7 +273,7 @@ graph LR
     C --> D[模型预测]
     D --> E[投资信号]
     E --> F[投资组合]
-    
+
     classDef flow fill:#f9f9f9,stroke:#333,stroke-width:1px
     class A,B,C,D,E,F flow
 ```
@@ -292,7 +292,7 @@ graph TD
     C --> G[预测]
     E --> G
     F --> G
-    
+
     classDef decision fill:#f8d7da,stroke:#721c24
     class D decision
 ```
@@ -311,7 +311,7 @@ graph LR
     B --> C[执行操作]
     C --> D[新状态 & 奖励]
     D --> A
-    
+
     classDef rl fill:#e8f5e9,stroke:#2e7d32
     class A,B,C,D rl
 ```
@@ -361,7 +361,7 @@ graph TD
     I --> J{回测结果良好?}
     J -->|是| K[实盘部署]
     J -->|否| C
-    
+
     classDef decision fill:#f8d7da,stroke:#721c24
     classDef process fill:#f9f9f9,stroke:#333,stroke-width:1px
     class G,J decision
@@ -466,4 +466,4 @@ Qlib不仅提供了一系列预构建的模型和数据集，还允许用户轻�
 - [Qlib官方文档](https://qlib.readthedocs.io/)
 - [量化投资研究微软团队](https://www.microsoft.com/en-us/research/project/ai-for-finance/)
 
-希望这篇指南能帮助您快速上手Microsoft Qlib，开启AI量化投资的探索之旅！ 
+希望这篇指南能帮助您快速上手Microsoft Qlib，开启AI量化投资的探索之旅！
