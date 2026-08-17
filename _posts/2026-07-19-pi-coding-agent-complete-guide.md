@@ -78,20 +78,20 @@ sequenceDiagram
     participant User as 用户
     participant TUI as InteractiveMode / Editor
     participant Session as AgentSession
-    participant Loop as agentLoop
+    participant Loop1 as agentLoop
     participant LLM as pi-ai / Provider
     participant Tool as read/edit/bash
 
     User->>TUI: 自然语言 + @文件
     TUI->>Session: prompt()
-    Session->>Loop: 发送当前 AgentState
-    Loop->>LLM: streamSimple()
-    LLM-->>Loop: text / thinking / tool_calls
+    Session->>Loop1: 发送当前 AgentState
+    Loop1->>LLM: streamSimple()
+    LLM-->>Loop1: text / thinking / tool_calls
     loop 每个 tool call
-        Loop->>Tool: execute()
-        Tool-->>Loop: tool result
+        Loop1->>Tool: execute()
+        Tool-->>Loop1: tool result
     end
-    Loop-->>Session: AgentEvent 流
+    Loop1-->>Session: AgentEvent 流
     Session-->>TUI: 差分渲染消息与工具输出
 ```
 
@@ -609,7 +609,7 @@ pi -p --no-session --approve \
 flowchart TD
     P[用户: 给 /api/me 加鉴权] --> A[分支 A: JWT]
     P --> B[分支 B: cookie session]
-    A --> C[/tree 切回 + 可选分支摘要]
+    A --> C[ /tree 切回 + 可选分支摘要]
     B --> C
     C --> D[让模型对比并推荐]
 ```

@@ -50,11 +50,11 @@ flowchart TB
     A3 --> A4[PR 过大、难审查]
     A4 --> A5[看起来能跑]
 
-    B --> B1[/spec 写清目标与边界]
-    B1 --> B2[/plan 切成可验证切片]
-    B2 --> B3[/build 红绿重构]
-    B3 --> B4[/review 五轴审查]
-    B4 --> B5[/ship 监控与回滚]
+    B --> B1[ /spec 写清目标与边界]
+    B1 --> B2[ /plan 切成可验证切片]
+    B2 --> B3[ /build 红绿重构]
+    B3 --> B4[ /review 五轴审查]
+    B4 --> B5[ /ship 监控与回滚]
     B5 --> B6[可验证的生产变更]
 ```
 
@@ -120,8 +120,8 @@ flowchart LR
     B --> V[VERIFY<br/>/test]
     V --> R[REVIEW<br/>/review]
     R --> S[SHIP<br/>/ship]
-    R -.-> CS[/code-simplify]
-    V -.-> WP[/webperf]
+    R -.-> CS[ /code-simplify]
+    V -.-> WP[ /webperf]
 ```
 
 | 你在做什么 | 命令 | 关键原则 |
@@ -464,7 +464,7 @@ flowchart TD
     Q{只要一个视角看一个产物?}
     Q -->|是| D[直接调用 Persona]
     Q -->|否| I{子任务彼此独立?}
-    I -->|是| F[/ship 并行扇出再合并]
+    I -->|是| F[ /ship 并行扇出再合并]
     I -->|否| S[用户顺序执行<br/>/spec → /plan → /build → /test → /review]
 ```
 
@@ -472,7 +472,7 @@ flowchart TD
 
 ```mermaid
 flowchart TB
-    SH[/ship] --> CR[code-reviewer]
+    SH[ /ship] --> CR[code-reviewer]
     SH --> SA[security-auditor]
     SH --> TE[test-engineer]
     CR --> M[主 Agent 合并]
@@ -530,7 +530,7 @@ flowchart TB
 flowchart LR
     subgraph G[Greenfield]
         G1[Day 0 安装] --> G2[/spec 第一功能]
-        G2 --> G3[/plan → /build]
+        G2 --> G3[ /plan → /build]
         G3 --> G4[TDD / Git / 安全始终开]
         G4 --> G5[随增长加载 UI / API / CI / 可观测性]
     end

@@ -107,7 +107,7 @@ sequenceDiagram
     participant User as 用户 / Slack
     participant Core as QM Core
     participant Model as Harness + 模型
-    participant Box as Scope 沙箱
+    participant Box1 as Scope 沙箱
     participant DB as Postgres
 
     User->>Core: 发起请求
@@ -115,8 +115,8 @@ sequenceDiagram
     Core->>Model: 发送受策略约束的上下文
     Model->>Core: 请求 execute
     Core->>Core: 命令策略 / 审批 / 审计
-    Core->>Box: 在当前 Scope 执行
-    Box-->>Core: 返回结果
+    Core->>Box1: 在当前 Scope 执行
+    Box1-->>Core: 返回结果
     Core->>DB: 持久化会话与状态
     Core-->>User: 返回结果
 ```
