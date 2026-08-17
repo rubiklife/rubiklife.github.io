@@ -1,6 +1,6 @@
 ---
 title: "Addy Osmani Agent Skills 完全使用指南：从 SDLC 技能包到生产级 Agent 工程实战"
-date: 2026-07-26 00:30:00 +0800
+date: 2026-07-22 00:30:00 +0800
 categories:
   - AI工具
   - 开发工具

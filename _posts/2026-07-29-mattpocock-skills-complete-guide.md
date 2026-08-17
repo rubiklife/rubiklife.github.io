@@ -1,6 +1,6 @@
 ---
 title: "Matt Pocock Skills 完全指南：跨 Claude Code、Codex、Cursor 与 OpenCode 的工程实战"
-date: 2026-08-01 20:39:00 +0800
+date: 2026-07-29 20:39:00 +0800
 categories:
   - AI工具
   - 开发工具
