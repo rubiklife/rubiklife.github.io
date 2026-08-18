@@ -580,7 +580,7 @@ planner 的产出应当是测试语言，而不是散文：
 
 implementer 先根据第 1、3 条补测试（必须先红），再改查询。Hook 保证它没法在红测试上把活交给 reviewer。reviewer 对照第 4 条看 diff：出现 `PostFilterStrategy` 或无关格式化，直接打回。
 
-如果你已经在用 [Karpathy Skills]({% post_url 2026-08-18-andrej-karpathy-skills-complete-guide %}) 那套「编码前思考 / 简洁 / 精准修改 / 目标驱动」，它们属于**节点内部的 Loop 纪律**；本图是把「实现」和「验收」拆成不能互相作弊的两个节点。两者叠在一起，而不是二选一。
+如果你已经在用 [Karpathy Skills]({% post_url 2026-06-08-andrej-karpathy-skills-complete-guide %}) 那套「编码前思考 / 简洁 / 精准修改 / 目标驱动」，它们属于**节点内部的 Loop 纪律**；本图是把「实现」和「验收」拆成不能互相作弊的两个节点。两者叠在一起，而不是二选一。
 
 ---
 

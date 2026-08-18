@@ -1,6 +1,6 @@
 ---
 title: "Obsidian Skills 完全使用指南：让 Agent 真正会写笔记、Bases 与 Canvas"
-date: 2026-06-25 23:45:00 +0800
+date: 2026-06-15 23:45:00 +0800
 categories:
   - AI工具
   - 效率工具
@@ -1149,7 +1149,7 @@ kepano/obsidian-skills 的价值不是让 Agent “更会做笔记”，而是�
 - [Agent Skills 生态系统]({% post_url 2026-02-02-agent-skills-complete-guide %})
 - [Addy Osmani Agent Skills]({% post_url 2026-07-22-addyosmani-agent-skills-complete-guide %})
 - [Matt Pocock Skills]({% post_url 2026-07-29-mattpocock-skills-complete-guide %})
-- [Andrej Karpathy Skills]({% post_url 2026-08-18-andrej-karpathy-skills-complete-guide %})
+- [Andrej Karpathy Skills]({% post_url 2026-06-08-andrej-karpathy-skills-complete-guide %})
 - [DeepWiki 使用指南]({% post_url 2025-04-30-deepwiki-guide %})
 - [Mermaid 指南]({% post_url 2025-05-28-mermaid-guide %})
 - [Claude Code 最佳实践]({% post_url 2025-08-12-claude-code-best-practices-guide %})

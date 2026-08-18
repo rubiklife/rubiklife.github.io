@@ -19,7 +19,7 @@ excerpt: "Loop Engineering 不是把 prompt 写得更长，而是设计「重复
 
 > **Loop Engineering（循环工程）** 是给编码智能体设计「干活 → 检查 → 再干活」的重复周期，直到停止条件成立。你交出去的不再是下一句 prompt，而是校验方式、完成标准、触发时机，甚至整段无人值守的例行任务。
 
-本文依据 Anthropic Claude Code 团队的 [Loop engineering: Getting started with loops](https://claude.com/blog/getting-started-with-loops)，并对照官方文档 [`/goal`](https://code.claude.com/docs/en/goal)、[`/loop`](https://code.claude.com/docs/en/scheduled-tasks) 与 [`/schedule`](https://code.claude.com/docs/en/web-scheduled-tasks) 整理。内容状态截至 **2026 年 8 月**。相关下层请先看本站的 [Harness Engineering]({% post_url 2026-03-28-harness-engineering-guide %})；循环不够用、要拆成多 Agent 时，再看 [Graph Engineering]({% post_url 2026-08-18-graph-engineering-complete-guide %})。
+本文依据 Anthropic Claude Code 团队的 [Loop engineering: Getting started with loops](https://claude.com/blog/getting-started-with-loops)，并对照官方文档 [`/goal`](https://code.claude.com/docs/en/goal)、[`/loop`](https://code.claude.com/docs/en/scheduled-tasks) 与 [`/schedule`](https://code.claude.com/docs/en/web-scheduled-tasks) 整理。内容状态截至 **2026 年 8 月**。相关下层请先看本站的 [Harness Engineering]({% post_url 2026-03-28-harness-engineering-guide %})；循环不够用、要拆成多 Agent 时，再看 [Graph Engineering]({% post_url 2026-06-29-graph-engineering-complete-guide %})。
 
 ---
 
@@ -167,7 +167,7 @@ description: Verify any UI change end-to-end before declaring it done.
 
 技能要能落地，得配上让 Claude **看见、量到、摸到**结果的工具：浏览器、测试命令、Lighthouse、CI 日志。没有这些，技能只是一篇更长的 prompt。技能、钩子、子智能体怎么选，见 Anthropic 的 [steering Claude Code](https://code.claude.com/docs) 指南；技能写法也可对照本站的 [Agent Skills 完全指南]({% post_url 2026-02-02-agent-skills-complete-guide %})。
 
-轮次循环的质量上限，取决于你有没有把「完成」从主观感受改成可重复的检查。Karpathy 那套「目标驱动执行」说的是同一件事，见 [Andrej Karpathy Skills]({% post_url 2026-08-18-andrej-karpathy-skills-complete-guide %})。
+轮次循环的质量上限，取决于你有没有把「完成」从主观感受改成可重复的检查。Karpathy 那套「目标驱动执行」说的是同一件事，见 [Andrej Karpathy Skills]({% post_url 2026-06-08-andrej-karpathy-skills-complete-guide %})。
 
 ---
 
@@ -443,7 +443,7 @@ and have a judge adversarially review them.
 | 动态工作流 | 分诊、修复、审查的多 Agent 编排 |
 | Auto mode | 不要每一步都停下来问权限 |
 
-这已经踩在 Graph 的门口：三个 worktree 并行探索、一个审查员对抗打分，就是 [Graph Engineering]({% post_url 2026-08-18-graph-engineering-complete-guide %}) 里的扇出-扇入。主动循环是「循环的极限形态」，不是「一上来就该用的默认形态」。队列形状稳定、验收便宜、误修代价可接受，再上这一级。
+这已经踩在 Graph 的门口：三个 worktree 并行探索、一个审查员对抗打分，就是 [Graph Engineering]({% post_url 2026-06-29-graph-engineering-complete-guide %}) 里的扇出-扇入。主动循环是「循环的极限形态」，不是「一上来就该用的默认形态」。队列形状稳定、验收便宜、误修代价可接受，再上这一级。
 
 ---
 
@@ -597,7 +597,7 @@ flowchart TB
 
 三件都稳了，再把第三条升级成 `/schedule`。
 
-更多官方材料：并行跑 Agent、[`/loop`](https://code.claude.com/docs/en/scheduled-tasks)、[`/schedule`](https://code.claude.com/docs/en/web-scheduled-tasks)、[`/goal`](https://code.claude.com/docs/en/goal)、动态工作流，以及用技能做[可重复的验证循环](https://code.claude.com/docs)。本站相关阅读：[Harness Engineering]({% post_url 2026-03-28-harness-engineering-guide %})、[智能体设计模式]({% post_url 2025-12-05-agentic-design-patterns-guide %})、[Graph Engineering]({% post_url 2026-08-18-graph-engineering-complete-guide %})、[Ralph]({% post_url 2026-02-01-ralph-claude-code-guide %})（更早的「做到为止」循环形态）。
+更多官方材料：并行跑 Agent、[`/loop`](https://code.claude.com/docs/en/scheduled-tasks)、[`/schedule`](https://code.claude.com/docs/en/web-scheduled-tasks)、[`/goal`](https://code.claude.com/docs/en/goal)、动态工作流，以及用技能做[可重复的验证循环](https://code.claude.com/docs)。本站相关阅读：[Harness Engineering]({% post_url 2026-03-28-harness-engineering-guide %})、[智能体设计模式]({% post_url 2025-12-05-agentic-design-patterns-guide %})、[Graph Engineering]({% post_url 2026-06-29-graph-engineering-complete-guide %})、[Ralph]({% post_url 2026-02-01-ralph-claude-code-guide %})（更早的「做到为止」循环形态）。
 
 ---
 
